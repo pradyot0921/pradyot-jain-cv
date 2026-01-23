@@ -75,7 +75,6 @@
     /* Header */
     header{
       padding: 26px 0 10px;
-      background: transparent;
     }
 
     .headerRow{
@@ -271,10 +270,25 @@
 
       /* Fix mobile "blue square" tap highlight */
       -webkit-tap-highlight-color: transparent;
+
+      /* Make the button shape circular so any focus/tap effect can't appear as a square */
+      border-radius: 999px;
+      outline: none;
     }
 
-    /* Replace outline focus (can render as a square on mobile) with a rounded ring */
+    /* Ensure tap highlight doesn't appear on children either (Android Chrome) */
+    .circleBtn, .circleBtn *{
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Remove default focus outline (Android may show it even when focus-visible isn't used) */
+    .circleBtn:focus{ outline: none; }
     .circleBtn:focus-visible{ outline: none; }
+
+    /* Remove Firefox inner focus border (harmless elsewhere) */
+    .circleBtn::-moz-focus-inner{ border: 0; }
+
+    /* Replace outline focus with a rounded ring */
     .circleBtn:focus-visible .circle{
       box-shadow:
         0 0 0 8px rgba(29,78,216,.18),
