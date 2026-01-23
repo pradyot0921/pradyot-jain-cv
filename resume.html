@@ -75,8 +75,15 @@
     /* Header */
     header{
       padding: 26px 0 10px;
+      backdrop-filter: blur(10px);
+       -webkit-backdrop-filter: blur(10px);
     }
 
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
     .headerRow{
       display:flex;
       align-items:center;
@@ -299,6 +306,13 @@
       box-shadow:
         0 0 0 8px rgba(29,78,216,.18),
         0 22px 44px rgba(0,0,0,.10);
+    }
+
+    /* Remove the blue focus halo on touch devices */
+    @media (pointer: coarse){
+      .circleBtn:focus-visible .circle{
+        box-shadow: 0 22px 44px rgba(0,0,0,.10);
+      }
     }
 
     .circle{
@@ -1089,6 +1103,8 @@
 
     function openModal(type){
       lastActiveElement = document.activeElement;
+       
+      if (lastActiveElement && lastActiveElement.blur) lastActiveElement.blur();
 
       currentType = (type === "edu") ? "edu" : "exp";
       currentIndex = 0;
