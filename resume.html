@@ -268,27 +268,33 @@
       justify-content:center;
       align-items:center;
 
-      /* Fix mobile "blue square" tap highlight */
+      /* Fix mobile tap highlight */
       -webkit-tap-highlight-color: transparent;
-
-      /* Make the button shape circular so any focus/tap effect can't appear as a square */
-      border-radius: 999px;
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      user-select: none;
       outline: none;
     }
 
-    /* Ensure tap highlight doesn't appear on children either (Android Chrome) */
-    .circleBtn, .circleBtn *{
+    /* IMPORTANT: some Android browsers apply tap highlight to children */
+    .circleBtn *{
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Remove default focus outline (Android may show it even when focus-visible isn't used) */
-    .circleBtn:focus{ outline: none; }
+    /* Remove Firefox inner focus border on buttons */
+    .circleBtn::-moz-focus-inner{
+      border: 0;
+      padding: 0;
+    }
+
+    /* Prevent any default active background flash */
+    .circleBtn:active{
+      background: transparent;
+    }
+
+    /* Replace outline focus (can render as a square on mobile) with a rounded ring */
     .circleBtn:focus-visible{ outline: none; }
-
-    /* Remove Firefox inner focus border (harmless elsewhere) */
-    .circleBtn::-moz-focus-inner{ border: 0; }
-
-    /* Replace outline focus with a rounded ring */
     .circleBtn:focus-visible .circle{
       box-shadow:
         0 0 0 8px rgba(29,78,216,.18),
@@ -413,6 +419,10 @@
       gap: 10px;
 
       touch-action: pan-y;
+
+      /* IMPORTANT: allow scrolling container sizing on mobile */
+      max-height: calc(100vh - 36px);
+      overflow: hidden;
     }
 
     .modalContent{
@@ -420,6 +430,12 @@
       grid-template-columns: 1fr 240px;
       gap: 18px;
       align-items: center;
+
+      /* IMPORTANT: make modal content scrollable on smaller screens */
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      align-items: flex-start;
+      padding-right: 2px;
     }
 
     .modalLeft{ min-width: 0; }
@@ -1124,6 +1140,7 @@
       if (e.key === "ArrowLeft") prevBtn.click();
       if (e.key === "ArrowRight") nextBtn.click();
     });
+
 
     // Swipe / trackpad gesture navigation for modal
     let touchStartX = 0;
