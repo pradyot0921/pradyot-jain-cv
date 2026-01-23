@@ -76,10 +76,9 @@
     header{
       padding: 26px 0 10px;
       backdrop-filter: blur(10px);
-       -webkit-backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-   
     .headerRow{
       display:flex;
       align-items:center;
@@ -271,40 +270,33 @@
       justify-content:center;
       align-items:center;
 
-      /* Fix mobile tap highlight */
+      /* Fix mobile "blue square" tap highlight */
       -webkit-tap-highlight-color: transparent;
-      appearance: none;
-      -webkit-appearance: none;
-      background-color: transparent;
-      user-select: none;
+
+      /* Make the button shape circular so any focus/tap effect can't appear as a square */
+      border-radius: 999px;
       outline: none;
     }
 
-    /* IMPORTANT: some Android browsers apply tap highlight to children */
-    .circleBtn *{
+    /* Ensure tap highlight doesn't appear on children either (Android Chrome) */
+    .circleBtn, .circleBtn *{
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Remove Firefox inner focus border on buttons */
-    .circleBtn::-moz-focus-inner{
-      border: 0;
-      padding: 0;
-    }
-
-    /* Prevent any default active background flash */
-    .circleBtn:active{
-      background: transparent;
-    }
-
-    /* Replace outline focus (can render as a square on mobile) with a rounded ring */
+    /* Remove default focus outline (Android may show it even when focus-visible isn't used) */
+    .circleBtn:focus{ outline: none; }
     .circleBtn:focus-visible{ outline: none; }
+
+    /* Remove Firefox inner focus border (harmless elsewhere) */
+    .circleBtn::-moz-focus-inner{ border: 0; }
+
+    /* Replace outline focus with a rounded ring */
     .circleBtn:focus-visible .circle{
       box-shadow:
         0 0 0 8px rgba(29,78,216,.18),
         0 22px 44px rgba(0,0,0,.10);
     }
-
-    /* Remove the blue focus halo on touch devices */
+  
     @media (pointer: coarse){
       .circleBtn:focus-visible .circle{
         box-shadow: 0 22px 44px rgba(0,0,0,.10);
@@ -423,30 +415,21 @@
       box-shadow: var(--modalShadow);
 
       padding: 18px 18px 14px;
-
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
       display:grid;
       grid-template-rows: 1fr auto;
       gap: 10px;
 
       touch-action: pan-y;
-
-      /* IMPORTANT: allow scrolling container sizing on mobile */
-      max-height: calc(100vh - 36px);
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
     }
 
     .modalContent{
       display:grid;
       grid-template-columns: 1fr 240px;
       gap: 18px;
-      align-items: center;
-
-      /* IMPORTANT: make modal content scrollable on smaller screens */
       overflow: visible;
-      -webkit-overflow-scrolling: touch;
-      align-items: flex-start;
-      padding-right: 2px;
+      align-items: center;
     }
 
     .modalLeft{ min-width: 0; }
@@ -479,8 +462,6 @@
       line-height: 1;
       padding: 6px;
       opacity: .75;
-      z-index: 5;
-      border-radius: 12px;
     }
     .modalClose:hover{ opacity: 1; }
 
@@ -587,6 +568,16 @@
         gap: 28px;
         padding: 18px 0 18px;
       }
+
+      @media (max-width: 980px){
+        .modalPanel{
+          top: calc(env(safe-area-inset-top, 0px) + 12px);
+          left: 50%;
+          transform: translateX(-50%); /* remove vertical centering */
+          max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 24px);
+        }
+      }
+
       .circle{ width: 320px; height: 320px; }
       .circle h2{ font-size: 30px; }
 
@@ -600,15 +591,6 @@
       .modalContent{ grid-template-columns: 1fr; }
       .modalRight{ margin-top: 6px; }
       .modalLogo{ max-width: 180px; max-height: 180px; }
-    }
-
-    @media (max-width: 980px){
-      .modalPanel{
-        top: calc(env(safe-area-inset-top, 0px) + 12px);
-        left: 50%;
-        transform: translateX(-50%); /* remove vertical centering */
-        max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 24px);
-      }
     }
 
     @media (max-width: 480px){
@@ -1111,7 +1093,7 @@
 
     function openModal(type){
       lastActiveElement = document.activeElement;
-       
+
       if (lastActiveElement && lastActiveElement.blur) lastActiveElement.blur();
 
       currentType = (type === "edu") ? "edu" : "exp";
@@ -1164,7 +1146,6 @@
       if (e.key === "ArrowLeft") prevBtn.click();
       if (e.key === "ArrowRight") nextBtn.click();
     });
-
 
     // Swipe / trackpad gesture navigation for modal
     let touchStartX = 0;
