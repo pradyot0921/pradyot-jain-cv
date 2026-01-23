@@ -129,6 +129,9 @@
       font-size: 14px;
       font-weight: 800;
       cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .downloadBtn:hover{ opacity: .92; }
@@ -520,31 +523,9 @@
       font-size: 12.5px;
     }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .cards{ grid-template-columns: 1fr; }
-      .footerGrid{
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .copyright{ text-align:left; }
-    }
-
-    @media (max-width: 480px){
-      .container{ padding: 0 18px; }
-      .topNav{ gap: 10px; }
-      .pageTitle h1{ font-size: 40px; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ transition: none !important; }
-      body{ opacity: 1 !important; }
-    }
-
     /* ----------------------------
        Card fade on hover/focus + animated show/hide
        ---------------------------- */
-
     .cards.isHovering .cardBtn:not(.isActiveCard) .card{
       opacity: .55;
       transform: none;
@@ -566,6 +547,96 @@
       transform: translateY(6px);
       pointer-events: none;
     }
+
+    /* Tap highlight removal (mobile polish) */
+    .cardBtn,
+    .filterPill,
+    .viewMoreBtn,
+    .downloadBtn{
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .cardBtn:focus-visible{ outline: none; }
+    .cardBtn:focus-visible .card{
+      box-shadow: 0 0 0 4px rgba(29,78,216,.22), 0 22px 44px rgba(0,0,0,.10);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .cards{ grid-template-columns: 1fr; }
+      .footerGrid{
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .copyright{ text-align:left; }
+      body{ background-attachment: scroll; }
+    }
+
+    @media (max-width: 480px){
+      .container{ padding: 0 18px; }
+      .topNav{ gap: 10px; }
+      .pageTitle h1{ font-size: 40px; }
+    }
+
+    /* ===== Mobile header fix (match index.html) ===== */
+    @media (max-width: 640px){
+      header{ padding: 18px 0 8px; }
+
+      .headerRow{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .brand{
+        font-size: 20px;
+      }
+
+      .divider{ display: none; }
+
+      .topNav{
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        font-size: 14px;
+        line-height: 1.2;
+        white-space: normal;
+      }
+
+      .downloadWrap{
+        width: 100%;
+        margin-top: 6px;
+      }
+
+      .downloadBtn{
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+      }
+
+      .downloadMenu{
+        right: auto;
+        left: 0;
+        min-width: 100%;
+      }
+    }
+
+    /* ===== Footer fix on very small screens ===== */
+    @media (max-width: 520px){
+      .footerGrid{
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .copyright{
+        text-align: left;
+        white-space: normal;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; }
+      body{ opacity: 1 !important; }
+    }
   </style>
 </head>
 
@@ -573,7 +644,7 @@
   <header>
     <div class="container headerRow">
       <a href="index.html" class="brand">
-        <span class="brandDot"></span>
+        <span class="brandDot" aria-hidden="true"></span>
         <span>Pradyot Jain</span>
       </a>
 
@@ -585,11 +656,11 @@
         <a href="contact.html">Contact</a><span class="divider" aria-hidden="true"></span>
 
         <div class="downloadWrap">
-          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false">
+          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu">
             Download Resume
           </button>
 
-          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume options">
+          <div class="downloadMenu" id="downloadMenu" role="menu" tabindex="-1" aria-label="Download resume options">
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
           </div>
@@ -719,8 +790,10 @@ The focus was on building a robust, generalisable pricing model using advanced m
       <div class="footerGrid">
         <div>
           <p class="footTitle">Phone</p>
-          <p class="footText"><a href="tel:+61421779699">+61 0421 779 699</a><br>
-          <a href="tel:+917980010389">+91 79800 10389</a>
+          <p class="footText">
+            <a href="tel:+61421779699">+61 0421 779 699</a><br>
+            <a href="tel:+917980010389">+91 79800 10389</a>
+          </p>
         </div>
 
         <div>
@@ -779,6 +852,8 @@ The focus was on building a robust, generalisable pricing model using advanced m
       document.body.classList.add("pageReady");
     });
 
+    const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     // Smooth fade-out for internal navigation
     document.addEventListener("click", (e) => {
       const link = e.target.closest("a");
@@ -787,6 +862,8 @@ The focus was on building a robust, generalisable pricing model using advanced m
       const href = link.getAttribute("href");
       if (!href) return;
 
+      if (href.startsWith("javascript:")) return;
+
       if (link.target === "_blank") return;
       if (link.hasAttribute("download")) return;
       if (href.startsWith("#")) return;
@@ -794,6 +871,12 @@ The focus was on building a robust, generalisable pricing model using advanced m
       if (/^https?:\/\//i.test(href)) return;
 
       e.preventDefault();
+
+      if (prefersReducedMotion){
+        window.location.href = href;
+        return;
+      }
+
       document.body.classList.add("pageFadeOut");
 
       setTimeout(() => {
@@ -1193,7 +1276,7 @@ The focus was on building a robust, generalisable pricing model using advanced m
       lastFocusedEl = document.activeElement;
 
       pmTitle.textContent = p.title || "";
-      pmMeta.textContent = p.meta || "";
+      pmMeta.textContent = `Project ${index + 1}`;
       pmOpen.href = p.openHref || "#";
 
       clearChildren(pmBody);

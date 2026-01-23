@@ -53,6 +53,19 @@
       border-radius: 8px;
     }
 
+    /* Skip link (same as index.html) */
+    .skipLink{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.18);
+      padding:10px 12px;
+      border-radius:10px;
+      z-index:9999;
+    }
+    .skipLink:focus{ left: 18px; }
+
     .container{
       max-width: var(--max);
       margin: 0 auto;
@@ -96,17 +109,15 @@
       text-underline-offset: 4px;
     }
 
-    /* Make header behave like portfolio.html: wraps cleanly + keeps dividers stable */
+    /* Match index.html nav defaults */
     .topNav{
       display:flex;
       align-items:center;
       gap: 16px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 500;
       color: #111;
       white-space: nowrap;
-      flex-wrap: wrap;
-      row-gap: 10px;
     }
 
     .divider{
@@ -125,7 +136,7 @@
       text-decoration-thickness: 2px;
     }
 
-    /* Download dropdown (aligned to portfolio.html behavior) */
+    /* Download dropdown */
     .downloadWrap{
       position: relative;
       display: inline-flex;
@@ -203,7 +214,6 @@
         border-color: rgba(29,78,216,.35);
         box-shadow: 0 10px 22px rgba(29,78,216,.12);
       }
-      /* keep menu open while moving from button to menu */
       .downloadWrap::after{
         content:"";
         position:absolute;
@@ -258,11 +268,17 @@
       display:flex;
       justify-content:center;
       align-items:center;
+
+      /* Fix mobile "blue square" tap highlight */
+      -webkit-tap-highlight-color: transparent;
     }
 
+    /* Replace outline focus (can render as a square on mobile) with a rounded ring */
+    .circleBtn:focus-visible{ outline: none; }
     .circleBtn:focus-visible .circle{
-      outline: 3px solid rgba(29,78,216,.35);
-      outline-offset: 6px;
+      box-shadow:
+        0 0 0 8px rgba(29,78,216,.18),
+        0 22px 44px rgba(0,0,0,.10);
     }
 
     .circle{
@@ -274,8 +290,8 @@
       justify-content:center;
       text-align:center;
       background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,.80), rgba(255,255,255,.28) 56%, rgba(255,255,255,.10) 100%),
-        linear-gradient(135deg, rgba(148,255,220,.55), rgba(170,210,255,.60), rgba(120,170,255,.55));
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,.86), rgba(255,255,255,.38) 56%, rgba(255,255,255,.14) 100%),
+        linear-gradient(135deg, rgba(148,255,220,.28), rgba(170,210,255,.32), rgba(120,170,255,.28));
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 22px 44px rgba(0,0,0,.10);
       transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, opacity .18s ease;
@@ -296,7 +312,7 @@
       color: rgba(0,0,0,.82);
     }
 
-    /* NEW: Fade the other circle on hover/focus (like portfolio cards) */
+    /* Fade the other circle on hover/focus (like portfolio cards) */
     .circles.isHovering .circleBtn:not(.isActiveCircle) .circle{
       opacity: .55;
       transform: none;
@@ -551,6 +567,61 @@
       .modalBody{ font-size: 14px; }
     }
 
+    /* ===== Mobile header fix (same as index.html) ===== */
+    @media (max-width: 640px){
+      header{ padding: 18px 0 8px; }
+
+      .headerRow{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .brand{
+        font-size: 20px;
+      }
+
+      .divider{ display: none; }
+
+      .topNav{
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        font-size: 14px;
+        line-height: 1.2;
+        white-space: normal;
+      }
+
+      .downloadWrap{
+        width: 100%;
+        margin-top: 6px;
+      }
+
+      .downloadBtn{
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+      }
+
+      .downloadMenu{
+        right: auto;
+        left: 0;
+        min-width: 100%;
+      }
+    }
+
+    /* ===== Footer fix on very small screens (same as index.html) ===== */
+    @media (max-width: 520px){
+      .footerGrid{
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .copyright{
+        text-align: left;
+        white-space: normal;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
       *{
         transition: none !important;
@@ -562,10 +633,12 @@
 </head>
 
 <body>
+  <a href="#main" class="skipLink">Skip to content</a>
+
   <header>
     <div class="container headerRow">
       <a href="index.html" class="brand">
-        <span class="brandDot"></span>
+        <span class="brandDot" aria-hidden="true"></span>
         <span>Pradyot Jain</span>
       </a>
 
@@ -582,11 +655,18 @@
         <span class="divider" aria-hidden="true"></span>
 
         <div class="downloadWrap">
-          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false">
+          <button
+            type="button"
+            class="downloadBtn"
+            id="downloadBtn"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="downloadMenu"
+          >
             Download Resume
           </button>
 
-          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume options">
+          <div class="downloadMenu" id="downloadMenu" role="menu" tabindex="-1" aria-label="Download resume options">
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
           </div>
@@ -595,7 +675,7 @@
     </div>
   </header>
 
-  <main class="container" aria-label="Resume sections">
+  <main class="container" id="main" aria-label="Resume sections">
     <section class="explore" aria-label="Explore my resume">
       <h1>Explore my Resume</h1>
       <p>Click a section to view my experience and education.</p>
@@ -617,8 +697,10 @@
       <div class="footerGrid">
         <div>
           <p class="footTitle">Phone</p>
-          <p class="footText"><a href="tel:+61421779699">+61 0421 779 699</a><br>
-          <a href="tel:+917980010389">+91 79800 10389</a>
+          <p class="footText">
+            <a href="tel:+61421779699">+61 0421 779 699</a><br>
+            <a href="tel:+917980010389">+91 79800 10389</a>
+          </p>
         </div>
 
         <div>
@@ -685,7 +767,9 @@
       document.body.classList.add("pageReady");
     });
 
-    // Smooth fade-out for internal navigation (aligned)
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Smooth fade-out for internal navigation
     document.addEventListener("click", (e) => {
       const link = e.target.closest("a");
       if (!link) return;
@@ -693,6 +777,7 @@
       const href = link.getAttribute("href");
       if (!href) return;
 
+      if (href.startsWith("javascript:")) return;
       if (link.target === "_blank") return;
       if (link.hasAttribute("download")) return;
       if (href.startsWith("#")) return;
@@ -700,6 +785,12 @@
       if (/^https?:\/\//i.test(href)) return;
 
       e.preventDefault();
+
+      if (reduceMotion){
+        window.location.href = href;
+        return;
+      }
+
       document.body.classList.add("pageFadeOut");
 
       setTimeout(() => {
@@ -849,7 +940,7 @@
       return span;
     }
 
-    // Download menu behavior (same as portfolio.html)
+    // Download menu behavior (same approach as index.html)
     function closeDownloadMenu(){
       if (!downloadMenu) return;
       downloadMenu.classList.remove("show");
@@ -862,6 +953,10 @@
       downloadMenu.classList.add("show");
       downloadBtn.classList.add("isOpen");
       downloadBtn.setAttribute("aria-expanded", "true");
+
+      // Focus menu on non-hover devices for keyboard users
+      const isHoverDeviceLocal = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!isHoverDeviceLocal) downloadMenu.focus();
     }
 
     function toggleDownloadMenu(){
@@ -887,7 +982,6 @@
 
         downloadMenu.addEventListener("click", (e) => e.stopPropagation());
       } else {
-        // Keep ARIA in sync for keyboard users on hover devices
         downloadBtn.addEventListener("focus", () => openDownloadMenu());
         downloadBtn.addEventListener("blur", () => {
           setTimeout(() => {
@@ -902,6 +996,12 @@
           if (e.key === "Escape") closeDownloadMenu();
         });
       }
+
+      // Close when focus moves outside button+menu (keyboard)
+      document.addEventListener("focusin", (e) => {
+        const within = downloadBtn.contains(e.target) || downloadMenu.contains(e.target);
+        if (!within) closeDownloadMenu();
+      });
     }
 
     function render(){
@@ -955,7 +1055,11 @@
       nextBtn.disabled = (currentIndex === list.length - 1);
     }
 
+    let lastActiveElement = null;
+
     function openModal(type){
+      lastActiveElement = document.activeElement;
+
       currentType = (type === "edu") ? "edu" : "exp";
       currentIndex = 0;
       render();
@@ -971,6 +1075,10 @@
       modal.classList.remove("show");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+
+      if (lastActiveElement && typeof lastActiveElement.focus === "function"){
+        lastActiveElement.focus();
+      }
     }
 
     document.querySelectorAll("[data-modal]").forEach(btn => {
@@ -1056,7 +1164,7 @@
       else goPrev();
     }, { passive: false });
 
-    // NEW: Circle hover/focus fade (like portfolio cards)
+    // Circle hover/focus fade (like portfolio cards)
     const circlesWrap = document.getElementById("circlesWrap");
     const circleBtns = Array.from(document.querySelectorAll(".circleBtn"));
 

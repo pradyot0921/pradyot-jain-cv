@@ -133,6 +133,10 @@
       border-color: rgba(29,78,216,.35);
       box-shadow: 0 10px 22px rgba(29,78,216,.12);
     }
+    .downloadBtn:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+    }
 
     .downloadMenu{
       position: absolute;
@@ -357,6 +361,59 @@
       .pageTitle h1{ font-size: 28px; }
     }
 
+    /* Mobile header (match your portfolio/index style) */
+    @media (max-width: 640px){
+      header{ padding: 18px 0 8px; }
+
+      .headerRow{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .brand{ font-size: 20px; }
+
+      .divider{ display: none; }
+
+      .topNav{
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        font-size: 14px;
+        line-height: 1.2;
+        white-space: normal;
+      }
+
+      .downloadWrap{
+        width: 100%;
+        margin-top: 6px;
+      }
+
+      .downloadBtn{
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+      }
+
+      .downloadMenu{
+        right: auto;
+        left: 0;
+        min-width: 100%;
+      }
+    }
+
+    /* Footer on very small screens */
+    @media (max-width: 520px){
+      .footerGrid{
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .copyright{
+        text-align: left;
+        white-space: normal;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
       *{ transition: none !important; }
       body{ opacity: 1 !important; }
@@ -368,7 +425,7 @@
   <header>
     <div class="container headerRow">
       <a href="index.html" class="brand">
-        <span class="brandDot"></span>
+        <span class="brandDot" aria-hidden="true"></span>
         <span>Pradyot Jain</span>
       </a>
 
@@ -380,7 +437,7 @@
         <a class="active" href="contact.html">Contact</a><span class="divider" aria-hidden="true"></span>
 
         <div class="downloadWrap">
-          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false">
+          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu">
             Download Resume
           </button>
 
@@ -444,7 +501,7 @@
         <div>
           <p class="footTitle">Phone</p>
           <p class="footText"><a href="tel:+61421779699">+61 0421 779 699</a><br>
-          <a href="tel:+917980010389">+91 79800 10389</a>
+          <a href="tel:+917980010389">+91 79800 10389</a></p>
         </div>
 
         <div>
