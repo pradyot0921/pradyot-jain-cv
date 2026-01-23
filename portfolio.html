@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pradyot Jain | Portfolio</title>
+  <meta name="description" content="Pradyot Jain - Portfolio projects and case studies." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text:#0d0d0d;
+      --muted: rgba(0,0,0,.62);
+      --line: rgba(0,0,0,.14);
+
+      --blue1:#1d4ed8;
+      --blue2:#0ea5e9;
+
+      --max: 1180px;
+
+      --shadow: 0 14px 34px rgba(0,0,0,.08);
+      --modalShadow: 0 26px 70px rgba(0,0,0,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ min-height:100%; }
+
+    body{
+      margin:0;
+      background-attachment: fixed;
+      min-height: 100vh;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 18% 16%, rgba(29,78,216,.16), transparent 60%),
+        radial-gradient(900px 520px at 82% 18%, rgba(14,165,233,.14), transparent 58%),
+        linear-gradient(180deg, #ffffff 0%, #f4f9ff 52%, #ffffff 100%);
+      opacity: 0;
+      transition: opacity .22s ease;
+    }
+
+    body.pageReady{ opacity: 1; }
+    body.pageFadeOut{ opacity: 0; }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ opacity:.92; }
+
+    a:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Header */
+    header{
+      padding: 26px 0 10px;
+      background: transparent;
+    }
+    .headerRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+    .brandDot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue1), var(--blue2));
+      display:inline-block;
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    }
+    .topNav{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+      white-space: nowrap;
+      flex-wrap: wrap;
+      row-gap: 10px;
+    }
+    .divider{
+      width: 1px;
+      height: 18px;
+      background: rgba(0,0,0,.38);
+      display:inline-block;
+      margin: 0 4px;
+      flex: 0 0 1px;
+    }
+    .active{
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
+
+    /* Download dropdown */
+    .downloadWrap{
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .downloadBtn{
+      border: 1px solid rgba(0,0,0,.14);
+      background: rgba(255,255,255,.55);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .downloadBtn:hover{ opacity: .92; }
+
+    .downloadBtn.isOpen{
+      border-color: rgba(29,78,216,.35);
+      box-shadow: 0 10px 22px rgba(29,78,216,.12);
+    }
+
+    .downloadBtn:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+    }
+
+    .downloadMenu{
+      position: absolute;
+      top: 100%;
+      margin-top: 10px;
+      right: 0;
+      min-width: 190px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.12);
+      padding: 8px;
+      z-index: 60;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+
+    .downloadMenu.show{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .downloadMenu a{
+      display: block;
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .downloadMenu a:hover{
+      background: rgba(29,78,216,.08);
+    }
+
+    /* Hover open (desktop hover-capable devices) */
+    @media (hover: hover) and (pointer: fine){
+      .downloadWrap:hover .downloadMenu{
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .downloadWrap:hover .downloadBtn{
+        border-color: rgba(29,78,216,.35);
+        box-shadow: 0 10px 22px rgba(29,78,216,.12);
+      }
+      /* keep menu open while moving from button to menu */
+      .downloadWrap::after{
+        content:"";
+        position:absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 12px; /* must be >= margin-top (10px) */
+      }
+    }
+
+    /* Main */
+    main{
+      padding: 18px 0 0;
+      min-height: calc(100vh - 120px);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .pageTitle{
+      text-align:center;
+      padding: 8px 0 8px;
+    }
+    .pageTitle h1{
+      margin: 0;
+      font-size: 50px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+    }
+
+    /* Filter pills */
+    .filters{
+      display:flex;
+      justify-content:center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 12px 0 18px;
+    }
+
+    .filterPill{
+      border: 1px solid rgba(0,0,0,.55);
+      background: rgba(255,255,255,.28);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1;
+      user-select: none;
+    }
+    .filterPill.isActive{
+      background: rgba(29,78,216,.10);
+      border-color: rgba(0,0,0,.55);
+    }
+
+    /* Cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 34px;
+      align-items: stretch;
+      padding: 8px 0 14px;
+    }
+
+    .cardBtn{
+      border: none;
+      background: none;
+      padding: 0;
+      text-align: left;
+      cursor: pointer;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .card{
+      border-radius: 30px;
+      border: 1px solid rgba(0,0,0,.14);
+      box-shadow: 0 22px 44px rgba(0,0,0,.10);
+      padding: 26px 22px 22px;
+      height: 440px;
+      min-height: 400px;
+
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,.92), rgba(255,255,255,.55) 56%, rgba(255,255,255,.30) 100%),
+        linear-gradient(135deg, rgba(148,255,220,.28), rgba(170,210,255,.36), rgba(120,170,255,.34));
+
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease, opacity .16s ease;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .cardBtn:hover .card{
+      transform: translateY(-6px);
+      box-shadow: 0 30px 64px rgba(0,0,0,.14);
+      filter: saturate(1.02);
+    }
+
+    .cardTitle{
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      line-height: 1.25;
+    }
+
+    .cardSub{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+      color: rgba(0,0,0,.70);
+    }
+
+    .cardDesc{
+      margin: 6px 0 0;
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 14px;
+      font-weight: 650;
+      color: rgba(0,0,0,.62);
+      line-height: 1.6;
+    }
+
+    .readMore{
+      text-decoration: none;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      display:inline;
+    }
+
+    .openBtnRow{
+      margin-top: auto;
+      display:flex;
+      justify-content:flex-start;
+    }
+
+    .openProjectBtn{
+      display:inline-flex;
+      align-items:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.16);
+      background: rgba(255,255,255,.55);
+      font-size: 13px;
+      font-weight: 850;
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+    }
+
+    /* View more button */
+    .viewMoreWrap{
+      display:flex;
+      justify-content:center;
+      position: sticky;
+      bottom: 18px;
+      z-index: 40;
+      padding: 10px 0;
+      background: transparent;
+      pointer-events: none;
+    }
+    .viewMoreBtn{
+      border: 2px solid rgba(0,0,0,.75);
+      background: rgba(255,255,255,.28);
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      pointer-events: auto;
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 14px 30px rgba(0,0,0,.14);
+    }
+    .viewMoreBtn:hover{ opacity: .92; }
+
+    /* Divider above footer */
+    .rule{
+      border-top: 1px solid var(--line);
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer{
+      padding: 18px 0 28px;
+      background: transparent;
+    }
+    .footerGrid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      align-items:start;
+    }
+    .footTitle{
+      font-weight: 800;
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: -0.2px;
+    }
+    .footText{
+      margin:0;
+      color:#111;
+      font-weight: 500;
+      line-height: 1.6;
+      font-size: 13px;
+      word-break: break-word;
+    }
+    .footText a:hover{ text-decoration: underline; }
+    .copyright{
+      text-align:right;
+      color:#111;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0;
+      opacity:.75;
+      white-space: nowrap;
+    }
+
+    /* Modal */
+    .modal{ position:fixed; inset:0; display:none; z-index:80; }
+    .modal.show{ display:block; }
+
+    .modalBackdrop{
+      position:absolute; inset:0;
+      background: rgba(0,0,0,.34);
+      backdrop-filter: blur(7px);
+    }
+
+    .modalPanel{
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 860px;
+      width: calc(100% - 36px);
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 18px;
+      box-shadow: var(--modalShadow);
+
+      touch-action: pan-y;
+
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .modalScroll{
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
+      padding: 18px 18px 14px;
+      padding-right: 24px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-gutter: stable;
+    }
+
+    .modalClose{
+      position:absolute;
+      top: 10px; right: 12px;
+      border: none;
+      background: transparent;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1;
+      padding: 6px;
+      opacity: .75;
+      z-index: 10;
+    }
+    .modalClose:hover{ opacity: 1; }
+
+    .pmHeader h2{
+      margin: 0;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+    .pmMeta{
+      margin: 8px 0 0;
+      font-size: 14px;
+      font-weight: 750;
+      color: rgba(0,0,0,.62);
+    }
+
+    .pmTopRow{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(29,78,216,.08);
+      border: 1px solid rgba(29,78,216,.14);
+      color: #0b2a7a;
+      font-weight: 850;
+      font-size: 12.5px;
+    }
+
+    .pmBody{
+      margin-top: 14px;
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: rgba(0,0,0,.78);
+    }
+
+    .pmBody ul{ margin: 10px 0 0; padding-left: 18px; }
+    .pmBody li{ margin: 8px 0; }
+
+    .pmSkills{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skillPill{
+      display:inline-flex;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(29,78,216,.08);
+      border: 1px solid rgba(29,78,216,.14);
+      color: #000000;
+      font-weight: 700;
+      font-size: 12.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .cards{ grid-template-columns: 1fr; }
+      .footerGrid{
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .copyright{ text-align:left; }
+    }
+
+    @media (max-width: 480px){
+      .container{ padding: 0 18px; }
+      .topNav{ gap: 10px; }
+      .pageTitle h1{ font-size: 40px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; }
+      body{ opacity: 1 !important; }
+    }
+
+    /* ----------------------------
+       Card fade on hover/focus + animated show/hide
+       ---------------------------- */
+
+    .cards.isHovering .cardBtn:not(.isActiveCard) .card{
+      opacity: .55;
+      transform: none;
+      filter: saturate(.95);
+    }
+
+    .cardBtn.isEntering{
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    .cardBtn.isVisible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cardBtn.isLeaving{
+      opacity: 0;
+      transform: translateY(6px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container headerRow">
+      <a href="index.html" class="brand">
+        <span class="brandDot"></span>
+        <span>Pradyot Jain</span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a href="index.html">Home</a><span class="divider" aria-hidden="true"></span>
+        <a href="resume.html">Resume</a><span class="divider" aria-hidden="true"></span>
+        <a class="active" href="portfolio.html">Portfolio</a><span class="divider" aria-hidden="true"></span>
+        <a href="skills.html">Skills</a><span class="divider" aria-hidden="true"></span>
+        <a href="contact.html">Contact</a><span class="divider" aria-hidden="true"></span>
+
+        <div class="downloadWrap">
+          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false">
+            Download Resume
+          </button>
+
+          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume options">
+            <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
+            <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" aria-label="Portfolio sections">
+    <section class="pageTitle" aria-label="Portfolio">
+      <h1>Portfolio</h1>
+    </section>
+
+    <section class="filters" aria-label="Portfolio filters">
+      <button type="button" class="filterPill isActive" data-filter="all">All</button>
+      <button type="button" class="filterPill" data-filter="python">Python</button>
+      <button type="button" class="filterPill" data-filter="predictiveanalytics">Predictive Analytics</button>
+      <button type="button" class="filterPill" data-filter="powerbi">Power BI</button>
+      <button type="button" class="filterPill" data-filter="r">R</button>
+    </section>
+
+    <section class="cards" id="cards" aria-label="Project cards">
+      <!-- Top 3 -->
+      <button class="cardBtn" type="button" data-open="0" data-tags="python">
+        <article class="card">
+          <h3 class="cardTitle">Loan Approval Risk Assessment and Modeling using Logistic Regression and K-Nearest Neighbors</h3>
+          <p class="cardSub">Project 1</p>
+          <p class="cardDesc"><span class="readMore">This project focuses on using data to support loan approval and credit risk decisions.
+I analysed applicant data and built predictive models to understand approval patterns and risk drivers.
+Model comparison highlighted which approach delivered more consistent and reliable outcomes.
+The results support data-driven decision making in financial services.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="1" data-tags="python predictiveanalytics">
+        <article class="card">
+          <h3 class="cardTitle">Diabetes Risk Prediction and Feature Analysis Using Machine Learning</h3>
+          <p class="cardSub">Project 2</p>
+          <p class="cardDesc"><span class="readMore">This project predicts diabetes risk using multiple machine learning models and identifies key medical risk factors.
+Regression, KNN, and neural network models were compared to evaluate performance and overfitting.
+Probabilistic methods were used to interpret feature relationships for healthcare decision support.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="2" data-tags="python predictiveanalytics">
+        <article class="card">
+          <h3 class="cardTitle">Data-Driven Analysis and Predictive Modeling for Sales, Profitability, and Customer Retention</h3>
+          <p class="cardSub">Project 3</p>
+          <p class="cardDesc"><span class="readMore">This project provides data-driven insights into sales performance, profitability, and customer retention for LuminaTech Lighting.
+I analysed transactional data to identify revenue drivers, regional profitability, and customer behaviour patterns.
+Predictive models were used to forecast sales and assess churn risk, with a focus on actionable business insights.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <!-- More (hidden until View More) -->
+      <button class="cardBtn" type="button" data-open="3" data-tags="python" data-more="true" hidden>
+        <article class="card">
+          <h3 class="cardTitle">Customer Shopping Behavior Analysis Insights from Transactional Data</h3>
+          <p class="cardSub">Project 4</p>
+          <p class="cardDesc"><span class="readMore">This project analyses customer shopping data to understand purchasing behaviour, demographics, and transaction patterns.
+I explored customer age, gender, product categories, payment methods, and shopping mall trends.
+The analysis focuses on identifying spending patterns and customer preferences.
+Insights were supported using clear visualisations and summary statistics.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="4" data-tags="python predictiveanalytics" data-more="true" hidden>
+        <article class="card">
+          <h3 class="cardTitle">Critical Analysis of Vehicle Price Prediction Models</h3>
+          <p class="cardSub">Project 5</p>
+          <p class="cardDesc"><span class="readMore">This project presents a critical analysis of a vehicle price prediction model to identify gaps between stated objectives and actual implementation.
+I reviewed preprocessing, feature engineering, and model configuration choices across multiple machine learning models.
+The focus was on correcting methodological issues to improve accuracy, interpretability, and model alignment.
+The project emphasises analytical rigor over raw performance.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="5" data-tags="python" data-more="true" hidden>
+        <article class="card">
+          <h3 class="cardTitle">Analyzing Koala Physical Traits and Environmental Adaptations</h3>
+          <p class="cardSub">Project 6</p>
+          <p class="cardDesc"><span class="readMore">This project analyses koalas’ physical characteristics to understand biological patterns and habitat-based adaptations.
+I conducted exploratory data analysis, statistical testing, and regression modelling on physical measurements.
+The study identifies key traits influencing body size and differences across gender and habitat.
+Insights support data-driven understanding of wildlife health and conservation planning.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="6" data-tags="r powerbi" data-more="true" hidden>
+        <article class="card">
+          <h3 class="cardTitle">Global Terrorism Data Analysis: 1997-2017.</h3>
+          <p class="cardSub">Project 7</p>
+          <p class="cardDesc"><span class="readMore">This project analyses global terrorism trends between 1997 and 2017 using large-scale event data.
+We examined where, when, how, and by whom terrorist attacks occurred worldwide.
+Interactive dashboards and visualisations were used to explore patterns, severity, and impact.
+The focus was on transforming complex global data into clear, actionable insights.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="7" data-tags="python predictiveanalytics" data-more="true" hidden>
+        <article class="card">
+          <h3 class="cardTitle">Car Price Prediction - Gradient Boosting Ensemble Approach</h3>
+          <p class="cardSub">Project 8</p>
+          <p class="cardDesc"><span class="readMore">This project predicts used car prices using an ensemble of gradient boosting models.
+I built and tuned XGBoost, LightGBM, and HistGradientBoosting models and combined them using weighted ensembling.
+The final blended model achieved strong predictive performance with low error.
+The focus was on building a robust, generalisable pricing model using advanced machine learning techniques.....read more</span></p>
+          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+        </article>
+      </button>
+    </section>
+
+    <div class="viewMoreWrap">
+      <button type="button" class="viewMoreBtn" id="viewMoreBtn" aria-expanded="false">View More</button>
+    </div>
+
+    <div class="rule"></div>
+
+    <footer>
+      <div class="footerGrid">
+        <div>
+          <p class="footTitle">Phone</p>
+          <p class="footText"><a href="tel:+61421779699">+61 0421 779 699</a><br>
+          <a href="tel:+917980010389">+91 79800 10389</a>
+        </div>
+
+        <div>
+          <p class="footTitle">Email</p>
+          <p class="footText"><a href="mailto:pradyotjain0921@gmail.com">pradyotjain0921@gmail.com</a></p>
+        </div>
+
+        <div>
+          <p class="footTitle">Location</p>
+          <p class="footText">Sydney, NSW</p>
+        </div>
+
+        <div>
+          <p class="footTitle">Follow Me</p>
+          <p class="footText">
+            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span style="opacity:.55; padding: 0 8px;">|</span>
+            <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </p>
+        </div>
+
+        <div>
+          <p class="copyright">© <span id="year"></span> by Pradyot Jain</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Project Modal -->
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modalBackdrop" data-close></div>
+
+    <div class="modalPanel" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+      <button type="button" class="modalClose" aria-label="Close" data-close>✕</button>
+
+      <div class="modalScroll">
+        <div class="pmHeader">
+          <h2 id="pmTitle">Title</h2>
+          <p class="pmMeta" id="pmMeta">Project</p>
+        </div>
+
+        <div class="pmTopRow">
+          <a class="pill pmOpen" id="pmOpen" href="#" target="_blank" rel="noopener noreferrer">Open Project</a>
+        </div>
+
+        <div class="pmBody" id="pmBody"></div>
+
+        <div class="pmSkills" id="pmSkills"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Page fade-in on load
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("pageReady");
+    });
+
+    // Smooth fade-out for internal navigation
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      if (link.target === "_blank") return;
+      if (link.hasAttribute("download")) return;
+      if (href.startsWith("#")) return;
+      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (/^https?:\/\//i.test(href)) return;
+
+      e.preventDefault();
+      document.body.classList.add("pageFadeOut");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 220);
+    });
+
+    window.addEventListener("pageshow", () => {
+      document.body.classList.remove("pageFadeOut");
+      document.body.classList.add("pageReady");
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Download menu behavior (same pattern as your other pages)
+    const downloadBtn = document.getElementById("downloadBtn");
+    const downloadMenu = document.getElementById("downloadMenu");
+
+    function closeDownloadMenu(){
+      if (!downloadMenu) return;
+      downloadMenu.classList.remove("show");
+      downloadBtn.classList.remove("isOpen");
+      downloadBtn.setAttribute("aria-expanded", "false");
+    }
+
+    function openDownloadMenu(){
+      if (!downloadMenu) return;
+      downloadMenu.classList.add("show");
+      downloadBtn.classList.add("isOpen");
+      downloadBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function toggleDownloadMenu(){
+      const isOpen = downloadMenu.classList.contains("show");
+      if (isOpen) closeDownloadMenu();
+      else openDownloadMenu();
+    }
+
+    const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (downloadBtn && downloadMenu){
+      if (!isHoverDevice){
+        downloadBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleDownloadMenu();
+        });
+
+        document.addEventListener("click", () => closeDownloadMenu());
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDownloadMenu();
+        });
+
+        downloadMenu.addEventListener("click", (e) => e.stopPropagation());
+      } else {
+        // Keep ARIA in sync for keyboard users on hover devices
+        downloadBtn.addEventListener("focus", () => openDownloadMenu());
+        downloadBtn.addEventListener("blur", () => {
+          setTimeout(() => {
+            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn){
+              closeDownloadMenu();
+            }
+          }, 50);
+        });
+
+        downloadMenu.addEventListener("mouseleave", () => closeDownloadMenu());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDownloadMenu();
+        });
+      }
+    }
+
+    // --- View More / View Less + Filters ---
+    const viewMoreBtn = document.getElementById("viewMoreBtn");
+    const allCards = Array.from(document.querySelectorAll(".cardBtn"));
+    const filterButtons = Array.from(document.querySelectorAll(".filterPill"));
+
+    let isExpanded = false;
+    let currentFilter = "all";
+
+    function cardMatchesFilter(cardBtn, filter){
+      if (filter === "all") return true;
+      const tags = (cardBtn.getAttribute("data-tags") || "").toLowerCase().split(/\s+/).filter(Boolean);
+      return tags.includes(filter);
+    }
+
+    function showCard(btn){
+      if (!btn.hidden && btn.classList.contains("isVisible")) return;
+
+      btn.hidden = false;
+      btn.classList.remove("isLeaving");
+      btn.classList.add("isEntering");
+
+      requestAnimationFrame(() => {
+        btn.classList.add("isVisible");
+        btn.classList.remove("isEntering");
+      });
+    }
+
+    function hideCard(btn){
+      if (btn.hidden) return;
+
+      btn.classList.remove("isEntering");
+      btn.classList.add("isLeaving");
+      btn.classList.remove("isVisible");
+
+      const onEnd = (e) => {
+        if (e.propertyName !== "opacity") return;
+        btn.hidden = true;
+        btn.classList.remove("isLeaving");
+        btn.removeEventListener("transitionend", onEnd);
+      };
+
+      btn.addEventListener("transitionend", onEnd);
+    }
+
+    function applyVisibility(){
+      allCards.forEach(btn => {
+        const isMore = btn.hasAttribute("data-more");
+        const allowByMore = !isMore || isExpanded || currentFilter !== "all";
+        const allowByFilter = cardMatchesFilter(btn, currentFilter);
+        const shouldShow = (allowByMore && allowByFilter);
+
+        if (shouldShow) showCard(btn);
+        else hideCard(btn);
+      });
+    }
+
+    function setMore(expand){
+      isExpanded = !!expand;
+
+      if (viewMoreBtn){
+        viewMoreBtn.textContent = isExpanded ? "View Less" : "View More";
+        viewMoreBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+      }
+      applyVisibility();
+    }
+
+    function setFilter(filter){
+      currentFilter = filter;
+
+      filterButtons.forEach(b => {
+        b.classList.toggle("isActive", (b.getAttribute("data-filter") || "all") === filter);
+      });
+
+      applyVisibility();
+    }
+
+    if (viewMoreBtn){
+      viewMoreBtn.addEventListener("click", () => setMore(!isExpanded));
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => setFilter(btn.getAttribute("data-filter") || "all"));
+    });
+
+    // Card hover/focus fade (dim other cards)
+    const cardsWrap = document.getElementById("cards");
+
+    function setActiveCard(btn){
+      if (!cardsWrap) return;
+
+      allCards.forEach(b => b.classList.remove("isActiveCard"));
+
+      if (btn){
+        btn.classList.add("isActiveCard");
+        cardsWrap.classList.add("isHovering");
+      } else {
+        cardsWrap.classList.remove("isHovering");
+      }
+    }
+
+    allCards.forEach(btn => {
+      btn.addEventListener("mouseenter", () => setActiveCard(btn));
+      btn.addEventListener("mouseleave", () => setActiveCard(null));
+
+      btn.addEventListener("focusin", () => setActiveCard(btn));
+      btn.addEventListener("focusout", (e) => {
+        if (!btn.contains(e.relatedTarget)) setActiveCard(null);
+      });
+    });
+
+    // --- Project modal data ---
+    const PROJECTS = [
+      {
+        title: "Loan Approval Risk Assessment and Modeling using Logistic Regression and K-Nearest Neighbors",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Loan%20Approval%20Risk%20Assessment%20and%20Predictive%20Modeling%20Using%20Logistic%20Regression%20and%20K-Nearest%20Neighbors",
+        details: [
+          "What I Did:",
+          "Analysed historical loan application data to identify key drivers behind loan approval decisions.",
+          "Developed and compared Logistic Regression and K-Nearest Neighbors (KNN) models to assess predictive   reliability.",
+          "Applied feature selection techniques to reduce model complexity and highlight key credit risk factors.",
+
+          "Key Results:",
+          "Logistic Regression delivered more stable and generalisable performance compared to KNN.",
+          "KNN showed higher sensitivity to parameter selection, indicating increased overfitting risk.",
+          "Feature selection improved interpretability while maintaining overall model performance.",
+
+          "Learning Outcomes:",
+          "Gained practical experience in model comparison beyond simple accuracy metrics.",
+          "Learned to balance predictive performance with interpretability in credit risk decisions.",
+          "Strengthened the ability to translate analytical outputs into business-relevant insights."
+        ],
+        skills: ["Python", "Data Analysis", "Data Preprocessing", "Logistic Regression", "K-Nearest Neighbors (KNN)", "Feature Selection", "Model Evaluation", "Credit Risk Analysis"]
+      },
+      {
+        title: "Diabetes Risk Prediction and Feature Analysis Using Machine Learning",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Diabetes%20Risk%20Prediction%20and%20Feature%20Analysis%20Using%20Machine%20Learning",
+        details: [
+          "What I Did",
+          "Analysed a large diabetes dataset containing demographic and medical attributes such as age, BMI, HbA1c, and blood glucose levels.",
+          "Built and evaluated multiple models including Linear & Polynomial Regression, KNN, and Neural Networks.",
+          "Applied cross-validation and Recursive Feature Elimination (RFE) to improve generalisation and reduce overfitting.",
+          "Used Gaussian Naive Bayes, Categorical Naive Bayes, and Bayesian Network Analysis to identify key risk factor relationships.",
+
+          "Key Results",
+          "Neural Networks achieved the highest predictive performance by capturing non-linear relationships.",
+          "Gaussian Naive Bayes performed strongly on continuous medical features, providing reliable probabilistic insights.",
+          "Categorical Naive Bayes showed limitations due to class imbalance in categorical variables.",
+          "Bayesian Network Analysis revealed important dependencies between age, smoking history, blood glucose, and HbA1c levels.",
+
+          "Learning Outcomes",
+          "Gained hands-on experience applying and comparing multiple machine learning models on healthcare data.",
+          "Learned to address overfitting using cross-validation and feature selection techniques.",
+          "Developed the ability to interpret model outputs and feature relationships, not just prediction accuracy.",
+          "Strengthened understanding of how analytics can support early risk detection and decision-making in healthcare."
+        ],
+        skills: ["Python", "Classification", "Model Validation", "Data Analysis", "Data Preprocessing", "Neural Networks", "K-Nearest Neighbors (KNN)", "Naive Bayes Models", "Feature Selection (RFE)", "Model Evaluation", "Healthcare Analytics"]
+      },
+      {
+        title: "Data-Driven Analysis and Predictive Modeling for Sales, Profitability, and Customer Retention",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Data-Driven%20Analysis%20and%20Predictive%20Modeling%20for%20Sales%2C%20Profitability%2C%20and%20Customer%20Retention",
+        details: [
+          "What I Did",
+          "Cleaned and prepared large transactional datasets from 2012 and 2013, including currency standardisation, outlier treatment, and data validation.",
+          "Performed exploratory analysis to identify top-selling products, profitable item groups, sales trends, and high-performing customer districts.",
+          "Conducted statistical testing to compare profitability across regions and analyse price–volume relationships.",
+          "Built a Random Forest model to predict 2014 sales and performed customer churn analysis using time-based definitions.",
+
+          "Key Results",
+          "Identified consistently high-performing products and districts driving revenue and profitability.",
+          "Found strong seasonal sales patterns with mid-year peaks, supporting inventory and resource planning.",
+          "Confirmed statistically significant profit differences between high- and low-performing districts.",
+          "Random Forest model delivered strong predictive performance for sales forecasting, while churn analysis highlighted the need to refine churn definitions.",
+
+          "Learning Outcomes",
+          "Gained experience working with large, real-world business datasets and complex data cleaning challenges.",
+          "Learned to combine exploratory analysis, statistical testing, and machine learning for business decision support.",
+          "Developed a strong understanding of sales forecasting, profitability analysis, and customer retention metrics.",
+          "Improved ability to communicate analytical findings in a business-focused and actionable manner."
+        ],
+        skills: ["Python","Data Cleaning", "EDA", "Statistical Testing", "Sales & Profitability Analysis", "Random Forest Modeling", "Customer Retention Analysis", "Predictive Analytics", "Business Insight Generation"]
+      },
+      {
+        title: "Customer Shopping Behavior Analysis Insights from Transactional Data",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Customer%20Shopping%20Behavior%20Analysis%20Insights%20from%20Transactional%20Data",
+        details: [
+          "What I Did",
+          "Loaded and cleaned customer shopping transaction data using Python.",
+          "Performed exploratory data analysis on demographics, product categories, and payment methods.",
+          "Analysed spending behaviour across age groups, genders, and shopping locations.",
+          "Created visualisations to highlight trends in purchases, quantities, and pricing.",
+
+          "Key Results",
+          "Identified key customer segments based on age and gender spending patterns.",
+          "Observed clear differences in product category preferences across demographics.",
+          "Highlighted variations in payment method usage across customer groups and malls.",
+          "Revealed shopping malls with higher transaction volumes and revenue contribution.",
+
+          "Learning Outcomes",
+          "Strengthened foundational skills in exploratory data analysis (EDA) using Python.",
+          "Learned to extract meaningful insights from raw transactional data.",
+          "Improved ability to communicate findings through effective visualisations.",
+          "Built confidence in analysing real-world consumer and retail datasets."
+        ],
+        skills: ["Data Cleaning", "Exploratory Data Analysis", "Python", "Data Visualisation", "Customer Behaviour Analysis", "Descriptive Statistics", "Insight Reporting"]
+      },
+      {
+        title: "Critical Analysis of Vehicle Price Prediction Models",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Critical%20Analysis%20of%20Vehicle%20Price%20Prediction%20Models",
+        details: [
+          "What I Did",
+          "Critically reviewed a vehicle price prediction pipeline using Linear Regression, Decision Tree Regression, and MLP models.",
+          "Identified inconsistencies in missing value handling, feature encoding, and feature selection.",
+          "Corrected preprocessing steps by applying mean imputation, row removal rules, and one-hot encoding where appropriate.",
+          "Tuned models using GridSearchCV and updated MLP activation functions to properly capture non-linear relationships.",
+
+          "Key Results",
+          "Corrected preprocessing improved data integrity and model reliability.",
+          "Feature selection based on correlation strengthened interpretability and predictive relevance.",
+          "Tuned Decision Tree Regression reduced overfitting and improved generalisation.",
+          "Replacing linear activation with ReLU enabled the MLP model to capture non-linear price patterns more effectively.",
+
+          "Learning Outcomes",
+          "Developed the ability to critically evaluate machine learning pipelines, not just build models.",
+          "Learned the importance of aligning code implementation with analytical objectives and assumptions.",
+          "Strengthened understanding of preprocessing, encoding choices, and model tuning on predictive outcomes.",
+          "Improved analytical judgement in diagnosing and correcting model performance issues."
+        ],
+        skills: ["Python", "Critical Model Evaluation", "Data Preprocessing", "Feature Selection", "Regression Modeling", "Decision Tree Tuning", "Neural Networks (MLP)", "Model Diagnostics", "Analytical Problem Solving"]
+      },
+      {
+        title: "Analyzing Koala Physical Traits and Environmental Adaptations",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Analyzing%20Koala%20Physical%20Traits%20and%20Environmental%20Adaptations",
+        details: [
+          "What I Did",
+          "Cleaned and prepared koala measurement data by handling missing values, standardising categories, and correcting data types.",
+          "Performed detailed outlier analysis, retaining biologically plausible values while removing erroneous measurements.",
+          "Conducted exploratory analysis and visualisation using boxplots, histograms, and correlation heatmaps.",
+          "Applied statistical tests and OLS regression to analyse trait differences and predict total body length.",
+          "Analysed physical differences across habitats to assess environmental influence on koala characteristics.",
+
+          "Key Results",
+          "Male koalas generally have greater total body length, supporting sexual dimorphism.",
+          "Head length, skull width, paw size, and chest circumference show the strongest correlation with total length.",
+          "Koalas in Victoria exhibit larger paws and chest circumferences than those in Queensland, indicating habitat-driven adaptations.",
+          "Multi-variable regression improved predictive power, though biological complexity limits single-factor prediction.",
+
+          "Learning Outcomes",
+          "Strengthened skills in data cleaning, outlier treatment, and exploratory data analysis.",
+          "Learned to apply statistical testing and regression models to real-world biological data.",
+          "Developed judgement in balancing data integrity with biological plausibility.",
+          "Improved ability to translate analytical findings into domain-specific insights."
+        ],
+        skills: ["Exploratory Data Analysis", "Data Cleaning", "Outlier Treatment", "Statistical Testing", "OLS Regression", "Data Visualisation", "Correlation Analysis", "Analytical Reasoning","Python"]
+      },
+      {
+        title: "Global Terrorism Data Analysis: 1997-2017.",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Global%20terrorism%20Data%20Analysis_1997-2017",
+        details: [
+          "What I Did",
+          "Cleaned and prepared a large dataset of global terrorism incidents following GTD methodology.",
+          "Analysed temporal, geographic, and tactical patterns across regions, attack types, and targets.",
+          "Built interactive visualisations using Power BI and R to explore trends, severity, and success rates.",
+          "Compared attack frequency, casualties, and group activity to identify high-risk regions and periods.",
+
+          "Key Results",
+          "Terrorism activity peaked in 2001, 2007, and 2014, followed by a decline after 2014.",
+          "South Asia and the Middle East & North Africa accounted for the majority of incidents and fatalities.",
+          "Bombings and explosions were the most common and deadliest attack methods.",
+          "Civilian targets suffered the highest casualties, highlighting significant humanitarian impact.",
+
+          "Learning Outcomes",
+          "Gained experience analysing large, complex global datasets with multiple dimensions.",
+          "Learned to combine exploratory analysis with interactive dashboards for insight discovery.",
+          "Improved ability to interpret trends, patterns, and risk severity across time and geography.",
+          "Strengthened data storytelling skills for communicating sensitive, real-world insights."
+        ],
+        skills: ["Data Cleaning", "Exploratory Data Analysis", "Data Visualisation", "Power BI", "R Programming", "Time-Series Analysis", "Geospatial Analysis", "Insight Communication"]
+      },
+      {
+        title: "Car Price Prediction - Gradient Boosting Ensemble Approach",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/Car%20Price%20Prediction%20%E2%80%94%20Gradient%20Boosting%20Ensemble%20Approach",
+        details: [
+          "What I Did",
+          "Cleaned and preprocessed a large used-car dataset, handling missing values, skewed features, and outliers.",
+          "Engineered features using encoding, transformations, and consistency checks across train and test sets.",
+          "Tuned XGBoost, LightGBM, and HistGradientBoosting models using cross-validation and early stopping.",
+          "Built a weighted ensemble model by blending predictions based on inverse RMSE performance.",
+
+          "Key Results",
+          "Individual gradient boosting models achieved strong performance with validation R² around 0.93–0.94.",
+          "The final ensemble model achieved the lowest RMSE (~4,121), outperforming all standalone models.",
+          "Ensembling reduced prediction variance and improved overall model generalisation.",
+          "The final model demonstrated reliable performance across validation splits.",
+
+          "Learning Outcomes",
+          "Gained hands-on experience building end-to-end machine learning pipelines for regression problems.",
+          "Learned to tune and compare advanced ensemble models using cross-validation and early stopping.",
+          "Developed a strong understanding of bias–variance trade-offs and model blending techniques.",
+          "Improved ability to evaluate models using appropriate performance metrics for real-world prediction tasks."
+        ],
+        skills: ["Python", "Data Preprocessing", "Feature Engineering", "Gradient Boosting", "XGBoost", "LightGBM", "Model Ensembling", "Hyperparameter Tuning", "Regression Modeling"]
+      }
+    ];
+
+    // --- Modal logic ---
+    const projectModal = document.getElementById("projectModal");
+    const pmTitle = document.getElementById("pmTitle");
+    const pmMeta = document.getElementById("pmMeta");
+    const pmOpen = document.getElementById("pmOpen");
+    const pmBody = document.getElementById("pmBody");
+    const pmSkills = document.getElementById("pmSkills");
+    const modalCloseBtn = projectModal ? projectModal.querySelector(".modalClose") : null;
+
+    let lastFocusedEl = null;
+
+    function clearChildren(el){
+      while (el.firstChild) el.removeChild(el.firstChild);
+    }
+
+    function openProjectModal(index){
+      const p = PROJECTS[index];
+      if (!p) return;
+
+      lastFocusedEl = document.activeElement;
+
+      pmTitle.textContent = p.title || "";
+      pmMeta.textContent = p.meta || "";
+      pmOpen.href = p.openHref || "#";
+
+      clearChildren(pmBody);
+      const details = Array.isArray(p.details) ? p.details : [];
+      if (details.length){
+        let ul = null;
+
+        const SECTION_TITLES = new Set(["what i did", "key results", "learning outcomes"]);
+
+        details.forEach(text => {
+          const raw = (text || "").trim();
+          const normalized = raw.replace(/:$/, "").trim().toLowerCase();
+          const isSectionTitle = SECTION_TITLES.has(normalized);
+
+          if (isSectionTitle){
+            if (ul){
+              pmBody.appendChild(ul);
+              ul = null;
+            }
+
+            const heading = document.createElement("p");
+            heading.style.fontWeight = "800";
+            heading.style.margin = "14px 0 6px";
+            heading.textContent = raw.replace(/:$/, "");
+            pmBody.appendChild(heading);
+
+            ul = document.createElement("ul");
+          } else {
+            if (!ul) ul = document.createElement("ul");
+            const li = document.createElement("li");
+            li.textContent = raw;
+            ul.appendChild(li);
+          }
+        });
+
+        if (ul) pmBody.appendChild(ul);
+      }
+
+      clearChildren(pmSkills);
+      const skills = Array.isArray(p.skills) ? p.skills : [];
+      skills.forEach(s => {
+        const sp = document.createElement("span");
+        sp.className = "skillPill";
+        sp.textContent = s;
+        pmSkills.appendChild(sp);
+      });
+
+      projectModal.classList.add("show");
+      projectModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      if (modalCloseBtn) modalCloseBtn.focus();
+    }
+
+    function closeProjectModal(){
+      projectModal.classList.remove("show");
+      projectModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+
+      if (lastFocusedEl && typeof lastFocusedEl.focus === "function"){
+        lastFocusedEl.focus();
+      }
+    }
+
+    document.querySelectorAll(".cardBtn").forEach(btn => {
+      const idx = Number(btn.getAttribute("data-open"));
+
+      const openPill = btn.querySelector(".openProjectBtn");
+      if (openPill){
+        openPill.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const href = PROJECTS[idx] && PROJECTS[idx].openHref ? PROJECTS[idx].openHref : null;
+          if (href) window.open(href, "_blank", "noopener,noreferrer");
+        });
+      }
+
+      btn.addEventListener("click", () => {
+        if (!Number.isNaN(idx)) openProjectModal(idx);
+      });
+    });
+
+    projectModal.addEventListener("click", (e) => {
+      if (e.target.matches("[data-close]")) closeProjectModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (projectModal.classList.contains("show")){
+        if (e.key === "Escape") closeProjectModal();
+      }
+    });
+
+    // init
+    setMore(false);
+    setFilter("all");
+  </script>
+</body>
+</html>

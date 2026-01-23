@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pradyot Jain | Business Analytics</title>
+  <meta name="description" content="Pradyot Jain - Business Analytics Portfolio. Resume, Portfolio, Skills." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- UPDATED FONT: Manrope -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text:#0d0d0d;
+      --muted:#4b4b4b;
+      --line: rgba(0,0,0,.14);
+
+      --blue1:#1d4ed8;
+      --blue2:#0ea5e9;
+
+      --max: 1180px;
+    }
+
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 18% 16%, rgba(29,78,216,.16), transparent 60%),
+        radial-gradient(900px 520px at 82% 18%, rgba(14,165,233,.14), transparent 58%),
+        linear-gradient(180deg, #ffffff 0%, #f4f9ff 52%, #ffffff 100%);
+
+      /* page fade */
+      opacity: 0;
+      transition: opacity .22s ease;
+    }
+
+    body.pageReady{ opacity: 1; }
+    body.pageFadeOut{ opacity: 0; }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+
+    a:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    header{padding: 26px 0 10px;}
+    .headerRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+
+    .brandDot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue1), var(--blue2));
+      display:inline-block;
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    }
+
+    .topNav{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #111;
+      white-space: nowrap;
+    }
+    .divider{
+      width: 1px;
+      height: 18px;
+      background: rgba(0,0,0,.38);
+      display:inline-block;
+      margin: 0 4px;
+      flex: 0 0 1px;
+    }
+
+    .active{
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
+
+    /* Download dropdown */
+    .downloadWrap{
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .downloadBtn{
+      border: 1px solid rgba(0,0,0,.14);
+      background: rgba(255,255,255,.55);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .downloadBtn:hover{ opacity: .92; }
+
+    .downloadBtn.isOpen{
+      border-color: rgba(29,78,216,.35);
+      box-shadow: 0 10px 22px rgba(29,78,216,.12);
+    }
+
+    .downloadBtn:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+    }
+
+    .downloadMenu{
+      position: absolute;
+      top: 100%;
+      margin-top: 10px;
+      right: 0;
+      min-width: 190px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.12);
+      padding: 8px;
+      z-index: 60;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+
+    .downloadMenu.show{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .downloadMenu a{
+      display: block;
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .downloadMenu a:hover{
+      background: rgba(29,78,216,.08);
+    }
+
+    /* Hover open (desktop hover-capable devices) */
+    @media (hover: hover) and (pointer: fine){
+      .downloadWrap:hover .downloadMenu{
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .downloadWrap:hover .downloadBtn{
+        border-color: rgba(29,78,216,.35);
+        box-shadow: 0 10px 22px rgba(29,78,216,.12);
+      }
+      /* keep menu open while moving from button to menu */
+      .downloadWrap::after{
+        content:"";
+        position:absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 12px; /* must be >= margin-top (10px) */
+      }
+    }
+
+    main{
+      padding: 30px 0 18px;
+      min-height: calc(100vh - 120px);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      align-items:center;
+      min-height: 520px;
+      flex: 1;
+    }
+
+    .photoWrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .photoCircle{
+      width: 400px;
+      height: 400px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.92), rgba(255,255,255,.68) 55%, rgba(255,255,255,.38) 100%),
+        linear-gradient(135deg, rgba(29,78,216,.16), rgba(14,165,233,.12));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 18px 44px rgba(0,0,0,.10);
+      user-select:none;
+    }
+    .initials{
+      font-size: 92px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: #0b2a7a;
+      text-shadow: 0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .heroRight{padding-right: 6px;}
+
+    .headline{
+      margin: 0 0 16px;
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+      font-weight: 800;
+    }
+    .headline span{display:block;}
+
+    .copy{
+      max-width: 520px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 0 0 16px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .copy p{margin:0 0 12px}
+    .copy p:last-child{margin-bottom:0}
+
+    .ctaRow{
+      display:flex;
+      gap: 22px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .circleBtn{
+      width: 138px;
+      height: 138px;
+      border-radius: 999px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease, opacity .16s ease;
+      user-select:none;
+      text-align:center;
+      padding: 12px;
+
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,.85), rgba(255,255,255,.35) 56%, rgba(255,255,255,.12) 100%),
+        linear-gradient(135deg, rgba(148,255,220,.38), rgba(170,210,255,.44), rgba(120,170,255,.38));
+    }
+    .circleBtn:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 16px 26px rgba(0,0,0,.10);
+      filter: saturate(1.05);
+    }
+
+    /* dim other KPI circles like portfolio cards */
+    .ctaRow.isHovering .circleBtn:not(.isActiveCircle){
+      opacity: .55;
+      transform: none;
+      filter: saturate(.95);
+    }
+
+    .kpiSub{
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(0,0,0,.62);
+      line-height: 1.25;
+    }
+
+    .rule{margin-top: 26px; border-top: 1px solid var(--line);}
+
+    footer{
+      padding: 18px 0 26px;
+      background: transparent;
+    }
+
+    .footerGrid{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      text-align: start;
+      gap: 0;
+      align-items:start;
+    }
+    .footerGrid > *{ min-width: 0; }
+
+    .footTitle{
+      font-weight: 800;
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+    .footText{
+      margin:0;
+      color:#111;
+      font-weight: 500;
+      line-height: 1.6;
+      font-size: 14px;
+      word-break: break-word;
+    }
+    .footText a{color:#111}
+    .footText a:hover{color:#000; text-decoration: underline}
+
+    .copyright{
+      text-align:right;
+      color:#111;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0;
+      opacity:.75;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1100px){
+      .photoCircle{width: 360px; height: 360px;}
+      .initials{font-size: 84px;}
+      .headline{font-size: 48px;}
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns: 1fr; gap: 26px; padding: 10px 0;}
+      .heroRight{padding-right: 0;}
+      .photoCircle{width: 330px; height: 330px;}
+      .initials{font-size: 78px;}
+      .headline{font-size: 44px;}
+      .footerGrid{grid-template-columns: 1fr 1fr;}
+      .copyright{text-align:left;}
+      .topNav{gap: 10px; flex-wrap: wrap; row-gap: 10px;}
+    }
+    @media (max-width: 480px){
+      .container{padding: 0 18px;}
+      .photoCircle{width: 290px; height: 290px;}
+      .initials{font-size: 70px;}
+      .circleBtn{width: 124px; height: 124px; font-size: 17px;}
+      .topNav{gap: 10px; flex-wrap: wrap; row-gap: 10px;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      body{
+        opacity: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container headerRow">
+      <a href="index.html" class="brand">
+        <span class="brandDot" aria-hidden="true"></span>
+        <span>Pradyot Jain</span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a class="active" href="index.html">Home</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="resume.html">Resume</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="portfolio.html">Portfolio</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="skills.html">Skills</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="contact.html">Contact</a>
+
+        <span class="divider" aria-hidden="true"></span>
+
+        <div class="downloadWrap">
+          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false">
+            Download Resume
+          </button>
+
+          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume options">
+            <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
+            <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="photoWrap">
+        <div class="photoCircle" title="Pradyot Jain">
+          <div class="initials">PJ</div>
+        </div>
+      </div>
+
+      <div class="heroRight">
+        <h1 class="headline">
+          <span>Business Analytics.</span>
+          <span>Data. Insights.</span>
+          <span>Always improving.</span>
+        </h1>
+
+        <div class="copy">
+          <p>
+            I am a Master of Business Analytics candidate at Macquarie University with a strong focus on translating data into clear, actionable business insights. I work at the intersection of data analysis, predictive modelling, and stakeholder decision-making, ensuring analytical outputs align with real business objectives and support evidence-based decisions.
+          </p>
+          <p>
+           My experience spans credit and health risk analysis, pricing and forecasting models, customer behaviour and retention analysis, and large-scale data exploration. I am proficient in Power BI, Python, and SQL, with a strong emphasis on structured reporting, analytical rigor, and clear communication. I prioritise accuracy, interpretability, and practical data storytelling to effectively communicate insights to both technical and non-technical stakeholders.
+          </p>
+        </div>
+
+        <div class="ctaRow" aria-label="Quick links">
+          <a class="circleBtn k1" href="resume.html">
+            Resume
+            <div class="kpiSub">Experience & Education</div>
+          </a>
+
+          <a class="circleBtn k2" href="portfolio.html">
+            Portfolio
+            <div class="kpiSub">Projects & Case Studies</div>
+          </a>
+
+          <a class="circleBtn k3" href="skills.html">
+            Skills
+            <div class="kpiSub">Certifications & Tools</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <footer>
+      <div class="footerGrid">
+        <div>
+          <p class="footTitle">Phone</p>
+          <p class="footText"><a href="tel:+61421779699">+61 0421 779 699</a><br>
+	  <a href="tel:+917980010389">+91 79800 10389</a>
+        </div>
+
+        <div>
+          <p class="footTitle">Email</p>
+          <p class="footText"><a href="mailto:pradyotjain0921@gmail.com">pradyotjain0921@gmail.com</a></p>
+        </div>
+
+        <div>
+          <p class="footTitle">Location </p>
+          <p class="footText">Sydney, NSW</p>
+        </div>
+
+        <div>
+          <p class="footTitle">Follow Me</p>
+          <p class="footText">
+            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <span style="opacity:.5; padding:0 10px;">|</span>
+            <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noreferrer">GitHub</a>
+          </p>
+        </div>
+
+        <div>
+          <p class="copyright">© <span id="year"></span> by Pradyot Jain</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Page fade-in on load
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("pageReady");
+    });
+
+    // Smooth fade-out for internal navigation
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      if (link.target === "_blank") return;
+      if (link.hasAttribute("download")) return;
+      if (href.startsWith("#")) return;
+      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (/^https?:\/\//i.test(href)) return;
+
+      e.preventDefault();
+      document.body.classList.add("pageFadeOut");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 220);
+    });
+
+    window.addEventListener("pageshow", () => {
+      document.body.classList.remove("pageFadeOut");
+      document.body.classList.add("pageReady");
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Download menu behavior (match portfolio.html)
+    const downloadBtn = document.getElementById("downloadBtn");
+    const downloadMenu = document.getElementById("downloadMenu");
+
+    function closeDownloadMenu(){
+      if (!downloadMenu) return;
+      downloadMenu.classList.remove("show");
+      downloadBtn.classList.remove("isOpen");
+      downloadBtn.setAttribute("aria-expanded", "false");
+    }
+
+    function openDownloadMenu(){
+      if (!downloadMenu) return;
+      downloadMenu.classList.add("show");
+      downloadBtn.classList.add("isOpen");
+      downloadBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function toggleDownloadMenu(){
+      const isOpen = downloadMenu.classList.contains("show");
+      if (isOpen) closeDownloadMenu();
+      else openDownloadMenu();
+    }
+
+    const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (downloadBtn && downloadMenu){
+      if (!isHoverDevice){
+        downloadBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleDownloadMenu();
+        });
+
+        document.addEventListener("click", () => closeDownloadMenu());
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDownloadMenu();
+        });
+
+        downloadMenu.addEventListener("click", (e) => e.stopPropagation());
+      } else {
+        // Keep ARIA in sync for keyboard users on hover devices
+        downloadBtn.addEventListener("focus", () => openDownloadMenu());
+        downloadBtn.addEventListener("blur", () => {
+          setTimeout(() => {
+            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn){
+              closeDownloadMenu();
+            }
+          }, 50);
+        });
+
+        downloadMenu.addEventListener("mouseleave", () => closeDownloadMenu());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDownloadMenu();
+        });
+      }
+    }
+
+    // KPI circles: fade other circles on hover/focus/click (like portfolio cards)
+    const ctaRow = document.querySelector(".ctaRow");
+    const kpiCircles = Array.from(document.querySelectorAll(".ctaRow .circleBtn"));
+
+    function setActiveCircle(el){
+      if (!ctaRow) return;
+
+      kpiCircles.forEach(c => c.classList.remove("isActiveCircle"));
+
+      if (el){
+        el.classList.add("isActiveCircle");
+        ctaRow.classList.add("isHovering");
+      } else {
+        ctaRow.classList.remove("isHovering");
+      }
+    }
+
+    kpiCircles.forEach(c => {
+      c.addEventListener("mouseenter", () => setActiveCircle(c));
+      c.addEventListener("mouseleave", () => setActiveCircle(null));
+
+      c.addEventListener("focusin", () => setActiveCircle(c));
+      c.addEventListener("focusout", (e) => {
+        if (!c.contains(e.relatedTarget)) setActiveCircle(null);
+      });
+
+      // brief click effect before page transition
+      c.addEventListener("mousedown", () => setActiveCircle(c));
+    });
+  </script>
+</body>
+</html>

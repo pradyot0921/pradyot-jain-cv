@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pradyot Jain | Resume</title>
+  <meta name="description" content="Pradyot Jain - Experience and Education." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text:#0d0d0d;
+      --muted: rgba(0,0,0,.62);
+      --line: rgba(0,0,0,.14);
+
+      --blue1:#1d4ed8;
+      --blue2:#0ea5e9;
+
+      --max: 1180px;
+
+      --shadow: 0 14px 34px rgba(0,0,0,.08);
+      --modalShadow: 0 26px 70px rgba(0,0,0,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 18% 16%, rgba(29,78,216,.16), transparent 60%),
+        radial-gradient(900px 520px at 82% 18%, rgba(14,165,233,.14), transparent 58%),
+        linear-gradient(180deg, #ffffff 0%, #f4f9ff 52%, #ffffff 100%);
+      opacity: 0;
+      transition: opacity .22s ease;
+      min-height: 100vh;
+    }
+
+    body.pageReady{ opacity: 1; }
+    body.pageFadeOut{ opacity: 0; }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ opacity:.92; }
+
+    a:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Header */
+    header{
+      padding: 26px 0 10px;
+      background: transparent;
+    }
+
+    .headerRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+
+    .brandDot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue1), var(--blue2));
+      display:inline-block;
+      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    }
+
+    .brand:hover span:last-child{
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Make header behave like portfolio.html: wraps cleanly + keeps dividers stable */
+    .topNav{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+      white-space: nowrap;
+      flex-wrap: wrap;
+      row-gap: 10px;
+    }
+
+    .divider{
+      width: 1px;
+      height: 18px;
+      background: rgba(0,0,0,.38);
+      display:inline-block;
+      margin: 0 4px;
+      flex: 0 0 1px;
+    }
+
+    .active{
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
+
+    /* Download dropdown (aligned to portfolio.html behavior) */
+    .downloadWrap{
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .downloadBtn{
+      border: 1px solid rgba(0,0,0,.14);
+      background: rgba(255,255,255,.55);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .downloadBtn:hover{ opacity: .92; }
+
+    .downloadBtn.isOpen{
+      border-color: rgba(29,78,216,.35);
+      box-shadow: 0 10px 22px rgba(29,78,216,.12);
+    }
+
+    .downloadBtn:focus-visible{
+      outline: 2px solid rgba(29,78,216,.55);
+      outline-offset: 3px;
+    }
+
+    .downloadMenu{
+      position: absolute;
+      top: 100%;
+      margin-top: 10px;
+      right: 0;
+      min-width: 190px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.12);
+      padding: 8px;
+      z-index: 60;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+
+    .downloadMenu.show{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .downloadMenu a{
+      display: block;
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .downloadMenu a:hover{
+      background: rgba(29,78,216,.08);
+    }
+
+    /* Hover open (desktop hover-capable devices) */
+    @media (hover: hover) and (pointer: fine){
+      .downloadWrap:hover .downloadMenu{
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .downloadWrap:hover .downloadBtn{
+        border-color: rgba(29,78,216,.35);
+        box-shadow: 0 10px 22px rgba(29,78,216,.12);
+      }
+      /* keep menu open while moving from button to menu */
+      .downloadWrap::after{
+        content:"";
+        position:absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 12px; /* must be >= margin-top (10px) */
+      }
+    }
+
+    /* Main layout */
+    main{
+      padding: 26px 0 0;
+      min-height: calc(100vh - 120px);
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Explore header */
+    .explore{
+      padding: 10px 0 6px;
+      text-align: center;
+    }
+    .explore h1{
+      margin: 0;
+      font-size: 34px;
+      font-weight: 850;
+      letter-spacing: -0.4px;
+    }
+    .explore p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .circles{
+      flex: 1;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items:center;
+      padding: 22px 0 28px;
+    }
+
+    .circleBtn{
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .circleBtn:focus-visible .circle{
+      outline: 3px solid rgba(29,78,216,.35);
+      outline-offset: 6px;
+    }
+
+    .circle{
+      width: 380px;
+      height: 380px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,.80), rgba(255,255,255,.28) 56%, rgba(255,255,255,.10) 100%),
+        linear-gradient(135deg, rgba(148,255,220,.55), rgba(170,210,255,.60), rgba(120,170,255,.55));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 22px 44px rgba(0,0,0,.10);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, opacity .18s ease;
+      user-select:none;
+    }
+
+    .circle:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(0,0,0,.14);
+      filter: saturate(1.03);
+    }
+
+    .circle h2{
+      margin:0;
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: .2px;
+      color: rgba(0,0,0,.82);
+    }
+
+    /* NEW: Fade the other circle on hover/focus (like portfolio cards) */
+    .circles.isHovering .circleBtn:not(.isActiveCircle) .circle{
+      opacity: .55;
+      transform: none;
+      filter: saturate(.95);
+      box-shadow: 0 22px 44px rgba(0,0,0,.10);
+    }
+
+    /* Divider line above footer */
+    .rule{
+      border-top: 1px solid var(--line);
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer{
+      padding: 24px 0 26px;
+      background: transparent;
+    }
+
+    .footerGrid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      align-items:start;
+    }
+
+    .footTitle{
+      font-weight: 800;
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: -0.2px;
+    }
+
+    .footText{
+      margin:0;
+      color:#111;
+      font-weight: 500;
+      line-height: 1.6;
+      font-size: 13px;
+      word-break: break-word;
+    }
+
+    .footText a:hover{ text-decoration: underline; }
+
+    .copyright{
+      text-align:right;
+      color:#111;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0;
+      opacity:.75;
+      white-space: nowrap;
+    }
+
+    /* Modal */
+    .modal{ position:fixed; inset:0; display:none; z-index:50; }
+    .modal.show{ display:block; }
+
+    .modalBackdrop{
+      position:absolute; inset:0;
+      background: rgba(0,0,0,.34);
+      backdrop-filter: blur(7px);
+    }
+
+    .modalPanel{
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      max-width: 920px;
+      width: calc(100% - 36px);
+      min-height: 420px;
+
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 18px;
+      box-shadow: var(--modalShadow);
+
+      padding: 18px 18px 14px;
+
+      display:grid;
+      grid-template-rows: 1fr auto;
+      gap: 10px;
+
+      touch-action: pan-y;
+    }
+
+    .modalContent{
+      display:grid;
+      grid-template-columns: 1fr 240px;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .modalLeft{ min-width: 0; }
+
+    .modalRight{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width: 100%;
+      text-align:center;
+      padding-left: 0;
+    }
+
+    .modalLogo{
+      max-width: 200px;
+      margin: 0 auto;
+      max-height: 200px;
+      object-fit: contain;
+      display:block;
+    }
+
+    .modalClose{
+      position:absolute;
+      top: 10px; right: 12px;
+      border: none;
+      background: transparent;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1;
+      padding: 6px;
+      opacity: .75;
+    }
+    .modalClose:hover{ opacity: 1; }
+
+    .modalHeader h2{
+      margin:0;
+      font-size: 28px;
+      font-weight: 850;
+      letter-spacing: -0.3px;
+    }
+
+    .modalMeta{
+      margin-top: 8px;
+      font-size: 16px;
+      color: rgba(0,0,0,.65);
+      font-weight: 650;
+    }
+
+    .modalLinks{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(29,78,216,.08);
+      border: 1px solid rgba(29,78,216,.14);
+      color: #0b2a7a;
+      font-weight: 800;
+      font-size: 12.5px;
+    }
+
+    .modalBody{
+      margin-top: 12px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(0,0,0,.78);
+    }
+
+    .modalBody ul{ margin: 10px 0 0; padding-left: 18px; }
+    .modalBody li{ margin: 8px 0; }
+
+    .skillPills{
+      margin-top: 12px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skillPill{
+      display:inline-flex;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(29,78,216,.08);
+      border: 1px solid rgba(29,78,216,.14);
+      color: #000000;
+      font-weight: 650;
+      font-size: 12.5px;
+    }
+
+    .modalFooter{
+      display:grid;
+      grid-template-columns: 60px 1fr 60px;
+      align-items:center;
+      width: 100%;
+      padding-top: 10px;
+    }
+
+    #prevBtn{ justify-self: start; }
+    #modalCount{ justify-self: center; }
+    #nextBtn{ justify-self: end; }
+
+    .navBtn{
+      border: none;
+      background: transparent;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 22px;
+      padding: 6px 10px;
+      opacity: .65;
+    }
+
+    .navBtn:hover{ opacity: 1; }
+    .navBtn:disabled{ opacity:.25; cursor:not-allowed; }
+
+    .modalCount{
+      font-size: 14px;
+      font-weight: 800;
+      color: rgba(0,0,0,.55);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .headerRow{ flex-wrap: wrap; }
+      .topNav{ flex-wrap: wrap; justify-content: flex-start; row-gap: 10px; }
+
+      .circles{
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 18px 0 18px;
+      }
+      .circle{ width: 320px; height: 320px; }
+      .circle h2{ font-size: 30px; }
+
+      .footerGrid{
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .copyright{ text-align:left; }
+
+      .modalPanel{ min-height: 520px; }
+      .modalContent{ grid-template-columns: 1fr; }
+      .modalRight{ margin-top: 6px; }
+      .modalLogo{ max-width: 180px; max-height: 180px; }
+    }
+
+    @media (max-width: 480px){
+      .container{ padding: 0 18px; }
+      .topNav{ gap: 10px; }
+      .modalHeader h2{ font-size: 22px; }
+      .modalMeta{ font-size: 14px; }
+      .modalBody{ font-size: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      body{ opacity: 1 !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container headerRow">
+      <a href="index.html" class="brand">
+        <span class="brandDot"></span>
+        <span>Pradyot Jain</span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a class="active" href="resume.html">Resume</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="portfolio.html">Portfolio</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="skills.html">Skills</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="contact.html">Contact</a>
+        <span class="divider" aria-hidden="true"></span>
+
+        <div class="downloadWrap">
+          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false">
+            Download Resume
+          </button>
+
+          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume options">
+            <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
+            <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" aria-label="Resume sections">
+    <section class="explore" aria-label="Explore my resume">
+      <h1>Explore my Resume</h1>
+      <p>Click a section to view my experience and education.</p>
+    </section>
+
+    <section class="circles" id="circlesWrap">
+      <button class="circleBtn" type="button" data-modal="exp" aria-label="Open Experience">
+        <div class="circle"><h2>Experience</h2></div>
+      </button>
+
+      <button class="circleBtn" type="button" data-modal="edu" aria-label="Open Education">
+        <div class="circle"><h2>Education</h2></div>
+      </button>
+    </section>
+
+    <div class="rule"></div>
+
+    <footer>
+      <div class="footerGrid">
+        <div>
+          <p class="footTitle">Phone</p>
+          <p class="footText"><a href="tel:+61421779699">+61 0421 779 699</a><br>
+          <a href="tel:+917980010389">+91 79800 10389</a>
+        </div>
+
+        <div>
+          <p class="footTitle">Email</p>
+          <p class="footText"><a href="mailto:pradyotjain0921@gmail.com">pradyotjain0921@gmail.com</a></p>
+        </div>
+
+        <div>
+          <p class="footTitle">Location</p>
+          <p class="footText">Sydney, NSW</p>
+        </div>
+
+        <div>
+          <p class="footTitle">Follow Me</p>
+          <p class="footText">
+            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span style="opacity:.55; padding: 0 8px;">|</span>
+            <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </p>
+        </div>
+
+        <div>
+          <p class="copyright">© <span id="year"></span> by Pradyot Jain</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modalBackdrop" data-close></div>
+
+    <div class="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modalClose" aria-label="Close" data-close>✕</button>
+
+      <div class="modalContent">
+        <div class="modalLeft">
+          <div class="modalHeader">
+            <h2 id="modalTitle">Title</h2>
+            <div class="modalMeta" id="modalMeta"></div>
+            <div class="modalLinks" id="modalLinks"></div>
+          </div>
+
+          <div class="modalBody" id="modalBody"></div>
+          <div class="skillPills" id="skillPills"></div>
+        </div>
+
+        <div class="modalRight">
+          <img id="modalLogo" class="modalLogo" src="" alt="Company logo">
+        </div>
+      </div>
+
+      <div class="modalFooter">
+        <button type="button" class="navBtn" id="prevBtn" aria-label="Previous">←</button>
+        <div class="modalCount" id="modalCount">1 of 1</div>
+        <button type="button" class="navBtn" id="nextBtn" aria-label="Next">→</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Page fade-in on load
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("pageReady");
+    });
+
+    // Smooth fade-out for internal navigation (aligned)
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      if (link.target === "_blank") return;
+      if (link.hasAttribute("download")) return;
+      if (href.startsWith("#")) return;
+      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (/^https?:\/\//i.test(href)) return;
+
+      e.preventDefault();
+      document.body.classList.add("pageFadeOut");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 220);
+    });
+
+    window.addEventListener("pageshow", () => {
+      document.body.classList.remove("pageFadeOut");
+      document.body.classList.add("pageReady");
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Modal logic + data
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalBody = document.getElementById("modalBody");
+    const modalCount = document.getElementById("modalCount");
+    const modalLogo = document.getElementById("modalLogo");
+    const modalLinks = document.getElementById("modalLinks");
+    const skillPills = document.getElementById("skillPills");
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    const downloadBtn = document.getElementById("downloadBtn");
+    const downloadMenu = document.getElementById("downloadMenu");
+
+    const DATA = {
+      exp: [
+        {
+          title: "Appolo Computers Pvt. Ltd. - Trainee, Business Analytics",
+          meta: "May 2024 - Jun 2024",
+          logo: "assets/logos/appolologo.png",
+          certificates: [
+            { label: "Certificate", href: "assets/certificates/appolo_certificate.pdf" }
+          ],
+          bullets: [
+            "Acquired knowledge of various Business Analysis techniques and methodologies.",
+            "Conducted comprehensive competitor research to identify new product features and enhancement opportunities.",
+            "Developed detailed analytical reports with new product designs and feature improvement recommendations.",
+            "Proposed innovative design ideas based on data analysis to enhance software performance and user experience."
+          ],
+          skills: ["Business Analysis Techniques", "Competitor & Market Research", "Requirements Analysis", "Data Analysis & Insight Generation", "Product Feature Evaluation", "Analytical Reporting", "User Experience (UX) Analysis", "Data-Driven Product Recommendations", "Problem Solving & Critical Thinking"]
+        },
+        {
+          title: "Aavas Financiers Ltd. - Trainee, Credit Department",
+          meta: "Dec 2023 - Feb 2024",
+          logo: "assets/logos/Aavaslogo.png",
+          certificates: [
+            { label: "Certificate", href: "assets/certificates/aavas_certificate.pdf" }
+          ],
+          bullets: [
+            "Gained comprehensive knowledge of the loan sanctioning process, encompassing each stage from application to loan approval.",
+            "Evaluated loan eligibility by assessing applicants as per company policies, including on-site visits to verify businesses and income sources.",
+            "Prepared Credit Appraisal Memorandums (CAMs) and income statements for various businesses and salaried individuals.",
+            "Conducted thorough verifications of business operations and financial standing to ensure creditworthiness."
+          ],
+          skills: ["Credit Risk Assessment", "Loan Eligibility Analysis", "Financial Statement Analysis", "Credit Appraisal (CAM)", "Field Verification & Due Diligence", "Risk Identification", "Policy & Compliance Analysis", "Data-Driven Decision Making", "Stakeholder Coordination"]
+        },
+        {
+          title: "Yes Bank - Trainee, Retail Banking (Service Management)",
+          meta: "Jun 2022 - Aug 2022",
+          logo: "assets/logos/yesbanklogo.png",
+          certificates: [
+            { label: "Certificate", href: "assets/certificates/yesbank_certificate.pdf" }
+          ],
+          bullets: [
+            "Analysed the incentive structure to identify barriers preventing employees from earning incentives.",
+            "Conducted Data collection and analysis with 410 employees to assess factors impacting incentive earnings.",
+            "Developed a comprehensive report and presentation outlining key findings and actionable solutions to improve the incentive system.",
+            "Highlighted a structural issue in the incentive policy whereby employees serving notice periods were excluded, causing a decline in sales effort and weakening short-term business performance."
+          ],
+          skills: ["Data Analysis", "Excel", "Business Analysis", "KPI Reporting", "Survey Research", "Root-Cause Analysis", "Stakeholder Communication", "Retail Banking Analytics", "MIS analysis and performance tracking", "Business problem-solving"]
+        }
+      ],
+      edu: [
+        {
+          title: "Master of Business Analytics - Macquarie University, Sydney",
+          meta: "2024 - 2026",
+          logo: "assets/logos/mqlogo.png",
+          certificates: [
+            { label: "Result", href: "assets/certificates/mq_result.pdf" }
+          ],
+          bullets: [
+            "Developed the ability to transform large, unstructured datasets into meaningful analytical insights.",
+            "Applied predictive and machine learning techniques to solve real-world business problems.",
+            "Built clear and effective data visualisations to communicate insights to technical and non-technical stakeholders.",
+            "Strengthened analytical thinking and decision-making by linking statistical outputs to business objectives."
+          ],
+          skills: ["Data Analytics", "Predictive Modelling", "Machine Learning Fundamentals", "Statistical Analysis", "Data Visualisation", "Model Evaluation & Interpretation", "Business-Driven Analytics", "Dashboard"]
+        },
+        {
+          title: "Bachelor of Business Administration - Bharati Vidyapeeth University",
+          meta: "2020 - 2023",
+          logo: "assets/logos/bvplogo.png",
+          certificates: [{ label: "Result", href: "assets/certificates/bvp_result.pdf" }],
+          bullets: [
+            "CGPA: 8.93",
+            "Developed a strong understanding of core business functions including business, marketing, operations, and strategy.",
+            "Learned to analyse business problems using data, research, and structured frameworks.",
+            "Gained the ability to interpret financial and operational information to support managerial decisions.",
+            "Built professional communication skills through case studies, presentations, and business reports."
+          ],
+          skills: ["Business Fundamentals", "Financial Analysis", "Marketing & Consumer Behaviour Analysis", "Operations & Process Understanding", "Quantitative & Qualitative Research", "Strategic Thinking", "Professional Communication"]
+        },
+        {
+          title: "CA Foundation - ICAI",
+          meta: "2022",
+          logo: "assets/logos/icailogo.png",
+          certificates: [{ label: "Result", href: "assets/certificates/icai_result.pdf" }],
+          bullets: [
+            "Developed a strong foundation in financial accounting, costing principles, and quantitative methods.",
+            "Gained working knowledge of business laws, ethical standards, and regulatory frameworks.",
+            "Strengthened numerical accuracy, logical reasoning, and problem-solving capabilities.",
+            "Built discipline and exam-oriented rigor required for professional finance and accounting roles."
+          ],
+          skills: ["Financial Accounting Fundamentals", "Business Mathematics & Statistics", "Business Law & Ethics", "Cost & Management Accounting Basics", "Quantitative Aptitude", "Analytical Reasoning", "Professional Discipline"]
+        }
+      ]
+    };
+
+    let currentType = "exp";
+    let currentIndex = 0;
+
+    function clearChildren(el){
+      while (el.firstChild) el.removeChild(el.firstChild);
+    }
+
+    function createPillLink(label, href){
+      const a = document.createElement("a");
+      a.className = "pill";
+      a.href = href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = label;
+      return a;
+    }
+
+    function createSkillPill(text){
+      const span = document.createElement("span");
+      span.className = "skillPill";
+      span.textContent = text;
+      return span;
+    }
+
+    // Download menu behavior (same as portfolio.html)
+    function closeDownloadMenu(){
+      if (!downloadMenu) return;
+      downloadMenu.classList.remove("show");
+      downloadBtn.classList.remove("isOpen");
+      downloadBtn.setAttribute("aria-expanded", "false");
+    }
+
+    function openDownloadMenu(){
+      if (!downloadMenu) return;
+      downloadMenu.classList.add("show");
+      downloadBtn.classList.add("isOpen");
+      downloadBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function toggleDownloadMenu(){
+      const isOpen = downloadMenu.classList.contains("show");
+      if (isOpen) closeDownloadMenu();
+      else openDownloadMenu();
+    }
+
+    const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (downloadBtn && downloadMenu){
+      if (!isHoverDevice){
+        downloadBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleDownloadMenu();
+        });
+
+        document.addEventListener("click", () => closeDownloadMenu());
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDownloadMenu();
+        });
+
+        downloadMenu.addEventListener("click", (e) => e.stopPropagation());
+      } else {
+        // Keep ARIA in sync for keyboard users on hover devices
+        downloadBtn.addEventListener("focus", () => openDownloadMenu());
+        downloadBtn.addEventListener("blur", () => {
+          setTimeout(() => {
+            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn){
+              closeDownloadMenu();
+            }
+          }, 50);
+        });
+
+        downloadMenu.addEventListener("mouseleave", () => closeDownloadMenu());
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeDownloadMenu();
+        });
+      }
+    }
+
+    function render(){
+      const list = DATA[currentType] || [];
+      const item = list[currentIndex];
+      if (!item) return;
+
+      modalTitle.textContent = item.title || "";
+      modalMeta.textContent = item.meta || "";
+      modalCount.textContent = `${currentIndex + 1} of ${list.length}`;
+
+      clearChildren(modalBody);
+      const bulletsArr = Array.isArray(item.bullets) ? item.bullets : [];
+      if (bulletsArr.length){
+        const ul = document.createElement("ul");
+        bulletsArr.forEach(text => {
+          const li = document.createElement("li");
+          li.textContent = text;
+          ul.appendChild(li);
+        });
+        modalBody.appendChild(ul);
+      }
+
+      clearChildren(modalLinks);
+      const certArr = Array.isArray(item.certificates) ? item.certificates : [];
+      certArr.forEach(c => {
+        if (!c || !c.href || !c.label) return;
+        modalLinks.appendChild(createPillLink(c.label, c.href));
+      });
+
+      clearChildren(skillPills);
+      const skillsArr = Array.isArray(item.skills) ? item.skills : [];
+      if (skillsArr.length){
+        skillsArr.forEach(s => skillPills.appendChild(createSkillPill(s)));
+        skillPills.style.display = "flex";
+      } else {
+        skillPills.style.display = "none";
+      }
+
+      if (item.logo){
+        modalLogo.src = item.logo;
+        modalLogo.style.display = "block";
+        modalLogo.alt = (item.title || "Logo") + " logo";
+      } else {
+        modalLogo.removeAttribute("src");
+        modalLogo.style.display = "none";
+        modalLogo.alt = "Company logo";
+      }
+
+      prevBtn.disabled = (currentIndex === 0);
+      nextBtn.disabled = (currentIndex === list.length - 1);
+    }
+
+    function openModal(type){
+      currentType = (type === "edu") ? "edu" : "exp";
+      currentIndex = 0;
+      render();
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      const closeBtn = modal.querySelector(".modalClose");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(){
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll("[data-modal]").forEach(btn => {
+      btn.addEventListener("click", () => openModal(btn.getAttribute("data-modal")));
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0){
+        currentIndex--;
+        render();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const list = DATA[currentType] || [];
+      if (currentIndex < list.length - 1){
+        currentIndex++;
+        render();
+      }
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target.matches("[data-close]")) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("show")) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") prevBtn.click();
+      if (e.key === "ArrowRight") nextBtn.click();
+    });
+
+    // Swipe / trackpad gesture navigation for modal
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function isModalOpen(){
+      return modal.classList.contains("show");
+    }
+
+    function goPrev(){
+      if (!prevBtn.disabled) prevBtn.click();
+    }
+
+    function goNext(){
+      if (!nextBtn.disabled) nextBtn.click();
+    }
+
+    modal.addEventListener("touchstart", (e) => {
+      if (!isModalOpen()) return;
+      if (!e.touches || e.touches.length !== 1) return;
+
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    modal.addEventListener("touchend", (e) => {
+      if (!isModalOpen()) return;
+      if (!e.changedTouches || e.changedTouches.length !== 1) return;
+
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+
+      const dx = endX - touchStartX;
+      const dy = endY - touchStartY;
+
+      if (Math.abs(dx) < 60) return;
+      if (Math.abs(dx) < Math.abs(dy) * 1.2) return;
+
+      if (dx > 0) goPrev();
+      else goNext();
+    }, { passive: true });
+
+    modal.addEventListener("wheel", (e) => {
+      if (!isModalOpen()) return;
+
+      if (Math.abs(e.deltaX) < 35) return;
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+
+      e.preventDefault();
+
+      if (e.deltaX > 0) goNext();
+      else goPrev();
+    }, { passive: false });
+
+    // NEW: Circle hover/focus fade (like portfolio cards)
+    const circlesWrap = document.getElementById("circlesWrap");
+    const circleBtns = Array.from(document.querySelectorAll(".circleBtn"));
+
+    function setActiveCircle(btn){
+      if (!circlesWrap) return;
+
+      circleBtns.forEach(b => b.classList.remove("isActiveCircle"));
+
+      if (btn){
+        btn.classList.add("isActiveCircle");
+        circlesWrap.classList.add("isHovering");
+      } else {
+        circlesWrap.classList.remove("isHovering");
+      }
+    }
+
+    circleBtns.forEach(btn => {
+      btn.addEventListener("mouseenter", () => setActiveCircle(btn));
+      btn.addEventListener("mouseleave", () => setActiveCircle(null));
+
+      btn.addEventListener("focusin", () => setActiveCircle(btn));
+      btn.addEventListener("focusout", (e) => {
+        if (!btn.contains(e.relatedTarget)) setActiveCircle(null);
+      });
+    });
+  </script>
+</body>
+</html>
