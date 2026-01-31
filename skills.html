@@ -460,6 +460,12 @@
     .mBody ul{ margin: 10px 0 0; padding-left: 18px; }
     .mBody li{ margin: 8px 0; }
 
+    .mBody li{
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+    .mBody li:last-child{ border-bottom: none; }
+
     .chips{
       display:flex;
       flex-wrap: wrap;
@@ -477,6 +483,37 @@
       color: #111;
       font-weight: 700;
       font-size: 12.5px;
+    }
+
+    /* CERT ROW (NEW) */
+    .certItem{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .certLeft{ min-width: 0; }
+    .certTitle{ font-weight: 850; }
+    .certMeta{
+      margin-top: 4px;
+      color: rgba(0,0,0,.62);
+      font-weight: 650;
+      font-size: 13.5px;
+    }
+    .certPill{
+      flex: 0 0 auto;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+
+    @media (max-width: 520px){
+      .certItem{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .certPill{
+        margin-top: 8px;
+      }
     }
 
     /* Responsive */
@@ -589,7 +626,7 @@
 
   <main class="container" aria-label="Skills and Certifications">
     <section class="pageTitle" aria-label="Skills page heading">
-      <h1>Know my Skills and Certifications</h1>
+      <h1>Skills, Tools, and Certifications</h1>
       <p>Click a card to view details.</p>
     </section>
 
@@ -608,7 +645,7 @@
         <article class="mainCard">
           <h2 class="mainCardTitle">Certifications</h2>
           <p class="mainCardDesc">
-            Professional certificates from Coursera and DataCamp. Click to open proof links.
+            Professional certificates from Coursera and DataCamp. Click to open credentials links.
           </p>
           <div class="openRow"><span class="openPill">View Certifications</span></div>
         </article>
@@ -836,11 +873,11 @@
         { h: "Programming", chips: ["Python", "R", "SQL"] },
         { h: "Data Visualisation and Business Intelligence", chips: ["Power BI", "IBM Cognos Analytics", "Tableau"] },
         { h: "Analytics & Modelling", chips: ["Regression", "Classification", "Data Cleaning", "Feature Engineering", "Statistical Analysis"] },
-        { h: "Software", chips: ["Microsoft Excel", "Word", "PowerPoint", "Alteryx Designer"] },
-        { h: "Financial skills", chips: ["Balance Sheet", "Profit & Loss Statement", "Income & Expenditure Statement", "Invoices"] },
+        { h: "Software", chips: ["Microsoft Excel", "Word", "PowerPoint", "Alteryx Designer", "Google Sheets", "Jira", "Confluence"] },
+        { h: "Financial skills", chips: ["Financial Statement Analysis", "Credit Appraisal & CAM Preparation", "Operational & KPI Reporting"] },
         { h: "Languages", chips: ["English", "Hindi"] },
         { h: "Other Skills", chips: ["Basic video and photo editing"] },
-        { h: "Soft Skills", chips: ["Management", "Problem-solving", "Critical thinking", "Teamwork", "Bilingual Communication", "Leadership"] }
+        { h: "Soft Skills", chips: ["Problem-solving", "Critical thinking", "Teamwork", "Bilingual Communication", "Leadership"] }
       ];
 
       sections.forEach(sec => {
@@ -866,22 +903,27 @@
       {
         title: "IBM Data Analyst Professional Certificate",
         meta: "Coursera · Jan 1, 2024 – Feb 29, 2024",
-        href: "https://drive.google.com/file/d/1u3aKtw0rokk5nSPeCR0LhAs_-EXIDMbZ/view?usp=drive_link"
+        href: "assets/certificates/IBM_Data _Analyst.pdf"
       },
       {
         title: "Google Data Analytics Professional Certificate",
         meta: "Coursera · Apr 1, 2024 – Apr 30, 2024",
-        href: "https://drive.google.com/file/d/1kC7EcBsgBWM9fAJSIdv4xxVsk7DJ9ti1/view?usp=drive_link"
+        href: "assets/certificates/Google_Data_Analytics.pdf"
       },
       {
         title: "Alteryx Designer Training (Data Preparation, Transformation & Integration)",
         meta: "DataCamp · Self-paced · 2025",
-        href: "https://drive.google.com/drive/folders/1LN9H1mFjgOyyk9DNJAsG3uYAEHIlpqGG?usp=drive_link"
+        href: "assets/certificates/Alteryx_Fundamentals.pdf"
       },
       {
         title: "Power BI Complete Training Series (Data Modelling, DAX, Visualisation, Reporting)",
         meta: "DataCamp · Self-paced · 2025",
-        href: "https://drive.google.com/drive/folders/1Y0gqCeiQsr9MSgYtNlTyODZTFShCeGKw?usp=drive_link"
+        href: "assets/certificates/PowerBI_Fundamentals.pdf"
+      },
+      {
+        title: "Tableau Fundamentals Training series",
+        meta: "DataCamp · Self-paced · 2026",
+        href: "assets/certificates/Tableau_Fundamentals.pdf"
       }
     ];
 
@@ -900,32 +942,35 @@
         const li = document.createElement("li");
         li.style.margin = "10px 0";
 
+        const row = document.createElement("div");
+        row.className = "certItem";
+
+        const left = document.createElement("div");
+        left.className = "certLeft";
+
         const top = document.createElement("div");
-        top.style.fontWeight = "850";
+        top.className = "certTitle";
         top.textContent = c.title;
 
         const meta = document.createElement("div");
-        meta.style.marginTop = "4px";
-        meta.style.color = "rgba(0,0,0,.62)";
-        meta.style.fontWeight = "650";
-        meta.style.fontSize = "13.5px";
+        meta.className = "certMeta";
         meta.textContent = c.meta;
 
-        li.appendChild(top);
-        li.appendChild(meta);
+        left.appendChild(top);
+        left.appendChild(meta);
+        row.appendChild(left);
 
         if (c.href){
           const a = document.createElement("a");
-          a.className = "pill";
+          a.className = "pill certPill";
           a.href = c.href;
           a.target = "_blank";
           a.rel = "noopener noreferrer";
-          a.textContent = "Open Certificate";
-          a.style.marginTop = "8px";
-          a.style.display = "inline-flex";
-          li.appendChild(a);
+          a.textContent = "Credentials";
+          row.appendChild(a);
         }
 
+        li.appendChild(row);
         ul.appendChild(li);
       });
 

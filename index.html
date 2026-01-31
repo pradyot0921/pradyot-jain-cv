@@ -247,6 +247,14 @@
       user-select:none;
     }
 
+    .photoCircle img{
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+      display: block;
+    }
+
     /* Keep PJ placeholder, just add semantics */
     .initials{
       font-size: 92px;
@@ -515,15 +523,20 @@
   <main class="container" id="main">
     <section class="hero">
       <div class="photoWrap">
-        <div class="photoCircle" role="img" aria-label="Pradyot Jain profile placeholder">
-          <div class="initials" aria-hidden="true">PJ</div>
-        </div>
+        <div class="photoCircle"> 
+          <img
+            src="assets/profile/pradyot.png"
+            alt="Pradyot Jain"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          >
+          <div class="initials" aria-hidden="true" style="display:none;">PJ</div>        
+          </div>
       </div>
 
       <div class="heroRight">
         <h1 class="headline">
           <span>Business Analytics.</span>
-          <span>Data. Insights.</span>
+          <span>Data-Driven Insights.</span>
           <span>Always improving.</span>
         </h1>
 
