@@ -3,7 +3,7 @@
 This repository contains the source code for my personal portfolio website, built to showcase my background in Business Analytics, data-driven projects, and professional experience.
 
 ## Live Website
-https://pradyot-jain.netlify.app
+https://pradyot-jain-cv.netlify.app/
 
 ## Tech Stack
 - HTML5
