@@ -3,475 +3,616 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pradyot Jain | Business Analytics</title>
-  <meta name="description" content="Pradyot Jain - Business Analytics Portfolio. Resume, Portfolio, Skills." />
+  <title>Pradyot Jain — Business Analytics</title>
+  <meta name="description" content="Pradyot Jain's Business Analytics portfolio showcasing Power BI dashboards, Python and SQL projects, predictive modelling, business analysis, and data-driven decision-making." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- UPDATED FONT: Manrope -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Pradyot Jain — Business Analytics Portfolio" />
+  <meta property="og:description" content="Explore Pradyot Jain's analytics portfolio featuring Power BI dashboards, Python, SQL, predictive modelling, and business-focused case studies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/profile/pradyot.png" />
+  <script>
+    // Theme: read saved preference before paint to prevent flash
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pradyot Jain",
+    "jobTitle": "Business Analytics Student",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "addressCountry": "Australia"
+  },
+    "url": "https://pradyot-jain.netlify.app",
+    "sameAs": [
+      "https://www.linkedin.com/in/pradyot-jain/",
+      "https://github.com/pradyot0921/Portfolio"
+  ],
+    "knowsAbout": [
+      "Business Analytics",
+      "Power BI",
+      "Python",
+      "SQL",
+      "Predictive Modelling",
+      "Data Visualisation"
+    ]
+  }
+  </script>
 
   <style>
-    :root{
-      --text:#0d0d0d;
-      --muted:#4b4b4b;
-      --line: rgba(0,0,0,.14);
+    /* ---------- Design tokens ---------- */
+    :root[data-theme="light"]{
+      --bg: #fafaf7;
+      --bg-soft: #f3f2ec;
+      --surface: #ffffff;
+      --ink: #0d1418;
+      --ink-muted: #4a5258;
+      --ink-faint: #8a9097;
+      --line: rgba(13, 20, 24, 0.10);
+      --line-strong: rgba(13, 20, 24, 0.18);
 
-      --blue1:#1d4ed8;
-      --blue2:#0ea5e9;
+      --primary: #0d4f4a;
+      --primary-hover: #0a3e3a;
+      --accent: #c2660a;
+      --accent-hover: #a85708;
 
-      --max: 1180px;
+      --shadow-sm: 0 1px 2px rgba(13, 20, 24, 0.04);
+      --shadow-md: 0 4px 16px rgba(13, 20, 24, 0.06);
+      --shadow-lg: 0 12px 32px rgba(13, 20, 24, 0.08);
     }
+
+    :root[data-theme="dark"]{
+      --bg: #0b0f10;
+      --bg-soft: #14191b;
+      --surface: #161c1e;
+      --ink: #e8e6e1;
+      --ink-muted: #a8aeb1;
+      --ink-faint: #6f767a;
+      --line: rgba(232, 230, 225, 0.10);
+      --line-strong: rgba(232, 230, 225, 0.18);
+
+      --primary: #2dd4bf;
+      --primary-hover: #5eead4;
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ min-height: 100%; }
 
     body{
-      margin:0;
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 520px at 18% 16%, rgba(29,78,216,.16), transparent 60%),
-        radial-gradient(900px 520px at 82% 18%, rgba(14,165,233,.14), transparent 58%),
-        linear-gradient(180deg, #ffffff 0%, #f4f9ff 52%, #ffffff 100%);
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
 
-      /* page fade */
       opacity: 0;
-      transition: opacity .22s ease;
+      transition: opacity 0.28s ease, background-color 0.3s ease, color 0.3s ease;
     }
-
     body.pageReady{ opacity: 1; }
     body.pageFadeOut{ opacity: 0; }
 
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.92}
-
-    a:focus-visible{
-      outline: 2px solid rgba(29,78,216,.55);
-      outline-offset: 3px;
-      border-radius: 8px;
+    /* Subtle ambient gradient — much lighter than before */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(800px 500px at 85% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 60%),
+        radial-gradient(600px 400px at 0% 100%, color-mix(in oklab, var(--accent) 5%, transparent), transparent 60%);
     }
 
-    /* Skip link (accessibility, no content change) */
+    a{ color: inherit; text-decoration: none; }
+
+    a:focus-visible,
+    button:focus-visible{
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
     .skipLink{
-      position:absolute;
-      left:-999px;
-      top:10px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.18);
-      padding:10px 12px;
-      border-radius:10px;
-      z-index:9999;
+      position: absolute;
+      left: -9999px;
+      top: 12px;
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid var(--line-strong);
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 9999;
+      font-weight: 600;
     }
     .skipLink:focus{ left: 18px; }
 
     .container{
-      max-width: var(--max);
+      max-width: 1180px;
       margin: 0 auto;
       padding: 0 28px;
     }
 
-    header{padding: 26px 0 10px;}
+    /* ---------- Header ---------- */
+    header{ padding: 28px 0 12px; }
     .headerRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      font-weight: 800;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
       font-size: 22px;
-      letter-spacing: -0.2px;
-      white-space: nowrap;
+      letter-spacing: -0.3px;
+      color: var(--ink);
     }
-
-    .brandDot{
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--blue1), var(--blue2));
-      display:inline-block;
-      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    .brand .brandMark{
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      color: var(--primary);
+      font-weight: 400;
     }
 
     .topNav{
-      display:flex;
-      align-items:center;
-      gap: 16px;
-      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
       font-weight: 500;
-      color: #111;
-      white-space: nowrap;
     }
-    .divider{
-      width: 1px;
-      height: 18px;
-      background: rgba(0,0,0,.38);
-      display:inline-block;
-      margin: 0 4px;
-      flex: 0 0 1px;
+    .topNav a{
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--ink-muted);
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .topNav a:hover{ color: var(--ink); background: var(--bg-soft); }
+    .topNav a.active{
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .topNav a.active::after{
+      content: "";
+      display: block;
+      width: 14px;
+      height: 2px;
+      background: var(--accent);
+      margin: 2px auto 0;
+      border-radius: 2px;
     }
 
-    .active{
-      font-weight: 800;
-      text-decoration: underline;
-      text-underline-offset: 6px;
-      text-decoration-thickness: 2px;
+    .navTools{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 8px;
     }
+
+    .themeToggle{
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--ink-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      padding: 0;
+    }
+    .themeToggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
+    .themeToggle svg{ width: 16px; height: 16px; }
+    :root[data-theme="light"] .themeToggle .iconSun{ display: none; }
+    :root[data-theme="light"] .themeToggle .iconMoon{ display: block; }
+    :root[data-theme="dark"] .themeToggle .iconSun{ display: block; }
+    :root[data-theme="dark"] .themeToggle .iconMoon{ display: none; }
 
     /* Download dropdown */
     .downloadWrap{
       position: relative;
       display: inline-flex;
-      align-items: center;
     }
-
     .downloadBtn{
-      border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.55);
-      padding: 8px 12px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 9px 16px;
       border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
       cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-
-    .downloadBtn:hover{ opacity: .92; }
-
-    .downloadBtn.isOpen{
-      border-color: rgba(29,78,216,.35);
-      box-shadow: 0 10px 22px rgba(29,78,216,.12);
+    .downloadBtn:hover{ opacity: 0.88; }
+    .downloadBtn::after{
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid currentColor;
+      margin-left: 2px;
+      opacity: 0.7;
     }
-
-    .downloadBtn:focus-visible{
-      outline: 2px solid rgba(29,78,216,.55);
-      outline-offset: 3px;
-    }
-
     .downloadMenu{
       position: absolute;
       top: 100%;
-      margin-top: 10px;
+      margin-top: 8px;
       right: 0;
-      min-width: 190px;
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.12);
+      min-width: 200px;
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
       border-radius: 12px;
-      box-shadow: 0 18px 40px rgba(0,0,0,.12);
-      padding: 8px;
+      box-shadow: var(--shadow-lg);
+      padding: 6px;
       z-index: 60;
-
       opacity: 0;
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       pointer-events: none;
-      transition: opacity .16s ease, transform .16s ease;
+      transition: opacity 0.15s ease, transform 0.15s ease;
     }
-
     .downloadMenu.show{
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
     }
-
     .downloadMenu a{
       display: block;
-      padding: 10px 10px;
-      border-radius: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
       font-size: 13.5px;
-      font-weight: 700;
-      color: #111;
+      font-weight: 500;
+      color: var(--ink);
     }
-
     .downloadMenu a:hover{
-      background: rgba(29,78,216,.08);
+      background: var(--bg-soft);
+      color: var(--primary);
     }
 
-    /* Hover open (desktop hover-capable devices) */
     @media (hover: hover) and (pointer: fine){
       .downloadWrap:hover .downloadMenu{
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
       }
-      .downloadWrap:hover .downloadBtn{
-        border-color: rgba(29,78,216,.35);
-        box-shadow: 0 10px 22px rgba(29,78,216,.12);
-      }
-      /* keep menu open while moving from button to menu */
       .downloadWrap::after{
-        content:"";
-        position:absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        height: 12px; /* must be >= margin-top (10px) */
+        content: "";
+        position: absolute;
+        left: 0; right: 0; top: 100%;
+        height: 12px;
       }
     }
 
+    /* ---------- Main / Hero ---------- */
     main{
       padding: 30px 0 18px;
-      min-height: calc(100vh - 120px);
-      display:flex;
-      flex-direction:column;
+      min-height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
     }
 
     .hero{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 46px;
-      align-items:center;
-      min-height: 520px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: center;
       flex: 1;
+      padding: 32px 0 48px;
     }
 
-    .photoWrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
+    .heroLeft{ min-width: 0; }
+
+    .eyebrow{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before{
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
     }
 
-    .photoCircle{
-      width: 400px;
-      height: 400px;
+    .headline{
+      margin: 0 0 24px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(40px, 5.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+    }
+    .headline em{
+      font-style: italic;
+      font-weight: 300;
+      color: var(--primary);
+    }
+
+    .heroBody{
+      max-width: 520px;
+      color: var(--ink-muted);
+      font-size: 15.5px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .heroBody p{ margin: 0 0 14px; }
+    .heroBody p:last-child{ margin-bottom: 0; }
+
+    .heroActions{
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
       border-radius: 999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.92), rgba(255,255,255,.68) 55%, rgba(255,255,255,.38) 100%),
-        linear-gradient(135deg, rgba(29,78,216,.16), rgba(14,165,233,.12));
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 18px 44px rgba(0,0,0,.10);
-      user-select:none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      border: 1px solid transparent;
     }
+    .btn-primary{
+      background: var(--primary);
+      color: #fff;
+    }
+    :root[data-theme="dark"] .btn-primary{
+      color: var(--bg);
+    }
+    .btn-primary:hover{ background: var(--primary-hover); }
+    .btn-ghost{
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+    .btn-ghost:hover{ border-color: var(--ink); }
+    .btn .arrow{
+      transition: transform 0.15s ease;
+    }
+    .btn:hover .arrow{ transform: translateX(2px); }
 
-    .photoCircle img{
+    /* Photo / portrait */
+    .heroRight{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .portrait{
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+    }
+    .portrait img{
       width: 100%;
       height: 100%;
-      border-radius: 999px;
       object-fit: cover;
       display: block;
     }
-
-    /* Keep PJ placeholder, just add semantics */
-    .initials{
-      font-size: 92px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      color: #0b2a7a;
-      text-shadow: 0 18px 40px rgba(0,0,0,.12);
+    .portrait .initials{
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 140px;
+      color: var(--primary);
+      letter-spacing: -4px;
+    }
+    /* Decorative element behind portrait */
+    .heroRight::before{
+      content: "";
+      position: absolute;
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 4 / 5;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transform: translate(16px, 16px);
+      z-index: 0;
+      opacity: 0.5;
     }
 
-    .heroRight{padding-right: 6px;}
+    * { scrollbar-width: thin;
+      scrollbar-color: var(--ink-faint) transparent; }
 
-    .headline{
-      margin: 0 0 16px;
-      font-size: 46px;
-      line-height: 1.08;
-      letter-spacing: -0.5px;
-      font-weight: 800;
-    }
-    .headline span{display:block;}
+    *::-webkit-scrollbar {
+      width: 16px;
+      height: 16px; }
 
-    .copy{
-      max-width: 520px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: var(--muted);
-      font-weight: 500;
-      margin: 0 0 16px;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-    .copy p{margin:0 0 12px}
-    .copy p:last-child{margin-bottom:0}
+    *::-webkit-scrollbar-track {
+      background: transparent;}
 
-    .ctaRow{
-      display:flex;
-      gap: 22px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-
-    .circleBtn{
-      width: 138px;
-      height: 138px;
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--ink-faint);
       border-radius: 999px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
+      border: 3px solid transparent;
+      background-clip: content-box; }
 
-      font-weight: 800;
+    *::-webkit-scrollbar-thumb:hover {
+      background-color: var(--ink-muted); }
+
+    /* Quick links cards */
+    .quickLinks{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+    }
+    .quickCard{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+    }
+    .quickCard:hover{
+      border-color: var(--ink-faint);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .quickCard .num{
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    .quickCard .label{
       font-size: 18px;
-      letter-spacing: -0.2px;
-
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
-      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease, opacity .16s ease;
-      user-select:none;
-      text-align:center;
-      padding: 12px;
-
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,.85), rgba(255,255,255,.35) 56%, rgba(255,255,255,.12) 100%),
-        linear-gradient(135deg, rgba(148,255,220,.38), rgba(170,210,255,.44), rgba(120,170,255,.38));
-    }
-    .circleBtn:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 16px 26px rgba(0,0,0,.10);
-      filter: saturate(1.05);
-    }
-
-    /* dim other KPI circles like portfolio cards */
-    .ctaRow.isHovering .circleBtn:not(.isActiveCircle){
-      opacity: .55;
-      transform: none;
-      filter: saturate(.95);
-    }
-
-    .kpiSub{
-      margin-top: 6px;
-      font-size: 12px;
       font-weight: 600;
-      color: rgba(0,0,0,.62);
-      line-height: 1.25;
-    }
-
-    .rule{margin-top: 26px; border-top: 1px solid var(--line);}
-
-    footer{
-      padding: 18px 0 26px;
-      background: transparent;
-    }
-
-    .footerGrid{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      text-align: start;
-      gap: 0;
-      align-items:start;
-    }
-    .footerGrid > *{ min-width: 0; }
-
-    .footTitle{
-      font-weight: 800;
-      margin: 0 0 10px;
-      font-size: 16px;
+      color: var(--ink);
       letter-spacing: -0.2px;
+    }
+    .quickCard .sub{
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+    .quickCard .arrowIcon{
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      color: var(--ink-faint);
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+    .quickCard:hover .arrowIcon{
+      color: var(--primary);
+      transform: translate(2px, -2px);
+    }
+
+    /* ---------- Footer ---------- */
+    footer{
+      padding: 28px 0 32px;
+      border-top: 1px solid var(--line);
+      margin-top: 16px;
+    }
+    .footerGrid{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .footTitle{
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 0 0 8px;
     }
     .footText{
-      margin:0;
-      color:#111;
-      font-weight: 500;
+      margin: 0;
+      font-size: 13.5px;
       line-height: 1.6;
-      font-size: 14px;
+      color: var(--ink);
       word-break: break-word;
     }
-    .footText a{color:#111}
-    .footText a:hover{color:#000; text-decoration: underline}
-
+    .footText a{ color: var(--ink); }
+    .footText a:hover{ color: var(--primary); }
     .copyright{
-      text-align:right;
-      color:#111;
       font-size: 12px;
-      font-weight: 500;
+      color: var(--ink-faint);
+      text-align: right;
       margin: 0;
-      opacity:.75;
-      white-space: nowrap;
     }
 
-    @media (max-width: 1100px){
-      .photoCircle{width: 360px; height: 360px;}
-      .initials{font-size: 84px;}
-      .headline{font-size: 44px;} /* fixed: should scale down */
-    }
-    @media (max-width: 920px){
-      .hero{grid-template-columns: 1fr; gap: 26px; padding: 10px 0;}
-      .heroRight{padding-right: 0;}
-      .photoCircle{width: 330px; height: 330px;}
-      .initials{font-size: 78px;}
-      .headline{font-size: 40px;}
-      .footerGrid{grid-template-columns: 1fr 1fr;}
-      .copyright{text-align:left;}
-      .topNav{gap: 10px; flex-wrap: wrap; row-gap: 10px;}
-
-      /* better mobile readability */
-      .copy{ text-align: left; }
-    }
-    @media (max-width: 480px){
-      .container{padding: 0 18px;}
-      .photoCircle{width: 290px; height: 290px;}
-      .initials{font-size: 70px;}
-      .circleBtn{width: 124px; height: 124px; font-size: 17px;}
-      .topNav{gap: 10px; flex-wrap: wrap; row-gap: 10px;}
-    }
-
-    /* ===== Mobile header fix (no content changes) ===== */
-    @media (max-width: 640px){
-      header{ padding: 18px 0 8px; }
-
-      .headerRow{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .brand{
-        font-size: 20px;
-      }
-
-      .divider{ display: none; }
-
-      .topNav{
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 10px 14px;
-        font-size: 14px;
-        line-height: 1.2;
-        white-space: normal;
-      }
-
-      .downloadWrap{
-        width: 100%;
-        margin-top: 6px;
-      }
-
-      .downloadBtn{
-        width: 100%;
-        justify-content: center;
-        padding: 10px 12px;
-      }
-
-      .downloadMenu{
-        right: auto;
-        left: 0;
-        min-width: 100%;
-      }
-    }
-
-    /* ===== Footer fix on very small screens (prevents awkward columns) ===== */
-    @media (max-width: 520px){
-      .footerGrid{
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px){
+      .hero{
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 40px;
+        padding: 24px 0;
       }
-      .copyright{
-        text-align: left;
-        white-space: normal;
+      .heroRight{ order: -1; max-width: 320px; margin: 0 auto; }
+      .heroRight::before{ max-width: 320px; }
+      .portrait{ max-width: 320px; }
+      .quickLinks{ grid-template-columns: 1fr; }
+      .footerGrid{ grid-template-columns: 1fr 1fr; }
+      .copyright{ text-align: left; }
+    }
+
+    @media (max-width: 640px){
+      header{ padding: 20px 0 8px; }
+      .headerRow{
+        flex-wrap: wrap;
+        gap: 12px;
       }
+      .topNav{ order: 3; width: 100%; gap: 0; flex-wrap: wrap; }
+      .topNav a{ padding: 6px 10px; font-size: 13.5px; }
+      .navTools{ margin-left: auto; }
+      .container{ padding: 0 20px; }
+      .footerGrid{ grid-template-columns: 1fr; gap: 18px; }
     }
 
     @media (prefers-reduced-motion: reduce){
-      *{
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
-      body{
-        opacity: 1 !important;
-      }
+      *{ transition: none !important; animation: none !important; }
+      body{ opacity: 1 !important; }
     }
   </style>
 </head>
@@ -482,93 +623,117 @@
   <header>
     <div class="container headerRow">
       <a href="index.html" class="brand">
-        <span class="brandDot" aria-hidden="true"></span>
+        <span class="brandMark">P.</span>
         <span>Pradyot Jain</span>
       </a>
 
       <nav class="topNav" aria-label="Primary">
-        <a class="active" href="index.html">Home</a>
-        <span class="divider" aria-hidden="true"></span>
+        <a class="active" href="index.html" aria-current="page">Home</a>
         <a href="resume.html">Resume</a>
-        <span class="divider" aria-hidden="true"></span>
         <a href="portfolio.html">Portfolio</a>
-        <span class="divider" aria-hidden="true"></span>
         <a href="skills.html">Skills</a>
-        <span class="divider" aria-hidden="true"></span>
         <a href="contact.html">Contact</a>
+      </nav>
 
-        <span class="divider" aria-hidden="true"></span>
+      <div class="navTools">
+        <button type="button" class="themeToggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+        </button>
 
         <div class="downloadWrap">
-          <button
-            type="button"
-            class="downloadBtn"
-            id="downloadBtn"
-            aria-haspopup="menu"
-            aria-expanded="false"
-            aria-controls="downloadMenu"
-          >
-            Download Resume
+          <button type="button" class="downloadBtn" id="downloadBtn"
+            aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu">Download Resume
           </button>
-
-          <div class="downloadMenu" id="downloadMenu" role="menu" tabindex="-1" aria-label="Download resume options">
+          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume">
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   </header>
 
   <main class="container" id="main">
     <section class="hero">
-      <div class="photoWrap">
-        <div class="photoCircle"> 
-          <img
-            src="assets/profile/pradyot.png"
-            alt="Pradyot Jain"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-          >
-          <div class="initials" aria-hidden="true" style="display:none;">PJ</div>        
-          </div>
-      </div>
+      <div class="heroLeft">
+        <div class="eyebrow">Business Analytics · Sydney</div>
 
-      <div class="heroRight">
         <h1 class="headline">
-          <span>Business Analytics.</span>
-          <span>Data-Driven Insights.</span>
-          <span>Always improving.</span>
+          Translating data into <em>decisions</em> that move the business.
         </h1>
 
-        <div class="copy">
+        <div class="heroBody">
           <p>
-            I am a Master of Business Analytics candidate at Macquarie University with a strong focus on translating data into clear, actionable business insights. I work at the intersection of data analysis, predictive modelling, and stakeholder decision-making, ensuring analytical outputs align with real business objectives and support evidence-based decisions.
+            I am a Master of Business Analytics candidate at Macquarie University, working at the intersection of data analysis, predictive modelling, and stakeholder decision-making. My focus is turning analytical work into practical business outputs that align with real objectives and support evidence-based decisions.
           </p>
           <p>
-           My experience spans credit and health risk analysis, pricing and forecasting models, customer behaviour and retention analysis, and large-scale data exploration. I am proficient in Power BI, Python, and SQL, with a strong emphasis on structured reporting, analytical rigor, and clear communication. I prioritise accuracy, interpretability, and practical data storytelling to effectively communicate insights to both technical and non-technical stakeholders.
+            My experience spans credit and health risk analysis, pricing and forecasting, customer behaviour, and large-scale data exploration. I work in Power BI, Python, and SQL, and care about accuracy, interpretability, and clear communication to both technical and non-technical audiences.
+          </p>
+          <p>
+          I build dashboards, models, and analytical reports that translate complex datasets into clear insights for operational, financial, and strategic decisions.
           </p>
         </div>
 
-        <div class="ctaRow" aria-label="Quick links">
-          <a class="circleBtn k1" href="resume.html">
-            Resume
-            <div class="kpiSub">Experience & Education</div>
+        <div class="heroActions">
+          <a class="btn btn-primary" href="portfolio.html">
+            View Projects
+            <span class="arrow" aria-hidden="true">→</span>
           </a>
+          <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+        </div>
+      </div>
 
-          <a class="circleBtn k2" href="portfolio.html">
-            Portfolio
-            <div class="kpiSub">Projects & Case Studies</div>
-          </a>
-
-          <a class="circleBtn k3" href="skills.html">
-            Skills
-            <div class="kpiSub">Certifications & Tools</div>
-          </a>
+      <div class="heroRight">
+        <div class="portrait">
+          <img
+            src="assets/profile/pradyot.png"
+            alt="Pradyot Jain"
+            loading="eager"
+            decoding="async"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="initials" aria-hidden="true" style="display:none;">PJ</div>
         </div>
       </div>
     </section>
 
-    <div class="rule"></div>
+    <section class="quickLinks" aria-label="Quick links">
+      <a class="quickCard" href="resume.html">
+        <span class="num">01 / Background</span>
+        <span class="label">Resume</span>
+        <span class="sub">Experience & education</span>
+        <svg class="arrowIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7"/>
+          <polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </a>
+
+      <a class="quickCard" href="portfolio.html">
+        <span class="num">02 / Selected work</span>
+        <span class="label">Portfolio</span>
+        <span class="sub">Projects & case studies</span>
+        <svg class="arrowIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7"/>
+          <polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </a>
+
+      <a class="quickCard" href="skills.html">
+        <span class="num">03 / Toolkit</span>
+        <span class="label">Skills</span>
+        <span class="sub">Certifications & tools</span>
+        <svg class="arrowIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7"/>
+          <polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </a>
+    </section>
 
     <footer>
       <div class="footerGrid">
@@ -586,118 +751,66 @@
         </div>
 
         <div>
-          <p class="footTitle">Location </p>
+          <p class="footTitle">Location</p>
           <p class="footText">Sydney, NSW</p>
         </div>
 
         <div>
-          <p class="footTitle">Follow Me</p>
+          <p class="footTitle">Follow</p>
           <p class="footText">
-            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <span style="opacity:.5; padding:0 10px;">|</span>
-            <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer" aria-label="Visit Pradyot Jain's LinkedIn profile">LinkedIn</a><br>
+            <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noopener noreferrer" aria-label="Visit Pradyot Jain's GitHub portfolio">GitHub</a>
           </p>
         </div>
 
         <div>
-          <p class="copyright">© <span id="year"></span> by Pradyot Jain</p>
+          <p class="copyright">© <span id="year"></span> Pradyot Jain</p>
         </div>
       </div>
     </footer>
   </main>
 
   <script>
-    // Page fade-in on load
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("pageReady");
-    });
-
-    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Smooth fade-out for internal navigation
-    document.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (!link) return;
-
-      const href = link.getAttribute("href");
-      if (!href) return;
-
-      if (href.startsWith("javascript:")) return;
-      if (link.target === "_blank") return;
-      if (link.hasAttribute("download")) return;
-      if (href.startsWith("#")) return;
-      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
-      if (/^https?:\/\//i.test(href)) return;
-
-      e.preventDefault();
-
-      if (reduceMotion){
-        window.location.href = href;
-        return;
-      }
-
-      document.body.classList.add("pageFadeOut");
-
-      setTimeout(() => {
-        window.location.href = href;
-      }, 220);
-    });
-
-    window.addEventListener("pageshow", () => {
-      document.body.classList.remove("pageFadeOut");
-      document.body.classList.add("pageReady");
-    });
-
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Download menu behavior (match portfolio.html)
+    // ---------- Theme toggle ----------
+    const themeToggle = document.getElementById("themeToggle");
+    function setTheme(t){
+      document.documentElement.setAttribute("data-theme", t);
+      try { localStorage.setItem("theme", t); } catch(e){}
+    }
+    themeToggle.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(cur === "light" ? "dark" : "light");
+    });
+
+    // ---------- Download menu ----------
     const downloadBtn = document.getElementById("downloadBtn");
     const downloadMenu = document.getElementById("downloadMenu");
 
     function closeDownloadMenu(){
-      if (!downloadMenu) return;
       downloadMenu.classList.remove("show");
-      downloadBtn.classList.remove("isOpen");
       downloadBtn.setAttribute("aria-expanded", "false");
     }
-
     function openDownloadMenu(){
-      if (!downloadMenu) return;
       downloadMenu.classList.add("show");
-      downloadBtn.classList.add("isOpen");
       downloadBtn.setAttribute("aria-expanded", "true");
-
-      // Focus menu on non-hover devices for keyboard users
-      const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      if (!isHoverDevice) downloadMenu.focus();
     }
-
     function toggleDownloadMenu(){
-      const isOpen = downloadMenu.classList.contains("show");
-      if (isOpen) closeDownloadMenu();
+      if (downloadMenu.classList.contains("show")) closeDownloadMenu();
       else openDownloadMenu();
     }
 
     const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
     if (downloadBtn && downloadMenu){
       if (!isHoverDevice){
-        downloadBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          toggleDownloadMenu();
-        });
-
+        downloadBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleDownloadMenu(); });
         document.addEventListener("click", () => closeDownloadMenu());
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeDownloadMenu();
-        });
-
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDownloadMenu(); });
         downloadMenu.addEventListener("click", (e) => e.stopPropagation());
       } else {
-        // Keep ARIA in sync for keyboard users on hover devices
-        downloadBtn.addEventListener("focus", () => openDownloadMenu());
+        downloadBtn.addEventListener("focus", openDownloadMenu);
         downloadBtn.addEventListener("blur", () => {
           setTimeout(() => {
             if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn){
@@ -705,49 +818,138 @@
             }
           }, 50);
         });
-
-        downloadMenu.addEventListener("mouseleave", () => closeDownloadMenu());
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeDownloadMenu();
-        });
-      }
-
-      // Close if focus moves outside button+menu (keyboard)
-      document.addEventListener("focusin", (e) => {
-        const within = downloadBtn.contains(e.target) || downloadMenu.contains(e.target);
-        if (!within) closeDownloadMenu();
-      });
-    }
-
-    // KPI circles: fade other circles on hover/focus/click (like portfolio cards)
-    const ctaRow = document.querySelector(".ctaRow");
-    const kpiCircles = Array.from(document.querySelectorAll(".ctaRow .circleBtn"));
-
-    function setActiveCircle(el){
-      if (!ctaRow) return;
-
-      kpiCircles.forEach(c => c.classList.remove("isActiveCircle"));
-
-      if (el){
-        el.classList.add("isActiveCircle");
-        ctaRow.classList.add("isHovering");
-      } else {
-        ctaRow.classList.remove("isHovering");
+        downloadMenu.addEventListener("mouseleave", closeDownloadMenu);
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDownloadMenu(); });
       }
     }
-
-    kpiCircles.forEach(c => {
-      c.addEventListener("mouseenter", () => setActiveCircle(c));
-      c.addEventListener("mouseleave", () => setActiveCircle(null));
-
-      c.addEventListener("focusin", () => setActiveCircle(c));
-      c.addEventListener("focusout", (e) => {
-        if (!c.contains(e.relatedTarget)) setActiveCircle(null);
-      });
-
-      // brief click effect before page transition
-      c.addEventListener("mousedown", () => setActiveCircle(c));
-    });
   </script>
+  <script>
+  const PAGE_ORDER = [
+    "index.html",
+    "resume.html",
+    "portfolio.html",
+    "skills.html",
+    "contact.html"
+  ];
+
+  const PAGE_LABELS = {
+    "index.html": "Home",
+    "resume.html": "Resume",
+    "portfolio.html": "Portfolio",
+    "skills.html": "Skills",
+    "contact.html": "Contact"
+  };
+
+  function getCurrentPage() {
+    const page = window.location.pathname.split("/").pop();
+    return page || "index.html";
+  }
+
+  function goToPage(targetPage) {
+    if (!targetPage || targetPage === getCurrentPage()) return;
+
+    document.body.classList.remove("pageReady");
+    document.body.classList.add("pageFadeOut");
+
+    window.setTimeout(() => {
+      window.location.href = targetPage;
+    }, 220);
+  }
+
+  function goToAdjacentPage(direction) {
+    const currentPage = getCurrentPage();
+    const currentIndex = PAGE_ORDER.indexOf(currentPage);
+
+    if (currentIndex === -1) return;
+
+    const targetIndex =
+      (currentIndex + direction + PAGE_ORDER.length) % PAGE_ORDER.length;
+
+    goToPage(PAGE_ORDER[targetIndex]);
+  }
+
+  window.addEventListener("pageshow", () => {
+    document.body.classList.remove("pageFadeOut");
+    document.body.classList.add("pageReady");
+  });
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      link.target === "_blank" ||
+      link.hasAttribute("download")
+    ) {
+      return;
+    }
+
+    const url = new URL(link.href, window.location.href);
+
+    if (url.origin !== window.location.origin) return;
+
+    event.preventDefault();
+    goToPage(url.pathname.split("/").pop() || "index.html");
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const activeElement = document.activeElement;
+    const isTyping =
+      activeElement &&
+      (
+        activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        activeElement.tagName === "SELECT" ||
+        activeElement.isContentEditable
+      );
+
+    if (isTyping) return;
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToAdjacentPage(1);
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToAdjacentPage(-1);
+    }
+  });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  document.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener("touchend", (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    touchEndY = event.changedTouches[0].screenY;
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    const isHorizontalSwipe = Math.abs(diffX) > 80 && Math.abs(diffX) > Math.abs(diffY) * 1.5;
+
+    if (!isHorizontalSwipe) return;
+
+    if (diffX < 0) {
+      goToAdjacentPage(1);
+    } else {
+      goToAdjacentPage(-1);
+    }
+  }, { passive: true });
+</script>
 </body>
 </html>

@@ -3,788 +3,732 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pradyot Jain | Portfolio</title>
-  <meta name="description" content="Pradyot Jain - Portfolio projects and case studies." />
+  <title>Pradyot Jain — Portfolio</title>
+  <meta name="description" content="Explore Pradyot Jain's business analytics portfolio featuring Power BI dashboards, Excel automation, Python, SQL, predictive modelling, data visualisation, and business case studies." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Pradyot Jain — Portfolio" />
+  <meta property="og:description" content="Business analytics projects covering Power BI dashboards, Excel automation, Python, SQL, predictive modelling, and data-driven case studies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/profile/pradyot.png" />
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+    })();
+  </script>
 
   <style>
-    :root{
-      --text:#0d0d0d;
-      --muted: rgba(0,0,0,.62);
-      --line: rgba(0,0,0,.14);
-
-      --blue1:#1d4ed8;
-      --blue2:#0ea5e9;
-
-      --max: 1180px;
-
-      --shadow: 0 14px 34px rgba(0,0,0,.08);
-      --modalShadow: 0 26px 70px rgba(0,0,0,.18);
+    :root[data-theme="light"]{
+      --bg: #fafaf7; --bg-soft: #f3f2ec; --surface: #ffffff;
+      --ink: #0d1418; --ink-muted: #4a5258; --ink-faint: #8a9097;
+      --line: rgba(13,20,24,0.10); --line-strong: rgba(13,20,24,0.18);
+      --primary: #0d4f4a; --primary-hover: #0a3e3a;
+      --accent: #c2660a; --accent-hover: #a85708;
+      --shadow-sm: 0 1px 2px rgba(13,20,24,0.04);
+      --shadow-md: 0 4px 16px rgba(13,20,24,0.06);
+      --shadow-lg: 0 12px 32px rgba(13,20,24,0.08);
+    }
+    :root[data-theme="dark"]{
+      --bg: #0b0f10; --bg-soft: #14191b; --surface: #161c1e;
+      --ink: #e8e6e1; --ink-muted: #a8aeb1; --ink-faint: #6f767a;
+      --line: rgba(232,230,225,0.10); --line-strong: rgba(232,230,225,0.18);
+      --primary: #2dd4bf; --primary-hover: #5eead4;
+      --accent: #f59e0b; --accent-hover: #fbbf24;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
     }
 
-    *{ box-sizing:border-box; }
-    html, body{ min-height:100%; }
+    *{ box-sizing: border-box; }
+    html, body{ min-height: 100%; }
+
+    * { scrollbar-width: thin;
+      scrollbar-color: var(--ink-faint) transparent; }
+
+    *::-webkit-scrollbar {
+      width: 16px;
+      height: 16px; }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;}
+
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--ink-faint);
+      border-radius: 999px;
+      border: 3px solid transparent;
+      background-clip: content-box; }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background-color: var(--ink-muted); }
 
     body{
-      margin:0;
-      background-attachment: fixed;
-      min-height: 100vh;
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 520px at 18% 16%, rgba(29,78,216,.16), transparent 60%),
-        radial-gradient(900px 520px at 82% 18%, rgba(14,165,233,.14), transparent 58%),
-        linear-gradient(180deg, #ffffff 0%, #f4f9ff 52%, #ffffff 100%);
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px; line-height: 1.6; color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
       opacity: 0;
-      transition: opacity .22s ease;
+      transition: opacity 0.28s ease, background-color 0.3s ease, color 0.3s ease;
     }
-
     body.pageReady{ opacity: 1; }
     body.pageFadeOut{ opacity: 0; }
 
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ opacity:.92; }
-
-    a:focus-visible{
-      outline: 2px solid rgba(29,78,216,.55);
-      outline-offset: 3px;
-      border-radius: 8px;
+    body::before{
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background:
+        radial-gradient(800px 500px at 85% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 60%),
+        radial-gradient(600px 400px at 0% 100%, color-mix(in oklab, var(--accent) 5%, transparent), transparent 60%);
     }
 
-    .container{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 28px;
+    a{ color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible{
+      outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px;
     }
+
+    .container{ max-width: 1180px; margin: 0 auto; padding: 0 28px; }
 
     /* Header */
-    header{
-      padding: 26px 0 10px;
-      background: transparent;
-    }
+    header{ padding: 28px 0 12px; }
     .headerRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -0.2px;
-      white-space: nowrap;
+      display: inline-flex; align-items: baseline; gap: 10px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500; font-size: 22px; letter-spacing: -0.3px; color: var(--ink);
     }
-    .brandDot{
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--blue1), var(--blue2));
-      display:inline-block;
-      box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    .brand .brandMark{
+      font-family: "Fraunces", serif; font-style: italic;
+      color: var(--primary); font-weight: 400;
     }
-    .topNav{
-      display:flex;
-      align-items:center;
-      gap: 16px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #111;
-      white-space: nowrap;
-      flex-wrap: wrap;
-      row-gap: 10px;
+    .topNav{ display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; }
+    .topNav a{
+      padding: 8px 12px; border-radius: 6px; color: var(--ink-muted);
+      transition: color 0.15s ease, background 0.15s ease;
     }
-    .divider{
-      width: 1px;
-      height: 18px;
-      background: rgba(0,0,0,.38);
-      display:inline-block;
-      margin: 0 4px;
-      flex: 0 0 1px;
+    .topNav a:hover{ color: var(--ink); background: var(--bg-soft); }
+    .topNav a.active{ color: var(--ink); font-weight: 600; }
+    .topNav a.active::after{
+      content: ""; display: block; width: 14px; height: 2px;
+      background: var(--accent); margin: 2px auto 0; border-radius: 2px;
     }
-    .active{
-      font-weight: 800;
-      text-decoration: underline;
-      text-underline-offset: 6px;
-      text-decoration-thickness: 2px;
+    .navTools{ display: flex; align-items: center; gap: 10px; margin-left: 8px; }
+
+    .themeToggle{
+      width: 36px; height: 36px; border: 1px solid var(--line-strong);
+      background: var(--surface); border-radius: 999px; cursor: pointer;
+      color: var(--ink-muted); display: inline-flex; align-items: center;
+      justify-content: center; padding: 0;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .themeToggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
+    .themeToggle svg{ width: 16px; height: 16px; }
+    :root[data-theme="light"] .themeToggle .iconSun{ display: none; }
+    :root[data-theme="light"] .themeToggle .iconMoon{ display: block; }
+    :root[data-theme="dark"] .themeToggle .iconSun{ display: block; }
+    :root[data-theme="dark"] .themeToggle .iconMoon{ display: none; }
+
+    .downloadWrap{ position: relative; display: inline-flex; }
+    .downloadBtn{
+      border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+      padding: 9px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      font-family: inherit; display: inline-flex; align-items: center; gap: 6px;
+      transition: opacity 0.15s ease;
+    }
+    .downloadBtn:hover{ opacity: 0.88; }
+    .downloadBtn::after{
+      content: ""; width: 0; height: 0;
+      border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 4px solid currentColor; margin-left: 2px; opacity: 0.7;
+    }
+    .downloadMenu{
+      position: absolute; top: 100%; margin-top: 8px; right: 0;
+      min-width: 200px; background: var(--surface);
+      border: 1px solid var(--line-strong); border-radius: 12px;
+      box-shadow: var(--shadow-lg); padding: 6px; z-index: 60;
+      opacity: 0; transform: translateY(-4px); pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .downloadMenu.show{ opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .downloadMenu a{
+      display: block; padding: 9px 12px; border-radius: 8px;
+      font-size: 13.5px; font-weight: 500; color: var(--ink);
+    }
+    .downloadMenu a:hover{ background: var(--bg-soft); color: var(--primary); }
+
+    @media (hover: hover) and (pointer: fine){
+      .downloadWrap:hover .downloadMenu{ opacity: 1; transform: translateY(0); pointer-events: auto; }
+      .downloadWrap::after{
+        content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 12px;
+      }
     }
 
-    /* Download dropdown */
-    .downloadWrap{
-      position: relative;
-      display: inline-flex;
+    /* Page */
+    main{
+      padding: 32px 0 24px;
+      display: flex; flex-direction: column;
+    }
+
+    .pageHead{
+      padding: 24px 0 8px; max-width: 720px;
+    }
+    .pageHead .eyebrow{
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-muted);
+      margin-bottom: 16px;
+    }
+    .pageHead .eyebrow::before{
+      content: ""; width: 24px; height: 1px; background: var(--accent);
+    }
+    .pageHead h1{
+      margin: 0 0 12px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(36px, 4.5vw, 52px);
+      line-height: 1.05; letter-spacing: -1px;
+    }
+    .pageHead h1 em{ font-style: italic; color: var(--primary); font-weight: 300; }
+    .pageHead p{
+      margin: 0; color: var(--ink-muted);
+      font-size: 15.5px; line-height: 1.65; max-width: 600px;
+    }
+
+    /* Filters */
+    .filterRow{
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin: 28px 0 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
       align-items: center;
     }
-
-    .downloadBtn{
-      border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.55);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+    .filterLabel{
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-faint);
+      margin-right: 8px;
     }
-
-    .downloadBtn:hover{ opacity: .92; }
-
-    .downloadBtn.isOpen{
-      border-color: rgba(29,78,216,.35);
-      box-shadow: 0 10px 22px rgba(29,78,216,.12);
-    }
-
-    .downloadBtn:focus-visible{
-      outline: 2px solid rgba(29,78,216,.55);
-      outline-offset: 3px;
-    }
-
-    .downloadMenu{
-      position: absolute;
-      top: 100%;
-      margin-top: 10px;
-      right: 0;
-      min-width: 190px;
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 12px;
-      box-shadow: 0 18px 40px rgba(0,0,0,.12);
-      padding: 8px;
-      z-index: 60;
-
-      opacity: 0;
-      transform: translateY(-6px);
-      pointer-events: none;
-      transition: opacity .16s ease, transform .16s ease;
-    }
-
-    .downloadMenu.show{
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .downloadMenu a{
-      display: block;
-      padding: 10px 10px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #111;
-    }
-
-    .downloadMenu a:hover{
-      background: rgba(29,78,216,.08);
-    }
-
-    /* Hover open (desktop hover-capable devices) */
-    @media (hover: hover) and (pointer: fine){
-      .downloadWrap:hover .downloadMenu{
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      .downloadWrap:hover .downloadBtn{
-        border-color: rgba(29,78,216,.35);
-        box-shadow: 0 10px 22px rgba(29,78,216,.12);
-      }
-      /* keep menu open while moving from button to menu */
-      .downloadWrap::after{
-        content:"";
-        position:absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        height: 12px; /* must be >= margin-top (10px) */
-      }
-    }
-
-    /* Main */
-    main{
-      padding: 18px 0 0;
-      min-height: calc(100vh - 120px);
-      display:flex;
-      flex-direction:column;
-    }
-
-    .pageTitle{
-      text-align:center;
-      padding: 8px 0 8px;
-    }
-    .pageTitle h1{
-      margin: 0;
-      font-size: 50px;
-      font-weight: 900;
-      letter-spacing: -0.6px;
-    }
-
-    /* Filter pills */
-    .filters{
-      display:flex;
-      justify-content:center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin: 12px 0 18px;
-    }
-
     .filterPill{
-      border: 1px solid rgba(0,0,0,.55);
-      background: rgba(255,255,255,.28);
-      padding: 7px 16px;
+      padding: 7px 14px;
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink-muted);
+      font-size: 13px; font-weight: 500;
       cursor: pointer;
-      line-height: 1;
-      user-select: none;
+      font-family: inherit;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
     }
+    .filterPill:hover{ color: var(--ink); border-color: var(--ink-faint); }
     .filterPill.isActive{
-      background: rgba(29,78,216,.10);
-      border-color: rgba(0,0,0,.55);
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
     }
 
-    /* Cards */
+    /* Cards grid */
     .cards{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 34px;
-      align-items: stretch;
-      padding: 8px 0 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding: 4px 0 8px;
     }
 
     .cardBtn{
-      border: none;
-      background: none;
-      padding: 0;
-      text-align: left;
-      cursor: pointer;
-      transition: opacity .18s ease, transform .18s ease;
+      border: none; background: none; padding: 0;
+      text-align: left; cursor: pointer; font-family: inherit;
+      transition: opacity 0.18s ease, transform 0.18s ease;
     }
 
     .card{
-      border-radius: 30px;
-      border: 1px solid rgba(0,0,0,.14);
-      box-shadow: 0 22px 44px rgba(0,0,0,.10);
-      padding: 26px 22px 22px;
-      height: 440px;
-      min-height: 400px;
-
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,.92), rgba(255,255,255,.55) 56%, rgba(255,255,255,.30) 100%),
-        linear-gradient(135deg, rgba(148,255,220,.28), rgba(170,210,255,.36), rgba(120,170,255,.34));
-
-      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease, opacity .16s ease;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
+      display: flex; flex-direction: column;
+      gap: 12px;
+      padding: 24px 24px 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      min-height: 280px;
+      height: 100%;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
     }
-
     .cardBtn:hover .card{
-      transform: translateY(-6px);
-      box-shadow: 0 30px 64px rgba(0,0,0,.14);
-      filter: saturate(1.02);
-    }
-
-    .cardTitle{
-      margin: 0;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.2px;
-      line-height: 1.25;
+      border-color: var(--ink-faint);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .cardSub{
       margin: 0;
-      font-size: 14px;
-      font-weight: 800;
-      color: rgba(0,0,0,.70);
+      font-family: "Fraunces", serif; font-style: italic;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
     }
-
+    .cardTitle{
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
+      color: var(--ink);
+    }
     .cardDesc{
-      margin: 6px 0 0;
-      text-align: justify;
-      text-justify: inter-word;
-      font-size: 14px;
-      font-weight: 650;
-      color: rgba(0,0,0,.62);
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--ink-muted);
       line-height: 1.6;
     }
-
-    .readMore{
-      text-decoration: none;
-      text-underline-offset: 3px;
-      cursor: pointer;
-      display:inline;
-    }
-
-    .openBtnRow{
+    .cardFoot{
       margin-top: auto;
-      display:flex;
-      justify-content:flex-start;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12.5px;
     }
-
-    .openProjectBtn{
-      display:inline-flex;
-      align-items:center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,.16);
-      background: rgba(255,255,255,.55);
-      font-size: 13px;
-      font-weight: 850;
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+    .cardFoot .open{
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 4px;
+      transition: gap 0.15s ease;
     }
+    .cardBtn:hover .cardFoot .open{ gap: 8px; }
+    .cardFoot .external{
+      color: var(--ink-faint);
+      display: inline-flex; align-items: center; gap: 4px;
+      font-weight: 500;
+    }
+    .cardFoot .external:hover{ color: var(--ink); }
 
-    /* View more button */
     .viewMoreWrap{
-      display:flex;
-      justify-content:center;
+      display: flex;
+      justify-content: center;
+      padding: 28px 0 8px;
       position: sticky;
-      bottom: 18px;
+      bottom: 22px;
       z-index: 40;
-      padding: 10px 0;
-      background: transparent;
       pointer-events: none;
     }
+
     .viewMoreBtn{
-      border: 2px solid rgba(0,0,0,.75);
-      background: rgba(255,255,255,.28);
-      padding: 7px 18px;
+      padding: 10px 22px;
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 900;
+      border: 1px solid var(--line-strong);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      color: var(--ink);
+      font-size: 13.5px;
+      font-weight: 600;
       cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-md);
       pointer-events: auto;
-      backdrop-filter: blur(6px);
-      background: rgba(255,255,255,.85);
-      box-shadow: 0 14px 30px rgba(0,0,0,.14);
-    }
-    .viewMoreBtn:hover{ opacity: .92; }
-
-    /* Divider above footer */
-    .rule{
-      border-top: 1px solid var(--line);
-      margin-top: 10px;
     }
 
-    /* Footer */
-    footer{
-      padding: 18px 0 28px;
-      background: transparent;
-    }
-    .footerGrid{
-      display:grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0;
-      align-items:start;
-    }
-    .footTitle{
-      font-weight: 800;
-      margin: 0 0 10px;
-      font-size: 14px;
-      letter-spacing: -0.2px;
-    }
-    .footText{
-      margin:0;
-      color:#111;
-      font-weight: 500;
-      line-height: 1.6;
-      font-size: 13px;
-      word-break: break-word;
-    }
-    .footText a:hover{ text-decoration: underline; }
-    .copyright{
-      text-align:right;
-      color:#111;
-      font-size: 12px;
-      font-weight: 500;
-      margin: 0;
-      opacity:.75;
-      white-space: nowrap;
+    .viewMoreBtn:hover{
+      border-color: var(--ink);
+      background: var(--surface);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
-    /* Modal */
-    .modal{ position:fixed; inset:0; display:none; z-index:80; }
-    .modal.show{ display:block; }
-
-    .modalBackdrop{
-      position:absolute; inset:0;
-      background: rgba(0,0,0,.34);
-      backdrop-filter: blur(7px);
-    }
-
-    .modalPanel{
-      position:absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 860px;
-      width: calc(100% - 36px);
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 18px;
-      box-shadow: var(--modalShadow);
-
-      touch-action: pan-y;
-
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .modalScroll{
-      max-height: calc(100vh - 70px);
-      overflow-y: auto;
-      padding: 18px 18px 14px;
-      padding-right: 24px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-gutter: stable;
-    }
-
-    .modalClose{
-      position:absolute;
-      top: 10px; right: 12px;
-      border: none;
-      background: transparent;
-      cursor:pointer;
-      font-weight: 900;
-      font-size: 22px;
-      line-height: 1;
-      padding: 6px;
-      opacity: .75;
-      z-index: 10;
-    }
-    .modalClose:hover{ opacity: 1; }
-
-    .pmHeader h2{
-      margin: 0;
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-    }
-    .pmMeta{
-      margin: 8px 0 0;
-      font-size: 14px;
-      font-weight: 750;
-      color: rgba(0,0,0,.62);
-    }
-
-    .pmTopRow{
-      margin-top: 12px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(29,78,216,.08);
-      border: 1px solid rgba(29,78,216,.14);
-      color: #0b2a7a;
-      font-weight: 850;
-      font-size: 12.5px;
-    }
-
-    .pmBody{
-      margin-top: 14px;
-      font-size: 14.5px;
-      line-height: 1.85;
-      color: rgba(0,0,0,.78);
-    }
-
-    .pmBody ul{ margin: 10px 0 0; padding-left: 18px; }
-    .pmBody li{ margin: 8px 0; }
-
-    .pmSkills{
-      margin-top: 14px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skillPill{
-      display:inline-flex;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(29,78,216,.08);
-      border: 1px solid rgba(29,78,216,.14);
-      color: #000000;
-      font-weight: 700;
-      font-size: 12.5px;
-    }
-
-    /* ----------------------------
-       Card fade on hover/focus + animated show/hide
-       ---------------------------- */
-    .cards.isHovering .cardBtn:not(.isActiveCard) .card{
-      opacity: .55;
-      transform: none;
-      filter: saturate(.95);
-    }
-
-    .cardBtn.isEntering{
-      opacity: 0;
-      transform: translateY(6px);
-    }
-
-    .cardBtn.isVisible{
-      opacity: 1;
-      transform: translateY(0);
+    /* Cards entrance/exit */
+    .cardBtn{
+      transition:
+        opacity 0.34s ease,
+        transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
     }
 
     .cardBtn.isLeaving{
       opacity: 0;
-      transform: translateY(6px);
+      transform: translateY(14px) scale(0.98);
       pointer-events: none;
     }
 
-    /* Tap highlight removal (mobile polish) */
-    .cardBtn,
-    .filterPill,
-    .viewMoreBtn,
-    .downloadBtn{
-      -webkit-tap-highlight-color: transparent;
+    .cardBtn.isEntering{
+      opacity: 0;
+      transform: translateY(14px) scale(0.98);
     }
 
-    .cardBtn:focus-visible{ outline: none; }
-    .cardBtn:focus-visible .card{
-      box-shadow: 0 0 0 4px rgba(29,78,216,.22), 0 22px 44px rgba(0,0,0,.10);
+    .cardBtn.isVisible{
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
-    /* Responsive */
-    @media (max-width: 980px){
+    /* Modal */
+    .modal{ position: fixed; inset: 0; display: none; z-index: 80; }
+    .modal.show{ display: block; }
+    .modalBackdrop{
+      position: absolute; inset: 0;
+      background: rgba(13,20,24,0.4);
+      backdrop-filter: blur(8px);
+    }
+    :root[data-theme="dark"] .modalBackdrop{ background: rgba(0,0,0,0.6); }
+
+    .modalPanel{
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 860px; width: calc(100% - 36px);
+      max-height: calc(100vh - 60px);
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+
+    .modalScroll {
+      overflow-y: auto;
+      padding: 28px 32px 24px;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
+
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink-faint) transparent;
+    }
+
+    .modalScroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modalScroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .modalScroll::-webkit-scrollbar-thumb {
+      background-color: var(--ink-faint);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    .modalScroll::-webkit-scrollbar-thumb:hover {
+      background-color: var(--ink-muted);
+    }
+
+    .modalClose{
+      position: absolute; top: 14px; right: 16px;
+      border: none; background: transparent;
+      cursor: pointer; font-size: 22px; line-height: 1;
+      color: var(--ink-muted); padding: 8px;
+      border-radius: 6px; z-index: 5;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .modalClose:hover{ color: var(--ink); background: var(--bg-soft); }
+
+    .pmHeader h2{
+      margin: 0 0 6px;
+      font-family: "Fraunces", serif;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: -0.4px;
+    }
+    .pmMeta{
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-style: italic; font-weight: 300;
+      color: var(--accent); font-size: 13px;
+    }
+    .pmTopRow{ margin: 16px 0 0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill{
+      display: inline-flex; align-items: center;
+      padding: 8px 14px; border-radius: 999px;
+      background: var(--primary); color: #fff;
+      font-weight: 600; font-size: 12.5px;
+      transition: background 0.15s ease;
+    }
+    :root[data-theme="dark"] .pill{ color: var(--bg); }
+    .pill:hover{ background: var(--primary-hover); }
+
+    .pmBody{
+      margin-top: 18px;
+      font-size: 14.5px; line-height: 1.7;
+      color: var(--ink);
+    }
+    .pmBody p{ margin: 14px 0 6px; font-weight: 600; }
+    .pmBody p:first-child{ margin-top: 0; }
+    .pmBody ul{ margin: 0; padding-left: 0; list-style: none; }
+    .pmBody li{
+      position: relative;
+      padding: 0 0 10px 18px;
+      color: var(--ink-muted);
+    }
+    .pmBody li::before{
+      content: ""; position: absolute;
+      left: 0; top: 11px; width: 6px; height: 1px;
+      background: var(--accent);
+    }
+
+    .pmSkills{
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .skillPill{
+      font-size: 12px; font-weight: 500;
+      padding: 5px 11px; border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--ink-muted);
+      border: 1px solid var(--line);
+    }
+
+    /* Footer */
+    footer{
+      padding: 28px 0 32px;
+      border-top: 1px solid var(--line);
+      margin-top: 32px;
+    }
+    .footerGrid{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px; align-items: start;
+    }
+    .footTitle{
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint);
+      margin: 0 0 8px;
+    }
+    .footText{
+      margin: 0; font-size: 13.5px; line-height: 1.6;
+      color: var(--ink); word-break: break-word;
+    }
+    .footText a{ color: var(--ink); }
+    .footText a:hover{ color: var(--primary); }
+    .copyright{ font-size: 12px; color: var(--ink-faint); text-align: right; margin: 0; }
+
+    .skipLink{
+      position: absolute; left: -9999px; top: 12px;
+      background: var(--surface); color: var(--ink);
+      border: 1px solid var(--line-strong); padding: 10px 14px;
+      border-radius: 8px; z-index: 9999; font-weight: 600;
+    }
+    .skipLink:focus{ left: 18px; }
+
+    @media (max-width: 1024px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px){
       .cards{ grid-template-columns: 1fr; }
-      .footerGrid{
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .copyright{ text-align:left; }
-      body{ background-attachment: scroll; }
+      .footerGrid{ grid-template-columns: 1fr 1fr; }
+      .copyright{ text-align: left; }
     }
-
-    @media (max-width: 480px){
-      .container{ padding: 0 18px; }
-      .topNav{ gap: 10px; }
-      .pageTitle h1{ font-size: 40px; }
-    }
-
-    /* ===== Mobile header fix (match index.html) ===== */
     @media (max-width: 640px){
-      header{ padding: 18px 0 8px; }
-
-      .headerRow{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .brand{
-        font-size: 20px;
-      }
-
-      .divider{ display: none; }
-
-      .topNav{
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 10px 14px;
-        font-size: 14px;
-        line-height: 1.2;
-        white-space: normal;
-      }
-
-      .downloadWrap{
-        width: 100%;
-        margin-top: 6px;
-      }
-
-      .downloadBtn{
-        width: 100%;
-        justify-content: center;
-        padding: 10px 12px;
-      }
-
-      .downloadMenu{
-        right: auto;
-        left: 0;
-        min-width: 100%;
-      }
-    }
-
-    /* ===== Footer fix on very small screens ===== */
-    @media (max-width: 520px){
-      .footerGrid{
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .copyright{
-        text-align: left;
-        white-space: normal;
-      }
+      header{ padding: 20px 0 8px; }
+      .headerRow{ flex-wrap: wrap; gap: 12px; }
+      .topNav{ order: 3; width: 100%; gap: 0; flex-wrap: wrap; }
+      .topNav a{ padding: 6px 10px; font-size: 13.5px; }
+      .navTools{ margin-left: auto; }
+      .container{ padding: 0 20px; }
+      .footerGrid{ grid-template-columns: 1fr; gap: 18px; }
+      .modalScroll{ padding: 22px 22px 20px; }
     }
 
     @media (prefers-reduced-motion: reduce){
-      *{ transition: none !important; }
+      *{ transition: none !important; animation: none !important; }
       body{ opacity: 1 !important; }
     }
   </style>
 </head>
 
 <body>
+  <a href="#main" class="skipLink">Skip to content</a>
   <header>
     <div class="container headerRow">
       <a href="index.html" class="brand">
-        <span class="brandDot" aria-hidden="true"></span>
+        <span class="brandMark">P.</span>
         <span>Pradyot Jain</span>
       </a>
-
       <nav class="topNav" aria-label="Primary">
-        <a href="index.html">Home</a><span class="divider" aria-hidden="true"></span>
-        <a href="resume.html">Resume</a><span class="divider" aria-hidden="true"></span>
-        <a class="active" href="portfolio.html">Portfolio</a><span class="divider" aria-hidden="true"></span>
-        <a href="skills.html">Skills</a><span class="divider" aria-hidden="true"></span>
-        <a href="contact.html">Contact</a><span class="divider" aria-hidden="true"></span>
-
+        <a href="index.html">Home</a>
+        <a href="resume.html">Resume</a>
+        <a class="active" href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="navTools">
+        <button type="button" class="themeToggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
         <div class="downloadWrap">
-          <button type="button" class="downloadBtn" id="downloadBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu">
-            Download Resume
-          </button>
-
-          <div class="downloadMenu" id="downloadMenu" role="menu" tabindex="-1" aria-label="Download resume options">
+          <button type="button" class="downloadBtn" id="downloadBtn"
+            aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu" aria-label="Download resume">Download Resume</button>
+          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume">
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   </header>
 
-  <main class="container" aria-label="Portfolio sections">
-    <section class="pageTitle" aria-label="Portfolio">
-      <h1>Portfolio</h1>
+  <main class="container" id="main">
+    <section class="pageHead">
+      <div class="eyebrow">Portfolio</div>
+      <h1>Analytics projects and <em>case studies</em>.</h1>
+      <p>A curated collection of business analytics projects covering Power BI dashboards, Excel automation, predictive modelling, data visualisation, operational analysis, and decision-focused reporting.</p>
     </section>
 
-    <section class="filters" aria-label="Portfolio filters">
-      <button type="button" class="filterPill isActive" data-filter="all">All</button>
-      <button type="button" class="filterPill" data-filter="python">Python</button>
-      <button type="button" class="filterPill" data-filter="predictiveanalytics">Predictive Analytics</button>
-      <button type="button" class="filterPill" data-filter="powerbi">Power BI</button>
-      <button type="button" class="filterPill" data-filter="r">R</button>
+    <section class="filterRow" aria-label="Filter projects">
+      <span class="filterLabel">Filter</span>
+      <button type="button" class="filterPill isActive" data-filter="all" aria-label="Show all projects">All</button>
+      <button type="button" class="filterPill" data-filter="python" aria-label="Show Python projects">Python</button>
+      <button type="button" class="filterPill" data-filter="predictiveanalytics" aria-label="Show predictive analytics projects">Predictive Analytics</button>
+      <button type="button" class="filterPill" data-filter="powerbi" aria-label="Show Power BI projects">Power BI</button>
+      <button type="button" class="filterPill" data-filter="r" aria-label="Show R projects">R</button>
+      <button type="button" class="filterPill" data-filter="excel" aria-label="Show Excel projects">Excel</button>
     </section>
 
-    <section class="cards" id="cards" aria-label="Project cards">
-      <!-- Top 3 -->
+    <section class="cards" id="cards" aria-label="Projects">
       <button class="cardBtn" type="button" data-open="0" data-tags="python">
         <article class="card">
+          <p class="cardSub">01 / Project</p>
           <h3 class="cardTitle">Loan Approval Risk Assessment and Modeling using Logistic Regression and K-Nearest Neighbors</h3>
-          <p class="cardSub">Project 1</p>
-          <p class="cardDesc"><span class="readMore">This project focuses on using data to support loan approval and credit risk decisions.
-I analysed applicant data and built predictive models to understand approval patterns and risk drivers.
-Model comparison highlighted which approach delivered more consistent and reliable outcomes.
-The results support data-driven decision making in financial services.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardDesc">Analysed historical loan data and compared Logistic Regression with KNN to assess approval patterns and credit risk drivers.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
       <button class="cardBtn" type="button" data-open="1" data-tags="python predictiveanalytics">
         <article class="card">
+          <p class="cardSub">02 / Project</p>
           <h3 class="cardTitle">Diabetes Risk Prediction and Feature Analysis Using Machine Learning</h3>
-          <p class="cardSub">Project 2</p>
-          <p class="cardDesc"><span class="readMore">This project predicts diabetes risk using multiple machine learning models and identifies key medical risk factors.
-Regression, KNN, and neural network models were compared to evaluate performance and overfitting.
-Probabilistic methods were used to interpret feature relationships for healthcare decision support.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardDesc">Predicted diabetes risk using regression, KNN, and neural networks — and used probabilistic methods to interpret feature relationships.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
       <button class="cardBtn" type="button" data-open="2" data-tags="python predictiveanalytics">
         <article class="card">
+          <p class="cardSub">03 / Project</p>
           <h3 class="cardTitle">Data-Driven Analysis and Predictive Modeling for Sales, Profitability, and Customer Retention</h3>
-          <p class="cardSub">Project 3</p>
-          <p class="cardDesc"><span class="readMore">This project provides data-driven insights into sales performance, profitability, and customer retention for LuminaTech Lighting.
-I analysed transactional data to identify revenue drivers, regional profitability, and customer behaviour patterns.
-Predictive models were used to forecast sales and assess churn risk, with a focus on actionable business insights.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardDesc">Worked with large transactional data to forecast sales, identify profit drivers, and assess customer churn for LuminaTech Lighting.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
-      <!-- More (hidden until View More) -->
       <button class="cardBtn" type="button" data-open="3" data-tags="python" data-more="true" hidden>
         <article class="card">
+          <p class="cardSub">04 / Project</p>
           <h3 class="cardTitle">Customer Shopping Behavior Analysis Insights from Transactional Data</h3>
-          <p class="cardSub">Project 4</p>
-          <p class="cardDesc"><span class="readMore">This project analyses customer shopping data to understand purchasing behaviour, demographics, and transaction patterns.
-I explored customer age, gender, product categories, payment methods, and shopping mall trends.
-The analysis focuses on identifying spending patterns and customer preferences.
-Insights were supported using clear visualisations and summary statistics.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardDesc">Explored customer demographics, payment methods, and product category preferences to understand spending patterns across shopping malls.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
       <button class="cardBtn" type="button" data-open="4" data-tags="python predictiveanalytics" data-more="true" hidden>
         <article class="card">
+          <p class="cardSub">05 / Project</p>
           <h3 class="cardTitle">Critical Analysis of Vehicle Price Prediction Models</h3>
-          <p class="cardSub">Project 5</p>
-          <p class="cardDesc"><span class="readMore">This project presents a critical analysis of a vehicle price prediction model to identify gaps between stated objectives and actual implementation.
-I reviewed preprocessing, feature engineering, and model configuration choices across multiple machine learning models.
-The focus was on correcting methodological issues to improve accuracy, interpretability, and model alignment.
-The project emphasises analytical rigor over raw performance.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardDesc">Reviewed and corrected a vehicle price prediction pipeline — fixing preprocessing, encoding, and tuning across Linear, Decision Tree, and MLP models.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
       <button class="cardBtn" type="button" data-open="5" data-tags="python" data-more="true" hidden>
         <article class="card">
+          <p class="cardSub">06 / Project</p>
           <h3 class="cardTitle">Analyzing Koala Physical Traits and Environmental Adaptations</h3>
-          <p class="cardSub">Project 6</p>
-          <p class="cardDesc"><span class="readMore">This project analyses koalas’ physical characteristics to understand biological patterns and habitat-based adaptations.
-I conducted exploratory data analysis, statistical testing, and regression modelling on physical measurements.
-The study identifies key traits influencing body size and differences across gender and habitat.
-Insights support data-driven understanding of wildlife health and conservation planning.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardDesc">Used statistical testing and OLS regression on physical measurements to study habitat-driven adaptations and biological patterns.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
       <button class="cardBtn" type="button" data-open="6" data-tags="r powerbi" data-more="true" hidden>
         <article class="card">
-          <h3 class="cardTitle">Global Terrorism Data Analysis: 1997-2017.</h3>
-          <p class="cardSub">Project 7</p>
-          <p class="cardDesc"><span class="readMore">This project analyses global terrorism trends between 1997 and 2017 using large-scale event data.
-We examined where, when, how, and by whom terrorist attacks occurred worldwide.
-Interactive dashboards and visualisations were used to explore patterns, severity, and impact.
-The focus was on transforming complex global data into clear, actionable insights.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardSub">07 / Project</p>
+          <h3 class="cardTitle">Global Terrorism Data Analysis: 1997–2017</h3>
+          <p class="cardDesc">Analysed two decades of global terrorism event data with interactive Power BI and R dashboards to surface patterns and severity trends.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
 
       <button class="cardBtn" type="button" data-open="7" data-tags="python predictiveanalytics" data-more="true" hidden>
         <article class="card">
-          <h3 class="cardTitle">Car Price Prediction - Gradient Boosting Ensemble Approach</h3>
-          <p class="cardSub">Project 8</p>
-          <p class="cardDesc"><span class="readMore">This project predicts used car prices using an ensemble of gradient boosting models.
-I built and tuned XGBoost, LightGBM, and HistGradientBoosting models and combined them using weighted ensembling.
-The final blended model achieved strong predictive performance with low error.
-The focus was on building a robust, generalisable pricing model using advanced machine learning techniques.....read more</span></p>
-          <div class="openBtnRow"><span class="openProjectBtn">Open Project</span></div>
+          <p class="cardSub">08 / Project</p>
+          <h3 class="cardTitle">Car Price Prediction — Gradient Boosting Ensemble Approach</h3>
+          <p class="cardDesc">Built a weighted ensemble of XGBoost, LightGBM, and HistGradientBoosting to predict used car prices with strong generalisation.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="8" data-tags="powerbi excel" data-more="true" hidden>
+        <article class="card">
+          <p class="cardSub">09 / Project</p>
+          <h3 class="cardTitle">South Australian Electricity Market Power BI Dashboard</h3>
+          <p class="cardDesc">Built an interactive multi-page dashboard analysing revenue, capture price, dispatch timing, and emissions across SA's electricity market.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="9" data-tags="excel" data-more="true" hidden>
+        <article class="card">
+          <p class="cardSub">10 / Project</p>
+          <h3 class="cardTitle">Excel Inventory Order Planner for Fast-Food Operations</h3>
+          <p class="cardDesc">Designed a structured Excel workbook for retail inventory ordering, with demand profiling, delivery coverage, and automated status logic.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="10" data-tags="powerbi excel" data-more="true" hidden>
+        <article class="card">
+          <p class="cardSub">11 / Project</p>
+          <h3 class="cardTitle">E-Commerce Sales Performance & Profitability Power BI Dashboard</h3>
+          <p class="cardDesc">Built a multi-page dashboard analysing revenue, profitability, returns, and customer behaviour across categories and regions.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
         </article>
       </button>
     </section>
 
     <div class="viewMoreWrap">
-      <button type="button" class="viewMoreBtn" id="viewMoreBtn" aria-expanded="false">View More</button>
+      <button type="button" class="viewMoreBtn" id="viewMoreBtn" aria-expanded="false">View more</button>
     </div>
-
-    <div class="rule"></div>
 
     <footer>
       <div class="footerGrid">
@@ -795,28 +739,23 @@ The focus was on building a robust, generalisable pricing model using advanced m
             <a href="tel:+917980010389">+91 79800 10389</a>
           </p>
         </div>
-
         <div>
           <p class="footTitle">Email</p>
           <p class="footText"><a href="mailto:pradyotjain0921@gmail.com">pradyotjain0921@gmail.com</a></p>
         </div>
-
         <div>
           <p class="footTitle">Location</p>
           <p class="footText">Sydney, NSW</p>
         </div>
-
         <div>
-          <p class="footTitle">Follow Me</p>
+          <p class="footTitle">Follow</p>
           <p class="footText">
-            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <span style="opacity:.55; padding: 0 8px;">|</span>
+            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer">LinkedIn</a><br>
             <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
           </p>
         </div>
-
         <div>
-          <p class="copyright">© <span id="year"></span> by Pradyot Jain</p>
+          <p class="copyright">© <span id="year"></span> Pradyot Jain</p>
         </div>
       </div>
     </footer>
@@ -825,242 +764,182 @@ The focus was on building a robust, generalisable pricing model using advanced m
   <!-- Project Modal -->
   <div class="modal" id="projectModal" aria-hidden="true">
     <div class="modalBackdrop" data-close></div>
-
     <div class="modalPanel" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
-      <button type="button" class="modalClose" aria-label="Close" data-close>✕</button>
-
+      <button type="button" class="modalClose" aria-label="Close project details" data-close>✕</button>
       <div class="modalScroll">
         <div class="pmHeader">
-          <h2 id="pmTitle">Title</h2>
           <p class="pmMeta" id="pmMeta">Project</p>
+          <h2 id="pmTitle">Title</h2>
         </div>
-
         <div class="pmTopRow">
-          <a class="pill pmOpen" id="pmOpen" href="#" target="_blank" rel="noopener noreferrer">Open Project</a>
+          <a class="pill" id="pmOpen" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open project on GitHub">Open on GitHub ↗</a>
         </div>
-
         <div class="pmBody" id="pmBody"></div>
-
         <div class="pmSkills" id="pmSkills"></div>
       </div>
     </div>
   </div>
 
   <script>
-    // Page fade-in on load
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("pageReady");
-    });
 
-    const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Smooth fade-out for internal navigation
-    document.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (!link) return;
-
-      const href = link.getAttribute("href");
-      if (!href) return;
-
-      if (href.startsWith("javascript:")) return;
-
-      if (link.target === "_blank") return;
-      if (link.hasAttribute("download")) return;
-      if (href.startsWith("#")) return;
-      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
-      if (/^https?:\/\//i.test(href)) return;
-
-      e.preventDefault();
-
-      if (prefersReducedMotion){
-        window.location.href = href;
-        return;
-      }
-
-      document.body.classList.add("pageFadeOut");
-
-      setTimeout(() => {
-        window.location.href = href;
-      }, 220);
-    });
-
-    window.addEventListener("pageshow", () => {
-      document.body.classList.remove("pageFadeOut");
-      document.body.classList.add("pageReady");
-    });
-
-    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Download menu behavior (same pattern as your other pages)
+    // Theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    function setTheme(t){
+      document.documentElement.setAttribute("data-theme", t);
+      try { localStorage.setItem("theme", t); } catch(e){}
+    }
+    themeToggle.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(cur === "light" ? "dark" : "light");
+    });
+
+    // Download menu
     const downloadBtn = document.getElementById("downloadBtn");
     const downloadMenu = document.getElementById("downloadMenu");
 
-    function closeDownloadMenu(){
-      if (!downloadMenu) return;
-      downloadMenu.classList.remove("show");
-      downloadBtn.classList.remove("isOpen");
-      downloadBtn.setAttribute("aria-expanded", "false");
-    }
-
-    function openDownloadMenu(){
-      if (!downloadMenu) return;
-      downloadMenu.classList.add("show");
-      downloadBtn.classList.add("isOpen");
-      downloadBtn.setAttribute("aria-expanded", "true");
-    }
-
-    function toggleDownloadMenu(){
-      const isOpen = downloadMenu.classList.contains("show");
-      if (isOpen) closeDownloadMenu();
-      else openDownloadMenu();
-    }
+    function closeDownloadMenu(){ downloadMenu.classList.remove("show"); downloadBtn.setAttribute("aria-expanded","false"); }
+    function openDownloadMenu(){ downloadMenu.classList.add("show"); downloadBtn.setAttribute("aria-expanded","true"); }
+    function toggleDownloadMenu(){ if (downloadMenu.classList.contains("show")) closeDownloadMenu(); else openDownloadMenu(); }
 
     const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
     if (downloadBtn && downloadMenu){
       if (!isHoverDevice){
-        downloadBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          toggleDownloadMenu();
-        });
-
+        downloadBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleDownloadMenu(); });
         document.addEventListener("click", () => closeDownloadMenu());
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeDownloadMenu();
-        });
-
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDownloadMenu(); });
         downloadMenu.addEventListener("click", (e) => e.stopPropagation());
       } else {
-        // Keep ARIA in sync for keyboard users on hover devices
-        downloadBtn.addEventListener("focus", () => openDownloadMenu());
+        downloadBtn.addEventListener("focus", openDownloadMenu);
         downloadBtn.addEventListener("blur", () => {
           setTimeout(() => {
-            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn){
-              closeDownloadMenu();
-            }
+            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn) closeDownloadMenu();
           }, 50);
         });
-
-        downloadMenu.addEventListener("mouseleave", () => closeDownloadMenu());
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeDownloadMenu();
-        });
+        downloadMenu.addEventListener("mouseleave", closeDownloadMenu);
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDownloadMenu(); });
       }
     }
 
-    // --- View More / View Less + Filters ---
+    // ---------- View More + Filters ----------
     const viewMoreBtn = document.getElementById("viewMoreBtn");
     const allCards = Array.from(document.querySelectorAll(".cardBtn"));
     const filterButtons = Array.from(document.querySelectorAll(".filterPill"));
+    const INITIAL_VISIBLE = 3;
 
     let isExpanded = false;
     let currentFilter = "all";
 
-    function cardMatchesFilter(cardBtn, filter){
+    function cardMatchesFilter(card, filter){
       if (filter === "all") return true;
-      const tags = (cardBtn.getAttribute("data-tags") || "").toLowerCase().split(/\s+/).filter(Boolean);
-      return tags.includes(filter);
-    }
 
-    function showCard(btn){
-      if (!btn.hidden && btn.classList.contains("isVisible")) return;
+      const tags = (card.getAttribute("data-tags") || "")
+        .toLowerCase()
+        .split(/\s+/)
+        .map(tag => tag.trim());
 
-      btn.hidden = false;
-      btn.classList.remove("isLeaving");
-      btn.classList.add("isEntering");
-
-      requestAnimationFrame(() => {
-        btn.classList.add("isVisible");
-        btn.classList.remove("isEntering");
-      });
-    }
-
-    function hideCard(btn){
-      if (btn.hidden) return;
-
-      btn.classList.remove("isEntering");
-      btn.classList.add("isLeaving");
-      btn.classList.remove("isVisible");
-
-      const onEnd = (e) => {
-        if (e.propertyName !== "opacity") return;
-        btn.hidden = true;
-        btn.classList.remove("isLeaving");
-        btn.removeEventListener("transitionend", onEnd);
-      };
-
-      btn.addEventListener("transitionend", onEnd);
+      return tags.includes(filter.toLowerCase());
     }
 
     function applyVisibility(){
-      allCards.forEach(btn => {
-        const isMore = btn.hasAttribute("data-more");
-        const allowByMore = !isMore || isExpanded || currentFilter !== "all";
-        const allowByFilter = cardMatchesFilter(btn, currentFilter);
-        const shouldShow = (allowByMore && allowByFilter);
+      const matchingCards = allCards.filter(card => cardMatchesFilter(card, currentFilter));
 
-        if (shouldShow) showCard(btn);
-        else hideCard(btn);
+      const cardsToShow =
+        currentFilter === "all" && !isExpanded
+          ? matchingCards.slice(0, INITIAL_VISIBLE)
+          : matchingCards;
+
+      allCards.forEach(card => {
+        const shouldShow = cardsToShow.includes(card);
+
+        if (shouldShow) {
+          card.hidden = false;
+          card.classList.remove("isLeaving", "isVisible");
+          card.classList.add("isEntering");
+
+          requestAnimationFrame(() => {
+            card.classList.remove("isEntering");
+            card.classList.add("isVisible");
+          });
+        } else {
+          card.classList.remove("isVisible", "isEntering");
+          card.classList.add("isLeaving");
+
+          setTimeout(() => {
+            if (!cardsToShow.includes(card)) {
+              card.hidden = true;
+              card.classList.remove("isLeaving");
+            }
+          }, 220);
+        }
       });
+
+      if (viewMoreBtn) {
+        const shouldShowViewMore =
+          currentFilter === "all" && matchingCards.length > INITIAL_VISIBLE;
+
+        viewMoreBtn.style.display = shouldShowViewMore ? "" : "none";
+        viewMoreBtn.textContent = isExpanded ? "View less" : "View more";
+        viewMoreBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+      }
     }
 
     function setMore(expand){
       isExpanded = !!expand;
-
-      if (viewMoreBtn){
-        viewMoreBtn.textContent = isExpanded ? "View Less" : "View More";
-        viewMoreBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-      }
       applyVisibility();
     }
 
     function setFilter(filter){
       currentFilter = filter;
 
-      filterButtons.forEach(b => {
-        b.classList.toggle("isActive", (b.getAttribute("data-filter") || "all") === filter);
+      filterButtons.forEach(button => {
+        const buttonFilter = button.getAttribute("data-filter") || "all";
+        button.classList.toggle("isActive", buttonFilter === filter);
       });
+
+      isExpanded = filter !== "all";
 
       applyVisibility();
     }
 
     if (viewMoreBtn){
-      viewMoreBtn.addEventListener("click", () => setMore(!isExpanded));
+      viewMoreBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        setMore(!isExpanded);
+      });
     }
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => setFilter(btn.getAttribute("data-filter") || "all"));
-    });
+    filterButtons.forEach(button => {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
 
-    // Card hover/focus fade (dim other cards)
-    const cardsWrap = document.getElementById("cards");
+        const selectedFilter = button.getAttribute("data-filter") || "all";
+        const isAlreadyActive = button.classList.contains("isActive");
 
-    function setActiveCard(btn){
-      if (!cardsWrap) return;
+        if (isAlreadyActive && selectedFilter !== "all") {
+          setFilter("all");
+          return;
+        }
 
-      allCards.forEach(b => b.classList.remove("isActiveCard"));
-
-      if (btn){
-        btn.classList.add("isActiveCard");
-        cardsWrap.classList.add("isHovering");
-      } else {
-        cardsWrap.classList.remove("isHovering");
-      }
-    }
-
-    allCards.forEach(btn => {
-      btn.addEventListener("mouseenter", () => setActiveCard(btn));
-      btn.addEventListener("mouseleave", () => setActiveCard(null));
-
-      btn.addEventListener("focusin", () => setActiveCard(btn));
-      btn.addEventListener("focusout", (e) => {
-        if (!btn.contains(e.relatedTarget)) setActiveCard(null);
+        setFilter(selectedFilter);
       });
     });
 
-    // --- Project modal data ---
+    document.addEventListener("click", (event) => {
+      const clickedInsideFilter = event.target.closest(".filterRow");
+      const clickedInsideCard = event.target.closest(".cardBtn");
+      const clickedInsideModal = event.target.closest(".modalPanel");
+      const clickedViewMore = event.target.closest(".viewMoreBtn");
+
+      if (clickedInsideFilter || clickedInsideCard || clickedInsideModal || clickedViewMore) return;
+
+      if (currentFilter !== "all") {
+        setFilter("all");
+      }
+    });
+
+    // ---------- Project data ----------
     const PROJECTS = [
       {
         title: "Loan Approval Risk Assessment and Modeling using Logistic Regression and K-Nearest Neighbors",
@@ -1068,14 +947,12 @@ The focus was on building a robust, generalisable pricing model using advanced m
         details: [
           "What I Did:",
           "Analysed historical loan application data to identify key drivers behind loan approval decisions.",
-          "Developed and compared Logistic Regression and K-Nearest Neighbors (KNN) models to assess predictive   reliability.",
+          "Developed and compared Logistic Regression and K-Nearest Neighbors (KNN) models to assess predictive reliability.",
           "Applied feature selection techniques to reduce model complexity and highlight key credit risk factors.",
-
           "Key Results:",
           "Logistic Regression delivered more stable and generalisable performance compared to KNN.",
           "KNN showed higher sensitivity to parameter selection, indicating increased overfitting risk.",
           "Feature selection improved interpretability while maintaining overall model performance.",
-
           "Learning Outcomes:",
           "Gained practical experience in model comparison beyond simple accuracy metrics.",
           "Learned to balance predictive performance with interpretability in credit risk decisions.",
@@ -1092,13 +969,11 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Built and evaluated multiple models including Linear & Polynomial Regression, KNN, and Neural Networks.",
           "Applied cross-validation and Recursive Feature Elimination (RFE) to improve generalisation and reduce overfitting.",
           "Used Gaussian Naive Bayes, Categorical Naive Bayes, and Bayesian Network Analysis to identify key risk factor relationships.",
-
           "Key Results",
           "Neural Networks achieved the highest predictive performance by capturing non-linear relationships.",
           "Gaussian Naive Bayes performed strongly on continuous medical features, providing reliable probabilistic insights.",
           "Categorical Naive Bayes showed limitations due to class imbalance in categorical variables.",
           "Bayesian Network Analysis revealed important dependencies between age, smoking history, blood glucose, and HbA1c levels.",
-
           "Learning Outcomes",
           "Gained hands-on experience applying and comparing multiple machine learning models on healthcare data.",
           "Learned to address overfitting using cross-validation and feature selection techniques.",
@@ -1116,20 +991,18 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Performed exploratory analysis to identify top-selling products, profitable item groups, sales trends, and high-performing customer districts.",
           "Conducted statistical testing to compare profitability across regions and analyse price–volume relationships.",
           "Built a Random Forest model to predict 2014 sales and performed customer churn analysis using time-based definitions.",
-
           "Key Results",
           "Identified consistently high-performing products and districts driving revenue and profitability.",
           "Found strong seasonal sales patterns with mid-year peaks, supporting inventory and resource planning.",
           "Confirmed statistically significant profit differences between high- and low-performing districts.",
           "Random Forest model delivered strong predictive performance for sales forecasting, while churn analysis highlighted the need to refine churn definitions.",
-
           "Learning Outcomes",
           "Gained experience working with large, real-world business datasets and complex data cleaning challenges.",
           "Learned to combine exploratory analysis, statistical testing, and machine learning for business decision support.",
           "Developed a strong understanding of sales forecasting, profitability analysis, and customer retention metrics.",
           "Improved ability to communicate analytical findings in a business-focused and actionable manner."
         ],
-        skills: ["Python","Data Cleaning", "EDA", "Statistical Testing", "Sales & Profitability Analysis", "Random Forest Modeling", "Customer Retention Analysis", "Predictive Analytics", "Business Insight Generation"]
+        skills: ["Python", "Data Cleaning", "EDA", "Statistical Testing", "Sales & Profitability Analysis", "Random Forest Modeling", "Customer Retention Analysis", "Predictive Analytics", "Business Insight Generation"]
       },
       {
         title: "Customer Shopping Behavior Analysis Insights from Transactional Data",
@@ -1140,13 +1013,11 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Performed exploratory data analysis on demographics, product categories, and payment methods.",
           "Analysed spending behaviour across age groups, genders, and shopping locations.",
           "Created visualisations to highlight trends in purchases, quantities, and pricing.",
-
           "Key Results",
           "Identified key customer segments based on age and gender spending patterns.",
           "Observed clear differences in product category preferences across demographics.",
           "Highlighted variations in payment method usage across customer groups and malls.",
           "Revealed shopping malls with higher transaction volumes and revenue contribution.",
-
           "Learning Outcomes",
           "Strengthened foundational skills in exploratory data analysis (EDA) using Python.",
           "Learned to extract meaningful insights from raw transactional data.",
@@ -1164,13 +1035,11 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Identified inconsistencies in missing value handling, feature encoding, and feature selection.",
           "Corrected preprocessing steps by applying mean imputation, row removal rules, and one-hot encoding where appropriate.",
           "Tuned models using GridSearchCV and updated MLP activation functions to properly capture non-linear relationships.",
-
           "Key Results",
           "Corrected preprocessing improved data integrity and model reliability.",
           "Feature selection based on correlation strengthened interpretability and predictive relevance.",
           "Tuned Decision Tree Regression reduced overfitting and improved generalisation.",
           "Replacing linear activation with ReLU enabled the MLP model to capture non-linear price patterns more effectively.",
-
           "Learning Outcomes",
           "Developed the ability to critically evaluate machine learning pipelines, not just build models.",
           "Learned the importance of aligning code implementation with analytical objectives and assumptions.",
@@ -1189,20 +1058,18 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Conducted exploratory analysis and visualisation using boxplots, histograms, and correlation heatmaps.",
           "Applied statistical tests and OLS regression to analyse trait differences and predict total body length.",
           "Analysed physical differences across habitats to assess environmental influence on koala characteristics.",
-
           "Key Results",
           "Male koalas generally have greater total body length, supporting sexual dimorphism.",
           "Head length, skull width, paw size, and chest circumference show the strongest correlation with total length.",
           "Koalas in Victoria exhibit larger paws and chest circumferences than those in Queensland, indicating habitat-driven adaptations.",
           "Multi-variable regression improved predictive power, though biological complexity limits single-factor prediction.",
-
           "Learning Outcomes",
           "Strengthened skills in data cleaning, outlier treatment, and exploratory data analysis.",
           "Learned to apply statistical testing and regression models to real-world biological data.",
           "Developed judgement in balancing data integrity with biological plausibility.",
           "Improved ability to translate analytical findings into domain-specific insights."
         ],
-        skills: ["Exploratory Data Analysis", "Data Cleaning", "Outlier Treatment", "Statistical Testing", "OLS Regression", "Data Visualisation", "Correlation Analysis", "Analytical Reasoning","Python"]
+        skills: ["Exploratory Data Analysis", "Data Cleaning", "Outlier Treatment", "Statistical Testing", "OLS Regression", "Data Visualisation", "Correlation Analysis", "Analytical Reasoning", "Python"]
       },
       {
         title: "Global Terrorism Data Analysis: 1997-2017.",
@@ -1213,13 +1080,11 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Analysed temporal, geographic, and tactical patterns across regions, attack types, and targets.",
           "Built interactive visualisations using Power BI and R to explore trends, severity, and success rates.",
           "Compared attack frequency, casualties, and group activity to identify high-risk regions and periods.",
-
           "Key Results",
           "Terrorism activity peaked in 2001, 2007, and 2014, followed by a decline after 2014.",
           "South Asia and the Middle East & North Africa accounted for the majority of incidents and fatalities.",
           "Bombings and explosions were the most common and deadliest attack methods.",
           "Civilian targets suffered the highest casualties, highlighting significant humanitarian impact.",
-
           "Learning Outcomes",
           "Gained experience analysing large, complex global datasets with multiple dimensions.",
           "Learned to combine exploratory analysis with interactive dashboards for insight discovery.",
@@ -1237,13 +1102,11 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Engineered features using encoding, transformations, and consistency checks across train and test sets.",
           "Tuned XGBoost, LightGBM, and HistGradientBoosting models using cross-validation and early stopping.",
           "Built a weighted ensemble model by blending predictions based on inverse RMSE performance.",
-
           "Key Results",
           "Individual gradient boosting models achieved strong performance with validation R² around 0.93–0.94.",
           "The final ensemble model achieved the lowest RMSE (~4,121), outperforming all standalone models.",
           "Ensembling reduced prediction variance and improved overall model generalisation.",
           "The final model demonstrated reliable performance across validation splits.",
-
           "Learning Outcomes",
           "Gained hands-on experience building end-to-end machine learning pipelines for regression problems.",
           "Learned to tune and compare advanced ensemble models using cross-validation and early stopping.",
@@ -1251,23 +1114,94 @@ The focus was on building a robust, generalisable pricing model using advanced m
           "Improved ability to evaluate models using appropriate performance metrics for real-world prediction tasks."
         ],
         skills: ["Python", "Data Preprocessing", "Feature Engineering", "Gradient Boosting", "XGBoost", "LightGBM", "Model Ensembling", "Hyperparameter Tuning", "Regression Modeling"]
+      },
+      {
+        title: "South Australian Electricity Market Power BI Dashboard",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/south-australian-electricity-market-powerbi-dashboard",
+        details: [
+          "What I Did",
+          "Built an interactive Power BI dashboard analysing South Australian electricity market performance from July 2022 to June 2024.",
+          "Prepared and modelled interval-level electricity market data to calculate revenue, generation volume, market benchmark prices, dispatch-weighted capture prices and negative price exposure.",
+          "Created DAX measures for total revenue, total generation, market volume-weighted price, time-weighted average price, capture price, capture ratio, negative exposure and estimated emissions.",
+          "Designed four executive-style dashboard pages covering market overview, technology risk, dispatch timing, emissions and strategic insights.",
+          "Used consistent technology colour coding, slicers, KPI cards, reference lines and visual containers to improve dashboard readability and storytelling.",
+          "Key Results",
+          "Natural gas generated the highest total wholesale revenue across the analysis period despite lower utilisation than wind and solar.",
+          "Diesel and battery storage achieved premium dispatch-weighted capture prices because their dispatch was concentrated during higher-price periods.",
+          "Solar experienced the highest negative price exposure, reflecting midday generation concentration and price cannibalisation risk.",
+          "Wind and solar contributed significant generation volume but earned lower capture prices compared with dispatchable technologies.",
+          "Natural gas produced the largest estimated total emissions due to high dispatch volume and emissions intensity.",
+          "Learning Outcomes",
+          "Strengthened Power BI dashboard design skills by building a multi-page executive analytics report.",
+          "Improved DAX modelling skills for wide-format datasets using flexible technology-level measures.",
+          "Developed stronger understanding of capture price, volume-weighted market price, negative price exposure and revenue volatility.",
+          "Learned how to connect market performance, dispatch behaviour, technology risk and emissions into a clear business narrative."
+        ],
+        skills: ["Power BI", "DAX", "Excel", "Data Modelling", "Dashboard Design", "Energy Market Analytics", "Revenue Analysis", "Capture Price Analysis", "Negative Price Exposure", "Emissions Analysis", "Business Insight Communication"]
+      },
+      {
+        title: "Excel Inventory Order Planner for Fast-Food Operations",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/fast-food-inventory-order-planner",
+        details: [
+          "What I Did",
+          "Built an Excel-based inventory order planner for a fast-food or retail store environment using anonymised product names and synthetic sales data.",
+          "Created a structured workbook that calculates recommended order quantities based on current stock, incoming ordered stock, delivery schedule, expected demand, item usage rates and buffer requirements.",
+          "Designed separate workbook sheets for instructions, order planning, sales data, usage rates, setup rules and forecast logic.",
+          "Used Excel tables, structured references, data validation, protected formula cells and conditional status logic to improve usability and reduce manual errors.",
+          "Developed forecasting logic that compares forecasted weekly sales with historical baseline sales to support Low, Normal and High demand profile selection.",
+          "Key Results",
+          "The workbook automatically classifies each item as URGENT, ORDER or OK based on projected stock and demand requirements.",
+          "The planner separates pre-delivery demand from post-delivery coverage demand, making the ordering logic more realistic than a simple reorder-point calculation.",
+          "Synthetic historical sales data supports demand forecasting while keeping the workbook safe for portfolio use.",
+          "Protected formula cells and dropdown inputs make the workbook more reliable for practical operational use.",
+          "The final workbook provides a clear, user-friendly ordering tool that reduces manual calculation and supports more consistent stock planning.",
+          "Learning Outcomes",
+          "Strengthened advanced Excel workbook design skills using tables, structured references, validation rules and protected sheets.",
+          "Improved understanding of operational inventory planning, demand profiling and delivery coverage logic.",
+          "Learned how to convert a real business process into a structured Excel-based decision-support tool.",
+          "Developed stronger documentation and portfolio presentation skills by creating a confidential, anonymised version of the workbook."
+        ],
+        skills: ["Excel", "Inventory Planning", "Operational Analytics", "Excel Tables", "Structured References", "Data Validation", "Conditional Formatting", "Sheet Protection", "Forecasting Logic", "Demand Profiling", "Formula-Based Automation", "Business Process Improvement"]
+      },
+      {
+        title: "E-Commerce Sales Performance & Profitability Power BI Dashboard",
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/power-bi-ecommerce-performance-dashboard",
+        details: [
+          "What I Did",
+          "Built a multi-page interactive Power BI dashboard analysing e-commerce sales, profitability, customer behaviour, delivery performance, and operational insights.",
+          "Cleaned and transformed transactional data using Power Query and created analytical measures using DAX.",
+          "Designed executive-style dashboards using KPI cards, slicers, bookmarks, drill-through navigation, custom tooltips, and interactive filtering.",
+          "Created analytical visuals to evaluate revenue trends, category profitability, return behaviour, regional contribution, customer segmentation, discount effectiveness, delivery efficiency, and payment method contribution.",
+          "Developed a dedicated insights and recommendations page linking business findings directly to supporting visuals using bookmark navigation.",
+          "Key Results",
+          "Identified Electronics as the highest revenue-generating category but with weaker profitability efficiency compared to other categories.",
+          "Found Grocery operating at a loss despite generating sales revenue.",
+          "Observed that slower delivery times are associated with higher return rates.",
+          "Identified South and North regions as the largest revenue contributors.",
+          "Detected higher return rates in Fashion and Electronics categories.",
+          "Found customers aged 55+ contributing the highest revenue across age segments.",
+          "Learning Outcomes",
+          "Strengthened Power BI dashboard design and storytelling capabilities.",
+          "Improved DAX modelling skills for KPI calculations, return rate analysis, profitability analysis, and interactive reporting.",
+          "Learned how to connect business insights directly with supporting visual evidence using bookmarks and navigation.",
+          "Developed stronger understanding of executive-level dashboard structuring, analytical storytelling, and business-focused data visualisation."
+        ],
+        skills: ["Power BI", "DAX", "Power Query", "Data Modelling", "Dashboard Design", "Business Analytics", "Data Visualisation", "KPI Reporting", "Interactive Reporting", "Customer Analytics", "Profitability Analysis", "Executive Dashboarding"]
       }
     ];
 
-    // --- Modal logic ---
+    // ---------- Modal logic ----------
     const projectModal = document.getElementById("projectModal");
     const pmTitle = document.getElementById("pmTitle");
     const pmMeta = document.getElementById("pmMeta");
     const pmOpen = document.getElementById("pmOpen");
     const pmBody = document.getElementById("pmBody");
     const pmSkills = document.getElementById("pmSkills");
-    const modalCloseBtn = projectModal ? projectModal.querySelector(".modalClose") : null;
+    const modalCloseBtn = projectModal.querySelector(".modalClose");
 
     let lastFocusedEl = null;
 
-    function clearChildren(el){
-      while (el.firstChild) el.removeChild(el.firstChild);
-    }
+    function clearChildren(el){ while (el.firstChild) el.removeChild(el.firstChild); }
 
     function openProjectModal(index){
       const p = PROJECTS[index];
@@ -1283,26 +1217,16 @@ The focus was on building a robust, generalisable pricing model using advanced m
       const details = Array.isArray(p.details) ? p.details : [];
       if (details.length){
         let ul = null;
-
         const SECTION_TITLES = new Set(["what i did", "key results", "learning outcomes"]);
-
         details.forEach(text => {
           const raw = (text || "").trim();
           const normalized = raw.replace(/:$/, "").trim().toLowerCase();
           const isSectionTitle = SECTION_TITLES.has(normalized);
-
           if (isSectionTitle){
-            if (ul){
-              pmBody.appendChild(ul);
-              ul = null;
-            }
-
+            if (ul){ pmBody.appendChild(ul); ul = null; }
             const heading = document.createElement("p");
-            heading.style.fontWeight = "800";
-            heading.style.margin = "14px 0 6px";
             heading.textContent = raw.replace(/:$/, "");
             pmBody.appendChild(heading);
-
             ul = document.createElement("ul");
           } else {
             if (!ul) ul = document.createElement("ul");
@@ -1311,7 +1235,6 @@ The focus was on building a robust, generalisable pricing model using advanced m
             ul.appendChild(li);
           }
         });
-
         if (ul) pmBody.appendChild(ul);
       }
 
@@ -1327,34 +1250,18 @@ The focus was on building a robust, generalisable pricing model using advanced m
       projectModal.classList.add("show");
       projectModal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-
-      if (modalCloseBtn) modalCloseBtn.focus();
+      modalCloseBtn.focus();
     }
 
     function closeProjectModal(){
       projectModal.classList.remove("show");
       projectModal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-
-      if (lastFocusedEl && typeof lastFocusedEl.focus === "function"){
-        lastFocusedEl.focus();
-      }
+      if (lastFocusedEl && lastFocusedEl.focus) lastFocusedEl.focus();
     }
 
     document.querySelectorAll(".cardBtn").forEach(btn => {
       const idx = Number(btn.getAttribute("data-open"));
-
-      const openPill = btn.querySelector(".openProjectBtn");
-      if (openPill){
-        openPill.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-
-          const href = PROJECTS[idx] && PROJECTS[idx].openHref ? PROJECTS[idx].openHref : null;
-          if (href) window.open(href, "_blank", "noopener,noreferrer");
-        });
-      }
-
       btn.addEventListener("click", () => {
         if (!Number.isNaN(idx)) openProjectModal(idx);
       });
@@ -1363,16 +1270,141 @@ The focus was on building a robust, generalisable pricing model using advanced m
     projectModal.addEventListener("click", (e) => {
       if (e.target.matches("[data-close]")) closeProjectModal();
     });
-
     document.addEventListener("keydown", (e) => {
-      if (projectModal.classList.contains("show")){
-        if (e.key === "Escape") closeProjectModal();
-      }
+      if (projectModal.classList.contains("show") && e.key === "Escape") closeProjectModal();
     });
 
     // init
     setMore(false);
     setFilter("all");
   </script>
+  <script>
+  const PAGE_ORDER = [
+    "index.html",
+    "resume.html",
+    "portfolio.html",
+    "skills.html",
+    "contact.html"
+  ];
+
+  const PAGE_LABELS = {
+    "index.html": "Home",
+    "resume.html": "Resume",
+    "portfolio.html": "Portfolio",
+    "skills.html": "Skills",
+    "contact.html": "Contact"
+  };
+
+  function getCurrentPage() {
+    const page = window.location.pathname.split("/").pop();
+    return page || "index.html";
+  }
+
+  function goToPage(targetPage) {
+    if (!targetPage || targetPage === getCurrentPage()) return;
+
+    document.body.classList.remove("pageReady");
+    document.body.classList.add("pageFadeOut");
+
+    window.setTimeout(() => {
+      window.location.href = targetPage;
+    }, 340);
+  }
+
+  function goToAdjacentPage(direction) {
+    const currentPage = getCurrentPage();
+    const currentIndex = PAGE_ORDER.indexOf(currentPage);
+
+    if (currentIndex === -1) return;
+
+    const targetIndex =
+      (currentIndex + direction + PAGE_ORDER.length) % PAGE_ORDER.length;
+
+    goToPage(PAGE_ORDER[targetIndex]);
+  }
+
+  window.addEventListener("pageshow", () => {
+    document.body.classList.remove("pageFadeOut");
+    document.body.classList.add("pageReady");
+  });
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      link.target === "_blank" ||
+      link.hasAttribute("download")
+    ) {
+      return;
+    }
+
+    const url = new URL(link.href, window.location.href);
+
+    if (url.origin !== window.location.origin) return;
+
+    event.preventDefault();
+    goToPage(url.pathname.split("/").pop() || "index.html");
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const activeElement = document.activeElement;
+    const isTyping =
+      activeElement &&
+      (
+        activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        activeElement.tagName === "SELECT" ||
+        activeElement.isContentEditable
+      );
+
+    if (isTyping) return;
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToAdjacentPage(1);
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToAdjacentPage(-1);
+    }
+  });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  document.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener("touchend", (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    touchEndY = event.changedTouches[0].screenY;
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    const isHorizontalSwipe = Math.abs(diffX) > 80 && Math.abs(diffX) > Math.abs(diffY) * 1.5;
+
+    if (!isHorizontalSwipe) return;
+
+    if (diffX < 0) {
+      goToAdjacentPage(1);
+    } else {
+      goToAdjacentPage(-1);
+    }
+  }, { passive: true });
+</script>
 </body>
 </html>

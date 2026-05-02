@@ -3,665 +3,468 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pradyot Jain | Resume</title>
-  <meta name="description" content="Pradyot Jain - Experience and Education." />
+  <title>Pradyot Jain — Resume</title>
+  <meta name="description" content="Pradyot Jain's resume covering business analytics experience, internships, education, certifications, operations leadership, credit analysis, and data-driven project work." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Pradyot Jain — Resume" />
+  <meta property="og:description" content="View Pradyot Jain's business analytics resume, including education, internships, operations leadership, certifications, and analytical experience." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/profile/pradyot.png" />
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+    })();
+  </script>
 
   <style>
-    :root{
-      --text:#0d0d0d;
-      --muted: rgba(0,0,0,.62);
-      --line: rgba(0,0,0,.14);
-
-      --blue1:#1d4ed8;
-      --blue2:#0ea5e9;
-
-      --max: 1180px;
-
-      --shadow: 0 14px 34px rgba(0,0,0,.08);
-      --modalShadow: 0 26px 70px rgba(0,0,0,.18);
+    :root[data-theme="light"]{
+      --bg: #fafaf7; --bg-soft: #f3f2ec; --surface: #ffffff;
+      --ink: #0d1418; --ink-muted: #4a5258; --ink-faint: #8a9097;
+      --line: rgba(13,20,24,0.10); --line-strong: rgba(13,20,24,0.18);
+      --primary: #0d4f4a; --primary-hover: #0a3e3a;
+      --accent: #c2660a; --accent-hover: #a85708;
+      --shadow-sm: 0 1px 2px rgba(13,20,24,0.04);
+      --shadow-md: 0 4px 16px rgba(13,20,24,0.06);
+      --shadow-lg: 0 12px 32px rgba(13,20,24,0.08);
+    }
+    :root[data-theme="dark"]{
+      --bg: #0b0f10; --bg-soft: #14191b; --surface: #161c1e;
+      --ink: #e8e6e1; --ink-muted: #a8aeb1; --ink-faint: #6f767a;
+      --line: rgba(232,230,225,0.10); --line-strong: rgba(232,230,225,0.18);
+      --primary: #2dd4bf; --primary-hover: #5eead4;
+      --accent: #f59e0b; --accent-hover: #fbbf24;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
     }
 
-    *{ box-sizing:border-box; }
-    html{ height:100%; }
+    *{ box-sizing: border-box; }
+    html, body{ min-height: 100%; }
 
     body{
-      margin:0;
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 520px at 18% 16%, rgba(29,78,216,.16), transparent 60%),
-        radial-gradient(900px 520px at 82% 18%, rgba(14,165,233,.14), transparent 58%),
-        linear-gradient(180deg, #ffffff 0%, #f4f9ff 52%, #ffffff 100%);
-      background-attachment: fixed;
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px; line-height: 1.6; color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
       opacity: 0;
-      transition: opacity .22s ease;
-      min-height: 100vh;
+      transition: opacity 0.28s ease, background-color 0.3s ease, color 0.3s ease;
     }
-
     body.pageReady{ opacity: 1; }
     body.pageFadeOut{ opacity: 0; }
 
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ opacity:.92; }
-
-    a:focus-visible{
-      outline: 2px solid rgba(29,78,216,.55);
-      outline-offset: 3px;
-      border-radius: 8px;
+    body::before{
+      content: ""; position: fixed; inset: 0;
+      pointer-events: none; z-index: -1;
+      background:
+        radial-gradient(800px 500px at 85% 0%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 60%),
+        radial-gradient(600px 400px at 0% 100%, color-mix(in oklab, var(--accent) 5%, transparent), transparent 60%);
     }
 
-    /* Skip link (same as index.html) */
+    a{ color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible{
+      outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px;
+    }
+
     .skipLink{
-      position:absolute;
-      left:-999px;
-      top:10px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.18);
-      padding:10px 12px;
-      border-radius:10px;
-      z-index:9999;
+      position: absolute; left: -9999px; top: 12px;
+      background: var(--surface); color: var(--ink);
+      border: 1px solid var(--line-strong); padding: 10px 14px;
+      border-radius: 8px; z-index: 9999; font-weight: 600;
     }
     .skipLink:focus{ left: 18px; }
 
     .container{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 28px;
+      max-width: 1180px; margin: 0 auto; padding: 0 28px;
     }
 
-    /* Header */
-    header{
-      padding: 26px 0 10px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
+    /* Header (shared) */
+    header{ padding: 28px 0 12px; }
     .headerRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
     }
-
     .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -0.2px;
-      white-space: nowrap;
+      display: inline-flex; align-items: baseline; gap: 10px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500; font-size: 22px; letter-spacing: -0.3px;
+      color: var(--ink);
+    }
+    .brand .brandMark{
+      font-family: "Fraunces", serif; font-style: italic;
+      color: var(--primary); font-weight: 400;
+    }
+    .topNav{ display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; }
+    .topNav a{
+      padding: 8px 12px; border-radius: 6px; color: var(--ink-muted);
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .topNav a:hover{ color: var(--ink); background: var(--bg-soft); }
+    .topNav a.active{ color: var(--ink); font-weight: 600; }
+    .topNav a.active::after{
+      content: ""; display: block; width: 14px; height: 2px;
+      background: var(--accent); margin: 2px auto 0; border-radius: 2px;
     }
 
-    .brandDot{
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--blue1), var(--blue2));
-      display:inline-block;
-      box-shadow: 0 10px 18px rgba(0,0,0,.08);
-    }
+    .navTools{ display: flex; align-items: center; gap: 10px; margin-left: 8px; }
 
-    .brand:hover span:last-child{
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .themeToggle{
+      width: 36px; height: 36px; border: 1px solid var(--line-strong);
+      background: var(--surface); border-radius: 999px; cursor: pointer;
+      color: var(--ink-muted); display: inline-flex; align-items: center;
+      justify-content: center; padding: 0;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
+    .themeToggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
+    .themeToggle svg{ width: 16px; height: 16px; }
+    :root[data-theme="light"] .themeToggle .iconSun{ display: none; }
+    :root[data-theme="light"] .themeToggle .iconMoon{ display: block; }
+    :root[data-theme="dark"] .themeToggle .iconSun{ display: block; }
+    :root[data-theme="dark"] .themeToggle .iconMoon{ display: none; }
 
-    /* Match index.html nav defaults */
-    .topNav{
-      display:flex;
-      align-items:center;
-      gap: 16px;
-      font-size: 15px;
-      font-weight: 500;
-      color: #111;
-      white-space: nowrap;
-    }
-
-    .divider{
-      width: 1px;
-      height: 18px;
-      background: rgba(0,0,0,.38);
-      display:inline-block;
-      margin: 0 4px;
-      flex: 0 0 1px;
-    }
-
-    .active{
-      font-weight: 800;
-      text-decoration: underline;
-      text-underline-offset: 6px;
-      text-decoration-thickness: 2px;
-    }
-
-    /* Download dropdown */
-    .downloadWrap{
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
-
+    .downloadWrap{ position: relative; display: inline-flex; }
     .downloadBtn{
-      border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.55);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
+      border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+      padding: 9px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      font-family: inherit; display: inline-flex; align-items: center; gap: 6px;
+      transition: opacity 0.15s ease;
     }
-
-    .downloadBtn:hover{ opacity: .92; }
-
-    .downloadBtn.isOpen{
-      border-color: rgba(29,78,216,.35);
-      box-shadow: 0 10px 22px rgba(29,78,216,.12);
+    .downloadBtn:hover{ opacity: 0.88; }
+    .downloadBtn::after{
+      content: ""; width: 0; height: 0;
+      border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 4px solid currentColor; margin-left: 2px; opacity: 0.7;
     }
-
-    .downloadBtn:focus-visible{
-      outline: 2px solid rgba(29,78,216,.55);
-      outline-offset: 3px;
-    }
-
     .downloadMenu{
-      position: absolute;
-      top: 100%;
-      margin-top: 10px;
-      right: 0;
-      min-width: 190px;
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 12px;
-      box-shadow: 0 18px 40px rgba(0,0,0,.12);
-      padding: 8px;
-      z-index: 60;
-
-      opacity: 0;
-      transform: translateY(-6px);
-      pointer-events: none;
-      transition: opacity .16s ease, transform .16s ease;
+      position: absolute; top: 100%; margin-top: 8px; right: 0;
+      min-width: 200px; background: var(--surface);
+      border: 1px solid var(--line-strong); border-radius: 12px;
+      box-shadow: var(--shadow-lg); padding: 6px; z-index: 60;
+      opacity: 0; transform: translateY(-4px); pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
     }
-
-    .downloadMenu.show{
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
+    .downloadMenu.show{ opacity: 1; transform: translateY(0); pointer-events: auto; }
     .downloadMenu a{
-      display: block;
-      padding: 10px 10px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #111;
+      display: block; padding: 9px 12px; border-radius: 8px;
+      font-size: 13.5px; font-weight: 500; color: var(--ink);
     }
+    .downloadMenu a:hover{ background: var(--bg-soft); color: var(--primary); }
 
-    .downloadMenu a:hover{
-      background: rgba(29,78,216,.08);
-    }
-
-    /* Hover open (desktop hover-capable devices) */
     @media (hover: hover) and (pointer: fine){
-      .downloadWrap:hover .downloadMenu{
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      .downloadWrap:hover .downloadBtn{
-        border-color: rgba(29,78,216,.35);
-        box-shadow: 0 10px 22px rgba(29,78,216,.12);
-      }
+      .downloadWrap:hover .downloadMenu{ opacity: 1; transform: translateY(0); pointer-events: auto; }
       .downloadWrap::after{
-        content:"";
-        position:absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        height: 12px; /* must be >= margin-top (10px) */
+        content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 12px;
       }
     }
 
-    /* Main layout */
+    /* ---------- Page ---------- */
     main{
-      padding: 26px 0 0;
-      min-height: calc(100vh - 120px);
-      display:flex;
-      flex-direction:column;
+      padding: 32px 0 24px;
+      min-height: calc(100vh - 140px);
+      display: flex; flex-direction: column;
     }
 
-    /* Explore header */
-    .explore{
-      padding: 10px 0 6px;
-      text-align: center;
+    .pageHead{
+      padding: 24px 0 28px;
+      max-width: 720px;
     }
-    .explore h1{
-      margin: 0;
-      font-size: 34px;
-      font-weight: 850;
-      letter-spacing: -0.4px;
+    .pageHead .eyebrow{
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-muted);
+      margin-bottom: 16px;
     }
-    .explore p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14.5px;
-      font-weight: 600;
-      line-height: 1.6;
+    .pageHead .eyebrow::before{
+      content: ""; width: 24px; height: 1px; background: var(--accent);
+    }
+    .pageHead h1{
+      margin: 0 0 12px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(36px, 4.5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+    .pageHead h1 em{ font-style: italic; color: var(--primary); font-weight: 300; }
+    .pageHead p{
+      margin: 0; color: var(--ink-muted);
+      font-size: 15.5px; line-height: 1.65;
+      max-width: 600px;
     }
 
-    .circles{
-      flex: 1;
-      display:grid;
+    .twoCol{
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items:center;
-      padding: 22px 0 28px;
+      gap: 20px;
+      padding: 8px 0 32px;
+      flex: 1;
+      align-content: start;
     }
 
-    .circleBtn{
-      border: none;
-      background: none;
-      padding: 0;
+    .sectionCard{
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px 28px 24px;
       cursor: pointer;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      /* Fix mobile "blue square" tap highlight */
-      -webkit-tap-highlight-color: transparent;
-
-      /* Make the button shape circular so any focus/tap effect can't appear as a square */
-      border-radius: 999px;
-      outline: none;
+      text-align: left;
+      font-family: inherit;
+      color: var(--ink);
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+      overflow: hidden;
     }
-
-    /* Ensure tap highlight doesn't appear on children either (Android Chrome) */
-    .circleBtn, .circleBtn *{
-      -webkit-tap-highlight-color: transparent;
+    .sectionCard::before{
+      content: "";
+      position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--primary);
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
-
-    /* Remove default focus outline (Android may show it even when focus-visible isn't used) */
-    .circleBtn:focus{ outline: none; }
-    .circleBtn:focus-visible{ outline: none; }
-
-    /* Remove Firefox inner focus border (harmless elsewhere) */
-    .circleBtn::-moz-focus-inner{ border: 0; }
-
-    /* Replace outline focus with a rounded ring */
-    .circleBtn:focus-visible .circle{
-      box-shadow:
-        0 0 0 8px rgba(29,78,216,.18),
-        0 22px 44px rgba(0,0,0,.10);
+    .sectionCard:hover{
+      border-color: var(--ink-faint);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
-  
-    @media (pointer: coarse){
-      .circleBtn:focus-visible .circle{
-        box-shadow: 0 22px 44px rgba(0,0,0,.10);
-      }
-    }
+    .sectionCard:hover::before{ opacity: 1; }
 
-    .circle{
-      width: 380px;
-      height: 380px;
-      border-radius: 999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,.86), rgba(255,255,255,.38) 56%, rgba(255,255,255,.14) 100%),
-        linear-gradient(135deg, rgba(148,255,220,.28), rgba(170,210,255,.32), rgba(120,170,255,.28));
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 22px 44px rgba(0,0,0,.10);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, opacity .18s ease;
-      user-select:none;
+    .sectionCard .num{
+      font-family: "Fraunces", serif;
+      font-style: italic; font-weight: 300;
+      color: var(--accent); font-size: 14px;
+      letter-spacing: 0.05em;
     }
-
-    .circle:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 28px 60px rgba(0,0,0,.14);
-      filter: saturate(1.03);
+    .sectionCard h2{
+      margin: 8px 0 14px;
+      font-family: "Fraunces", serif;
+      font-weight: 400;
+      font-size: 32px;
+      letter-spacing: -0.6px;
+      color: var(--ink);
     }
-
-    .circle h2{
-      margin:0;
-      font-size: 34px;
-      font-weight: 500;
-      letter-spacing: .2px;
-      color: rgba(0,0,0,.82);
+    .sectionCard .desc{
+      margin: 0 0 24px;
+      color: var(--ink-muted);
+      font-size: 14.5px; line-height: 1.65;
+      max-width: 44ch;
     }
-
-    /* Fade the other circle on hover/focus (like portfolio cards) */
-    .circles.isHovering .circleBtn:not(.isActiveCircle) .circle{
-      opacity: .55;
-      transform: none;
-      filter: saturate(.95);
-      box-shadow: 0 22px 44px rgba(0,0,0,.10);
-    }
-
-    /* Divider line above footer */
-    .rule{
+    .sectionCard .meta{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
-      margin-top: 10px;
-    }
-
-    /* Footer */
-    footer{
-      padding: 24px 0 26px;
-      background: transparent;
-    }
-
-    .footerGrid{
-      display:grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0;
-      align-items:start;
-    }
-
-    .footTitle{
-      font-weight: 800;
-      margin: 0 0 10px;
-      font-size: 14px;
-      letter-spacing: -0.2px;
-    }
-
-    .footText{
-      margin:0;
-      color:#111;
-      font-weight: 500;
-      line-height: 1.6;
       font-size: 13px;
-      word-break: break-word;
+      color: var(--ink-muted);
     }
-
-    .footText a:hover{ text-decoration: underline; }
-
-    .copyright{
-      text-align:right;
-      color:#111;
-      font-size: 12px;
+    .sectionCard .meta .count{
+      display: inline-flex; align-items: center; gap: 6px;
       font-weight: 500;
-      margin: 0;
-      opacity:.75;
-      white-space: nowrap;
     }
+    .sectionCard .meta .openLabel{
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 4px;
+      transition: gap 0.15s ease;
+    }
+    .sectionCard:hover .meta .openLabel{ gap: 8px; }
 
-    /* Modal */
-    .modal{ position:fixed; inset:0; display:none; z-index:50; }
-    .modal.show{ display:block; }
-
+    /* ---------- Modal ---------- */
+    .modal{ position: fixed; inset: 0; display: none; z-index: 80; }
+    .modal.show{ display: block; }
     .modalBackdrop{
-      position:absolute; inset:0;
-      background: rgba(0,0,0,.34);
-      backdrop-filter: blur(7px);
+      position: absolute; inset: 0;
+      background: rgba(13,20,24,0.4);
+      backdrop-filter: blur(8px);
     }
+    :root[data-theme="dark"] .modalBackdrop{ background: rgba(0,0,0,0.6); }
 
     .modalPanel{
-      position:absolute;
-      top: 50%;
-      left: 50%;
+      position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-
-      max-width: 920px;
-      width: calc(100% - 36px);
-      min-height: 420px;
-
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,.12);
+      max-width: 920px; width: calc(100% - 36px);
+      max-height: calc(100vh - 60px);
+      background: var(--surface);
+      border: 1px solid var(--line-strong);
       border-radius: 18px;
-      box-shadow: var(--modalShadow);
-
-      padding: 18px 18px 14px;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-      display:grid;
-      grid-template-rows: 1fr auto;
-      gap: 10px;
-
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: flex; flex-direction: column;
       touch-action: pan-y;
     }
 
-    .modalContent{
-      display:grid;
-      grid-template-columns: 1fr 240px;
-      gap: 18px;
-      overflow: visible;
-      align-items: center;
-    }
-
-    .modalLeft{ min-width: 0; }
-
-    .modalRight{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      width: 100%;
-      text-align:center;
-      padding-left: 0;
-    }
-
-    .modalLogo{
-      max-width: 200px;
-      margin: 0 auto;
-      max-height: 200px;
-      object-fit: contain;
-      display:block;
+    .modalScroll{
+      overflow-y: auto;
+      padding: 28px 32px 20px;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
     }
 
     .modalClose{
-      position:absolute;
-      top: 10px; right: 12px;
-      border: none;
-      background: transparent;
-      cursor:pointer;
-      font-weight: 900;
-      font-size: 22px;
-      line-height: 1;
-      padding: 6px;
-      opacity: .75;
+      position: absolute; top: 14px; right: 16px;
+      border: none; background: transparent;
+      cursor: pointer; font-size: 22px; line-height: 1;
+      color: var(--ink-muted); padding: 8px;
+      border-radius: 6px;
+      transition: color 0.15s ease, background 0.15s ease;
     }
-    .modalClose:hover{ opacity: 1; }
+    .modalClose:hover{ color: var(--ink); background: var(--bg-soft); }
+
+    .modalContent{
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 28px;
+      align-items: start;
+    }
+    .modalLeft{ min-width: 0; }
+    .modalRight{
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      background: var(--bg-soft);
+      border-radius: 12px;
+      min-height: 160px;
+    }
+    .modalLogo{ max-width: 160px; max-height: 140px; display: block; }
 
     .modalHeader h2{
-      margin:0;
-      font-size: 28px;
-      font-weight: 850;
-      letter-spacing: -0.3px;
+      margin: 0 0 6px;
+      font-family: "Fraunces", serif;
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
     }
-
     .modalMeta{
-      margin-top: 8px;
-      font-size: 16px;
-      color: rgba(0,0,0,.65);
-      font-weight: 650;
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      font-weight: 500;
     }
-
     .modalLinks{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 14px;
+      display: flex; gap: 8px; flex-wrap: wrap;
     }
-
     .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(29,78,216,.08);
-      border: 1px solid rgba(29,78,216,.14);
-      color: #0b2a7a;
-      font-weight: 800;
-      font-size: 12.5px;
+      display: inline-flex; align-items: center;
+      padding: 7px 14px; border-radius: 999px;
+      background: color-mix(in oklab, var(--primary) 12%, transparent);
+      border: 1px solid color-mix(in oklab, var(--primary) 25%, transparent);
+      color: var(--primary);
+      font-weight: 600; font-size: 12.5px;
+      transition: background 0.15s ease;
     }
+    .pill:hover{ background: color-mix(in oklab, var(--primary) 18%, transparent); }
 
     .modalBody{
-      margin-top: 12px;
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(0,0,0,.78);
+      margin-top: 18px;
+      font-size: 14.5px; line-height: 1.7;
+      color: var(--ink);
     }
-
-    .modalBody ul{ margin: 10px 0 0; padding-left: 18px; }
-    .modalBody li{ margin: 8px 0; }
+    .modalBody ul{ margin: 0; padding-left: 0; list-style: none; }
+    .modalBody li{
+      position: relative;
+      padding: 0 0 10px 18px;
+      color: var(--ink-muted);
+    }
+    .modalBody li::before{
+      content: ""; position: absolute;
+      left: 0; top: 11px; width: 6px; height: 1px;
+      background: var(--accent);
+    }
 
     .skillPills{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid var(--line);
     }
-
     .skillPill{
-      display:inline-flex;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(29,78,216,.08);
-      border: 1px solid rgba(29,78,216,.14);
-      color: #000000;
-      font-weight: 650;
-      font-size: 12.5px;
+      font-size: 12px; font-weight: 500;
+      padding: 5px 11px; border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--ink-muted);
+      border: 1px solid var(--line);
     }
 
     .modalFooter{
-      display:grid;
-      grid-template-columns: 60px 1fr 60px;
-      align-items:center;
-      width: 100%;
-      padding-top: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 32px;
+      border-top: 1px solid var(--line);
+      background: var(--bg-soft);
     }
-
-    #prevBtn{ justify-self: start; }
-    #modalCount{ justify-self: center; }
-    #nextBtn{ justify-self: end; }
-
     .navBtn{
-      border: none;
-      background: transparent;
-      cursor:pointer;
-      font-weight: 900;
-      font-size: 22px;
-      padding: 6px 10px;
-      opacity: .65;
+      width: 36px; height: 36px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 15px;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
+    .navBtn:hover:not(:disabled){ border-color: var(--ink); }
+    .navBtn:disabled{ opacity: 0.35; cursor: not-allowed; }
+    .modalCount{ font-size: 13px; color: var(--ink-muted); font-weight: 500; }
 
-    .navBtn:hover{ opacity: 1; }
-    .navBtn:disabled{ opacity:.25; cursor:not-allowed; }
-
-    .modalCount{
-      font-size: 14px;
-      font-weight: 800;
-      color: rgba(0,0,0,.55);
+    /* ---------- Footer ---------- */
+    footer{
+      padding: 28px 0 32px;
+      border-top: 1px solid var(--line);
+      margin-top: 16px;
+    }
+    .footerGrid{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px; align-items: start;
+    }
+    .footTitle{
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-faint);
+      margin: 0 0 8px;
+    }
+    .footText{
+      margin: 0; font-size: 13.5px; line-height: 1.6;
+      color: var(--ink); word-break: break-word;
+    }
+    .footText a{ color: var(--ink); }
+    .footText a:hover{ color: var(--primary); }
+    .copyright{
+      font-size: 12px; color: var(--ink-faint);
+      text-align: right; margin: 0;
     }
 
     /* Responsive */
-    @media (max-width: 980px){
-      .headerRow{ flex-wrap: wrap; }
-      .topNav{ flex-wrap: wrap; justify-content: flex-start; row-gap: 10px; }
-
-      .circles{
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 18px 0 18px;
-      }
-
-      @media (max-width: 980px){
-        .modalPanel{
-          top: calc(env(safe-area-inset-top, 0px) + 12px);
-          left: 50%;
-          transform: translateX(-50%); /* remove vertical centering */
-          max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 24px);
-        }
-      }
-
-      .circle{ width: 320px; height: 320px; }
-      .circle h2{ font-size: 30px; }
-
-      .footerGrid{
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .copyright{ text-align:left; }
-
-      .modalPanel{ min-height: 520px; }
+    @media (max-width: 880px){
+      .twoCol{ grid-template-columns: 1fr; }
       .modalContent{ grid-template-columns: 1fr; }
-      .modalRight{ margin-top: 6px; }
-      .modalLogo{ max-width: 180px; max-height: 180px; }
+      .modalRight{ order: -1; }
+      .footerGrid{ grid-template-columns: 1fr 1fr; }
+      .copyright{ text-align: left; }
     }
-
-    @media (max-width: 480px){
-      .container{ padding: 0 18px; }
-      .topNav{ gap: 10px; }
-      .modalHeader h2{ font-size: 22px; }
-      .modalMeta{ font-size: 14px; }
-      .modalBody{ font-size: 14px; }
-    }
-
-    /* ===== Mobile header fix (same as index.html) ===== */
     @media (max-width: 640px){
-      header{ padding: 18px 0 8px; }
-
-      .headerRow{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .brand{
-        font-size: 20px;
-      }
-
-      .divider{ display: none; }
-
-      .topNav{
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 10px 14px;
-        font-size: 14px;
-        line-height: 1.2;
-        white-space: normal;
-      }
-
-      .downloadWrap{
-        width: 100%;
-        margin-top: 6px;
-      }
-
-      .downloadBtn{
-        width: 100%;
-        justify-content: center;
-        padding: 10px 12px;
-      }
-
-      .downloadMenu{
-        right: auto;
-        left: 0;
-        min-width: 100%;
-      }
-    }
-
-    /* ===== Footer fix on very small screens (same as index.html) ===== */
-    @media (max-width: 520px){
-      .footerGrid{
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .copyright{
-        text-align: left;
-        white-space: normal;
-      }
+      header{ padding: 20px 0 8px; }
+      .headerRow{ flex-wrap: wrap; gap: 12px; }
+      .topNav{ order: 3; width: 100%; gap: 0; flex-wrap: wrap; }
+      .topNav a{ padding: 6px 10px; font-size: 13.5px; }
+      .navTools{ margin-left: auto; }
+      .container{ padding: 0 20px; }
+      .footerGrid{ grid-template-columns: 1fr; gap: 18px; }
+      .modalScroll{ padding: 22px 22px 16px; }
+      .modalFooter{ padding: 12px 22px; }
     }
 
     @media (prefers-reduced-motion: reduce){
-      *{
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
+      *{ transition: none !important; animation: none !important; }
       body{ opacity: 1 !important; }
     }
   </style>
@@ -673,60 +476,61 @@
   <header>
     <div class="container headerRow">
       <a href="index.html" class="brand">
-        <span class="brandDot" aria-hidden="true"></span>
+        <span class="brandMark">P.</span>
         <span>Pradyot Jain</span>
       </a>
-
       <nav class="topNav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <span class="divider" aria-hidden="true"></span>
-        <a class="active" href="resume.html">Resume</a>
-        <span class="divider" aria-hidden="true"></span>
+        <a class="active" href="resume.html" aria-current="page">Resume</a>
         <a href="portfolio.html">Portfolio</a>
-        <span class="divider" aria-hidden="true"></span>
         <a href="skills.html">Skills</a>
-        <span class="divider" aria-hidden="true"></span>
         <a href="contact.html">Contact</a>
-        <span class="divider" aria-hidden="true"></span>
-
+      </nav>
+      <div class="navTools">
+        <button type="button" class="themeToggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
         <div class="downloadWrap">
-          <button
-            type="button"
-            class="downloadBtn"
-            id="downloadBtn"
-            aria-haspopup="menu"
-            aria-expanded="false"
-            aria-controls="downloadMenu"
-          >
-            Download Resume
-          </button>
-
-          <div class="downloadMenu" id="downloadMenu" role="menu" tabindex="-1" aria-label="Download resume options">
+          <button type="button" class="downloadBtn" id="downloadBtn"
+            aria-haspopup="menu" aria-expanded="false" aria-controls="downloadMenu">Download Resume</button>
+          <div class="downloadMenu" id="downloadMenu" role="menu" aria-label="Download resume">
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.pdf" download>Download PDF</a>
             <a role="menuitem" href="assets/resumes/Pradyot_Jain_Resume.docx" download>Download Word</a>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   </header>
 
-  <main class="container" id="main" aria-label="Resume sections">
-    <section class="explore" aria-label="Explore my resume">
-      <h1>Explore my Resume</h1>
-      <p>Click a section to view my experience and education.</p>
+  <main class="container" id="main">
+    <section class="pageHead">
+      <div class="eyebrow">Resume</div>
+      <h1>Professional experience and <em>education</em>.</h1>
+      <p>A concise overview of my professional experience, education, certifications, responsibilities, outcomes, and the skills developed across business analytics, operations, credit assessment, and stakeholder-facing work.</p>
     </section>
 
-    <section class="circles" id="circlesWrap">
-      <button class="circleBtn" type="button" data-modal="exp" aria-label="Open Experience">
-        <div class="circle"><h2>Experience</h2></div>
+    <section class="twoCol">
+      <button type="button" class="sectionCard" data-modal="exp" aria-label="Open experience">
+        <div class="num">01 / Professional</div>
+        <h2>Experience</h2>
+        <p class="desc">Roles spanning operations leadership, business analytics, credit appraisal, and retail banking analysis across India and Australia.</p>
+        <div class="meta">
+          <span class="count">4 roles</span>
+          <span class="openLabel">Open <span aria-hidden="true">→</span></span>
+        </div>
       </button>
 
-      <button class="circleBtn" type="button" data-modal="edu" aria-label="Open Education">
-        <div class="circle"><h2>Education</h2></div>
+      <button type="button" class="sectionCard" data-modal="edu" aria-label="Open education">
+        <div class="num">02 / Academic</div>
+        <h2>Education</h2>
+        <p class="desc">Master of Business Analytics at Macquarie, undergraduate business administration, and CA Foundation from ICAI.</p>
+        <div class="meta">
+          <span class="count">3 qualifications</span>
+          <span class="openLabel">Open <span aria-hidden="true">→</span></span>
+        </div>
       </button>
     </section>
-
-    <div class="rule"></div>
 
     <footer>
       <div class="footerGrid">
@@ -737,28 +541,23 @@
             <a href="tel:+917980010389">+91 79800 10389</a>
           </p>
         </div>
-
         <div>
           <p class="footTitle">Email</p>
           <p class="footText"><a href="mailto:pradyotjain0921@gmail.com">pradyotjain0921@gmail.com</a></p>
         </div>
-
         <div>
           <p class="footTitle">Location</p>
           <p class="footText">Sydney, NSW</p>
         </div>
-
         <div>
-          <p class="footTitle">Follow Me</p>
+          <p class="footTitle">Follow</p>
           <p class="footText">
-            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <span style="opacity:.55; padding: 0 8px;">|</span>
+            <a href="https://www.linkedin.com/in/pradyot-jain/" target="_blank" rel="noopener noreferrer">LinkedIn</a><br>
             <a href="https://github.com/pradyot0921/Portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
           </p>
         </div>
-
         <div>
-          <p class="copyright">© <span id="year"></span> by Pradyot Jain</p>
+          <p class="copyright">© <span id="year"></span> Pradyot Jain</p>
         </div>
       </div>
     </footer>
@@ -767,27 +566,24 @@
   <!-- Modal -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modalBackdrop" data-close></div>
-
     <div class="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button type="button" class="modalClose" aria-label="Close" data-close>✕</button>
-
-      <div class="modalContent">
-        <div class="modalLeft">
-          <div class="modalHeader">
-            <h2 id="modalTitle">Title</h2>
-            <div class="modalMeta" id="modalMeta"></div>
-            <div class="modalLinks" id="modalLinks"></div>
+      <div class="modalScroll">
+        <div class="modalContent">
+          <div class="modalLeft">
+            <div class="modalHeader">
+              <h2 id="modalTitle">Title</h2>
+              <div class="modalMeta" id="modalMeta"></div>
+              <div class="modalLinks" id="modalLinks"></div>
+            </div>
+            <div class="modalBody" id="modalBody"></div>
+            <div class="skillPills" id="skillPills"></div>
           </div>
-
-          <div class="modalBody" id="modalBody"></div>
-          <div class="skillPills" id="skillPills"></div>
-        </div>
-
-        <div class="modalRight">
-          <img id="modalLogo" class="modalLogo" src="" alt="Company logo">
+          <div class="modalRight">
+            <img id="modalLogo" class="modalLogo" src="" alt="Logo">
+          </div>
         </div>
       </div>
-
       <div class="modalFooter">
         <button type="button" class="navBtn" id="prevBtn" aria-label="Previous">←</button>
         <div class="modalCount" id="modalCount">1 of 1</div>
@@ -797,51 +593,52 @@
   </div>
 
   <script>
-    // Page fade-in on load
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("pageReady");
-    });
-
-    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Smooth fade-out for internal navigation
-    document.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (!link) return;
-
-      const href = link.getAttribute("href");
-      if (!href) return;
-
-      if (href.startsWith("javascript:")) return;
-      if (link.target === "_blank") return;
-      if (link.hasAttribute("download")) return;
-      if (href.startsWith("#")) return;
-      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
-      if (/^https?:\/\//i.test(href)) return;
-
-      e.preventDefault();
-
-      if (reduceMotion){
-        window.location.href = href;
-        return;
-      }
-
-      document.body.classList.add("pageFadeOut");
-
-      setTimeout(() => {
-        window.location.href = href;
-      }, 220);
-    });
-
     window.addEventListener("pageshow", () => {
       document.body.classList.remove("pageFadeOut");
       document.body.classList.add("pageReady");
     });
 
-    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Modal logic + data
+    // Theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    function setTheme(t){
+      document.documentElement.setAttribute("data-theme", t);
+      try { localStorage.setItem("theme", t); } catch(e){}
+    }
+    themeToggle.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(cur === "light" ? "dark" : "light");
+    });
+
+    // Download menu
+    const downloadBtn = document.getElementById("downloadBtn");
+    const downloadMenu = document.getElementById("downloadMenu");
+
+    function closeDownloadMenu(){ downloadMenu.classList.remove("show"); downloadBtn.setAttribute("aria-expanded","false"); }
+    function openDownloadMenu(){ downloadMenu.classList.add("show"); downloadBtn.setAttribute("aria-expanded","true"); }
+    function toggleDownloadMenu(){ if (downloadMenu.classList.contains("show")) closeDownloadMenu(); else openDownloadMenu(); }
+
+    const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (downloadBtn && downloadMenu){
+      if (!isHoverDevice){
+        downloadBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleDownloadMenu(); });
+        document.addEventListener("click", () => closeDownloadMenu());
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDownloadMenu(); });
+        downloadMenu.addEventListener("click", (e) => e.stopPropagation());
+      } else {
+        downloadBtn.addEventListener("focus", openDownloadMenu);
+        downloadBtn.addEventListener("blur", () => {
+          setTimeout(() => {
+            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn) closeDownloadMenu();
+          }, 50);
+        });
+        downloadMenu.addEventListener("mouseleave", closeDownloadMenu);
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDownloadMenu(); });
+      }
+    }
+
+    // ---------- Modal data + logic ----------
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modalTitle");
     const modalMeta = document.getElementById("modalMeta");
@@ -850,53 +647,42 @@
     const modalLogo = document.getElementById("modalLogo");
     const modalLinks = document.getElementById("modalLinks");
     const skillPills = document.getElementById("skillPills");
-
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
 
-    const downloadBtn = document.getElementById("downloadBtn");
-    const downloadMenu = document.getElementById("downloadMenu");
-
     const DATA = {
       exp: [
-
-           {
-           title: "Pappa Flock - Shift Leader",
-           meta: "Mar 2025 – Present | Australia | On-site",
-           logo: "assets/logos/pappaflocklogo.png",
-           bullets: [
-             "Led end-to-end shift operations, ensuring smooth service flow, food quality, and adherence to operational and safety standards.",
-             "Supervised and supported team members during peak periods, managing task allocation, issue escalation, and real-time decision-making.",
-             "Monitored operational metrics such as service time, order accuracy, POS transactions, and end-of-shift cash reconciliation.",
-             "Coordinated inventory checks and restocking to minimise shortages, waste, and operational disruptions.",
-             "Resolved customer issues professionally and supported store managers with opening, closing, and operational reporting.",
-             "Supported store managers with opening and closing procedures and operational reporting."
+        {
+          title: "Pappa Flock — Shift Leader",
+          meta: "Mar 2025 – Present · Australia · On-site",
+          logo: "assets/logos/pappaflocklogo.png",
+          bullets: [
+            "Led end-to-end shift operations, ensuring smooth service flow, food quality, and adherence to operational and safety standards.",
+            "Supervised and supported team members during peak periods, managing task allocation, issue escalation, and real-time decision-making.",
+            "Monitored operational metrics such as service time, order accuracy, POS transactions, and end-of-shift cash reconciliation.",
+            "Coordinated inventory checks and restocking to minimise shortages, waste, and operational disruptions.",
+            "Resolved customer issues professionally and supported store managers with opening, closing, and operational reporting.",
           ],
-          skills: [ "Operations Management", "Team Leadership", "Process Compliance", "Service Quality Control", "Problem Solving", "Operational Reporting", "Decision-Making", "Inventory Tracking & Waste Reduction", "Root-Cause Analysis", "Stakeholder & Team Communication"
-          ]
+          skills: ["Operations Management", "Team Leadership", "Process Compliance", "Service Quality Control", "Problem Solving", "Operational Reporting", "Decision-Making", "Inventory Tracking & Waste Reduction", "Root-Cause Analysis", "Stakeholder & Team Communication"]
         },
         {
-          title: "Appolo Computers Pvt. Ltd. - Trainee, Business Analytics",
-          meta: "May 2024 - Jun 2024 | India | On-site",
+          title: "Appolo Computers Pvt. Ltd. — Trainee, Business Analytics",
+          meta: "May 2024 – Jun 2024 · India · On-site",
           logo: "assets/logos/appolologo.png",
-          certificates: [
-            { label: "Certificate", href: "assets/certificates/appolo_certificate.pdf" }
-          ],
+          certificates: [{ label: "Certificate", href: "assets/certificates/appolo_certificate.pdf" }],
           bullets: [
-            "Acquired knowledge of various Business Analysis techniques and methodologies.",
-            "Conducted comprehensive competitor research to identify new product features and enhancement opportunities.",
-            "Developed detailed analytical reports with new product designs and feature improvement recommendations.",
-            "Proposed innovative design ideas based on data analysis to enhance software performance and user experience."
+            "Applied business analysis techniques to understand product requirements, user needs, and improvement opportunities.",
+            "Conducted competitor and market research to identify product feature gaps and enhancement areas.",
+            "Prepared analytical reports summarising product design recommendations and feature improvement opportunities.",
+            "Proposed data-informed design ideas to improve software usability, performance, and user experience."
           ],
           skills: ["Business Analysis Techniques", "Competitor & Market Research", "Requirements Analysis", "Data Analysis & Insight Generation", "Product Feature Evaluation", "Analytical Reporting", "User Experience (UX) Analysis", "Data-Driven Product Recommendations", "Problem Solving & Critical Thinking"]
         },
         {
-          title: "Aavas Financiers Ltd. - Trainee, Credit Department",
-          meta: "Dec 2023 - Feb 2024 | India | On-site",
+          title: "Aavas Financiers Ltd. — Trainee, Credit Department",
+          meta: "Dec 2023 – Feb 2024 · India · On-site",
           logo: "assets/logos/Aavaslogo.png",
-          certificates: [
-            { label: "Certificate", href: "assets/certificates/aavas_certificate.pdf" }
-          ],
+          certificates: [{ label: "Certificate", href: "assets/certificates/aavas_certificate.pdf" }],
           bullets: [
             "Gained comprehensive knowledge of the loan sanctioning process, encompassing each stage from application to loan approval.",
             "Evaluated loan eligibility by assessing applicants as per company policies, including on-site visits to verify businesses and income sources.",
@@ -906,12 +692,10 @@
           skills: ["Credit Risk Assessment", "Loan Eligibility Analysis", "Financial Statement Analysis", "Credit Appraisal (CAM)", "Field Verification & Due Diligence", "Risk Identification", "Policy & Compliance Analysis", "Data-Driven Decision Making", "Stakeholder Coordination"]
         },
         {
-          title: "Yes Bank - Trainee, Retail Banking (Service Management)",
-          meta: "Jun 2022 - Aug 2022 | India | On-site",
+          title: "Yes Bank — Trainee, Retail Banking (Service Management)",
+          meta: "Jun 2022 – Aug 2022 · India · On-site",
           logo: "assets/logos/yesbanklogo.png",
-          certificates: [
-            { label: "Certificate", href: "assets/certificates/yesbank_certificate.pdf" }
-          ],
+          certificates: [{ label: "Certificate", href: "assets/certificates/yesbank_certificate.pdf" }],
           bullets: [
             "Analysed the incentive structure to identify barriers preventing employees from earning incentives.",
             "Conducted Data collection and analysis with 410 employees to assess factors impacting incentive earnings.",
@@ -923,12 +707,10 @@
       ],
       edu: [
         {
-          title: "Master of Business Analytics - Macquarie University, Sydney",
-          meta: "2024 - 2026",
+          title: "Master of Business Analytics — Macquarie University, Sydney",
+          meta: "2024 – 2026",
           logo: "assets/logos/mqlogo.png",
-          certificates: [
-            { label: "Result", href: "assets/certificates/mq_result.pdf" }
-          ],
+          certificates: [{ label: "Result", href: "assets/certificates/mq_result.pdf" }],
           bullets: [
             "Developed the ability to transform large, unstructured datasets into meaningful analytical insights.",
             "Applied predictive and machine learning techniques to solve real-world business problems.",
@@ -938,8 +720,8 @@
           skills: ["Data Analytics", "Predictive Modelling", "Machine Learning Fundamentals", "Statistical Analysis", "Data Visualisation", "Model Evaluation & Interpretation", "Business-Driven Analytics", "Dashboard"]
         },
         {
-          title: "Bachelor of Business Administration - Bharati Vidyapeeth University, India",
-          meta: "2020 - 2023",
+          title: "Bachelor of Business Administration — Bharati Vidyapeeth University, India",
+          meta: "2020 – 2023",
           logo: "assets/logos/bvplogo.png",
           certificates: [{ label: "Result", href: "assets/certificates/bvp_result.pdf" }],
           bullets: [
@@ -952,8 +734,8 @@
           skills: ["Business Fundamentals", "Financial Analysis", "Marketing & Consumer Behaviour Analysis", "Operations & Process Understanding", "Quantitative & Qualitative Research", "Strategic Thinking", "Professional Communication"]
         },
         {
-          title: "CA Foundation - Institute of Chartered Accountants of India",
-          meta: "July, 2022",
+          title: "CA Foundation — Institute of Chartered Accountants of India",
+          meta: "July 2022",
           logo: "assets/logos/icailogo.png",
           certificates: [{ label: "Result", href: "assets/certificates/icai_result.pdf" }],
           bullets: [
@@ -970,90 +752,7 @@
     let currentType = "exp";
     let currentIndex = 0;
 
-    function clearChildren(el){
-      while (el.firstChild) el.removeChild(el.firstChild);
-    }
-
-    function createPillLink(label, href){
-      const a = document.createElement("a");
-      a.className = "pill";
-      a.href = href;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = label;
-      return a;
-    }
-
-    function createSkillPill(text){
-      const span = document.createElement("span");
-      span.className = "skillPill";
-      span.textContent = text;
-      return span;
-    }
-
-    // Download menu behavior (same approach as index.html)
-    function closeDownloadMenu(){
-      if (!downloadMenu) return;
-      downloadMenu.classList.remove("show");
-      downloadBtn.classList.remove("isOpen");
-      downloadBtn.setAttribute("aria-expanded", "false");
-    }
-
-    function openDownloadMenu(){
-      if (!downloadMenu) return;
-      downloadMenu.classList.add("show");
-      downloadBtn.classList.add("isOpen");
-      downloadBtn.setAttribute("aria-expanded", "true");
-
-      // Focus menu on non-hover devices for keyboard users
-      const isHoverDeviceLocal = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      if (!isHoverDeviceLocal) downloadMenu.focus();
-    }
-
-    function toggleDownloadMenu(){
-      const isOpen = downloadMenu.classList.contains("show");
-      if (isOpen) closeDownloadMenu();
-      else openDownloadMenu();
-    }
-
-    const isHoverDevice = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    if (downloadBtn && downloadMenu){
-      if (!isHoverDevice){
-        downloadBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          toggleDownloadMenu();
-        });
-
-        document.addEventListener("click", () => closeDownloadMenu());
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeDownloadMenu();
-        });
-
-        downloadMenu.addEventListener("click", (e) => e.stopPropagation());
-      } else {
-        downloadBtn.addEventListener("focus", () => openDownloadMenu());
-        downloadBtn.addEventListener("blur", () => {
-          setTimeout(() => {
-            if (!downloadMenu.contains(document.activeElement) && document.activeElement !== downloadBtn){
-              closeDownloadMenu();
-            }
-          }, 50);
-        });
-
-        downloadMenu.addEventListener("mouseleave", () => closeDownloadMenu());
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeDownloadMenu();
-        });
-      }
-
-      // Close when focus moves outside button+menu (keyboard)
-      document.addEventListener("focusin", (e) => {
-        const within = downloadBtn.contains(e.target) || downloadMenu.contains(e.target);
-        if (!within) closeDownloadMenu();
-      });
-    }
+    function clearChildren(el){ while (el.firstChild) el.removeChild(el.firstChild); }
 
     function render(){
       const list = DATA[currentType] || [];
@@ -1080,169 +779,211 @@
       const certArr = Array.isArray(item.certificates) ? item.certificates : [];
       certArr.forEach(c => {
         if (!c || !c.href || !c.label) return;
-        modalLinks.appendChild(createPillLink(c.label, c.href));
+        const a = document.createElement("a");
+        a.className = "pill";
+        a.href = c.href;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = c.label;
+        modalLinks.appendChild(a);
       });
 
       clearChildren(skillPills);
       const skillsArr = Array.isArray(item.skills) ? item.skills : [];
       if (skillsArr.length){
-        skillsArr.forEach(s => skillPills.appendChild(createSkillPill(s)));
+        skillsArr.forEach(s => {
+          const span = document.createElement("span");
+          span.className = "skillPill";
+          span.textContent = s;
+          skillPills.appendChild(span);
+        });
         skillPills.style.display = "flex";
       } else {
         skillPills.style.display = "none";
       }
 
       if (item.logo){
-        modalLogo.src = item.logo;
+        modalLogo.src = item.logo || "";
+        modalLogo.alt = item.title ? `${item.title} logo` : "Organisation logo";
+        modalLogo.onerror = () => {
+          modalLogo.style.display = "none";
+        };
         modalLogo.style.display = "block";
-        modalLogo.alt = (item.title || "Logo") + " logo";
+        modalLogo.alt = (item.title || "Logo");
       } else {
         modalLogo.removeAttribute("src");
         modalLogo.style.display = "none";
-        modalLogo.alt = "Company logo";
       }
 
       prevBtn.disabled = (currentIndex === 0);
       nextBtn.disabled = (currentIndex === list.length - 1);
     }
 
-    let lastActiveElement = null;
+    let lastFocused = null;
 
     function openModal(type){
-      lastActiveElement = document.activeElement;
-
-      if (lastActiveElement && lastActiveElement.blur) lastActiveElement.blur();
-
+      lastFocused = document.activeElement;
       currentType = (type === "edu") ? "edu" : "exp";
       currentIndex = 0;
       render();
       modal.classList.add("show");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-
-      const closeBtn = modal.querySelector(".modalClose");
-      if (closeBtn) closeBtn.focus();
+      modal.querySelector(".modalClose").focus();
     }
-
     function closeModal(){
       modal.classList.remove("show");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-
-      if (lastActiveElement && typeof lastActiveElement.focus === "function"){
-        lastActiveElement.focus();
-      }
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
     document.querySelectorAll("[data-modal]").forEach(btn => {
       btn.addEventListener("click", () => openModal(btn.getAttribute("data-modal")));
     });
 
-    prevBtn.addEventListener("click", () => {
-      if (currentIndex > 0){
-        currentIndex--;
-        render();
-      }
-    });
-
+    prevBtn.addEventListener("click", () => { if (currentIndex > 0){ currentIndex--; render(); } });
     nextBtn.addEventListener("click", () => {
       const list = DATA[currentType] || [];
-      if (currentIndex < list.length - 1){
-        currentIndex++;
-        render();
-      }
+      if (currentIndex < list.length - 1){ currentIndex++; render(); }
     });
 
-    modal.addEventListener("click", (e) => {
-      if (e.target.matches("[data-close]")) closeModal();
-    });
-
+    modal.addEventListener("click", (e) => { if (e.target.matches("[data-close]")) closeModal(); });
     document.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("show")) return;
       if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowLeft") prevBtn.click();
-      if (e.key === "ArrowRight") nextBtn.click();
+      if (e.key === "ArrowLeft" && !prevBtn.disabled) prevBtn.click();
+      if (e.key === "ArrowRight" && !nextBtn.disabled) nextBtn.click();
     });
 
-    // Swipe / trackpad gesture navigation for modal
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    function isModalOpen(){
-      return modal.classList.contains("show");
-    }
-
-    function goPrev(){
-      if (!prevBtn.disabled) prevBtn.click();
-    }
-
-    function goNext(){
-      if (!nextBtn.disabled) nextBtn.click();
-    }
-
-    modal.addEventListener("touchstart", (e) => {
-      if (!isModalOpen()) return;
-      if (!e.touches || e.touches.length !== 1) return;
-
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    modal.addEventListener("touchend", (e) => {
-      if (!isModalOpen()) return;
-      if (!e.changedTouches || e.changedTouches.length !== 1) return;
-
-      const endX = e.changedTouches[0].clientX;
-      const endY = e.changedTouches[0].clientY;
-
-      const dx = endX - touchStartX;
-      const dy = endY - touchStartY;
-
-      if (Math.abs(dx) < 60) return;
-      if (Math.abs(dx) < Math.abs(dy) * 1.2) return;
-
-      if (dx > 0) goPrev();
-      else goNext();
-    }, { passive: true });
-
-    modal.addEventListener("wheel", (e) => {
-      if (!isModalOpen()) return;
-
-      if (Math.abs(e.deltaX) < 35) return;
-      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
-
-      e.preventDefault();
-
-      if (e.deltaX > 0) goNext();
-      else goPrev();
-    }, { passive: false });
-
-    // Circle hover/focus fade (like portfolio cards)
-    const circlesWrap = document.getElementById("circlesWrap");
-    const circleBtns = Array.from(document.querySelectorAll(".circleBtn"));
-
-    function setActiveCircle(btn){
-      if (!circlesWrap) return;
-
-      circleBtns.forEach(b => b.classList.remove("isActiveCircle"));
-
-      if (btn){
-        btn.classList.add("isActiveCircle");
-        circlesWrap.classList.add("isHovering");
-      } else {
-        circlesWrap.classList.remove("isHovering");
-      }
-    }
-
-    circleBtns.forEach(btn => {
-      btn.addEventListener("mouseenter", () => setActiveCircle(btn));
-      btn.addEventListener("mouseleave", () => setActiveCircle(null));
-
-      btn.addEventListener("focusin", () => setActiveCircle(btn));
-      btn.addEventListener("focusout", (e) => {
-        if (!btn.contains(e.relatedTarget)) setActiveCircle(null);
-      });
-    });
   </script>
+  <script>
+  const PAGE_ORDER = [
+    "index.html",
+    "resume.html",
+    "portfolio.html",
+    "skills.html",
+    "contact.html"
+  ];
+
+  const PAGE_LABELS = {
+    "index.html": "Home",
+    "resume.html": "Resume",
+    "portfolio.html": "Portfolio",
+    "skills.html": "Skills",
+    "contact.html": "Contact"
+  };
+
+  function getCurrentPage() {
+    const page = window.location.pathname.split("/").pop();
+    return page || "index.html";
+  }
+
+  function goToPage(targetPage) {
+    if (!targetPage || targetPage === getCurrentPage()) return;
+
+    document.body.classList.remove("pageReady");
+    document.body.classList.add("pageFadeOut");
+
+    window.setTimeout(() => {
+      window.location.href = targetPage;
+    }, 220);
+  }
+
+  function goToAdjacentPage(direction) {
+    const currentPage = getCurrentPage();
+    const currentIndex = PAGE_ORDER.indexOf(currentPage);
+
+    if (currentIndex === -1) return;
+
+    const targetIndex =
+      (currentIndex + direction + PAGE_ORDER.length) % PAGE_ORDER.length;
+
+    goToPage(PAGE_ORDER[targetIndex]);
+  }
+
+  window.addEventListener("pageshow", () => {
+    document.body.classList.remove("pageFadeOut");
+    document.body.classList.add("pageReady");
+  });
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:") ||
+      link.target === "_blank" ||
+      link.hasAttribute("download")
+    ) {
+      return;
+    }
+
+    const url = new URL(link.href, window.location.href);
+
+    if (url.origin !== window.location.origin) return;
+
+    event.preventDefault();
+    goToPage(url.pathname.split("/").pop() || "index.html");
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const activeElement = document.activeElement;
+    const isTyping =
+      activeElement &&
+      (
+        activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        activeElement.tagName === "SELECT" ||
+        activeElement.isContentEditable
+      );
+
+    if (isTyping) return;
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToAdjacentPage(1);
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToAdjacentPage(-1);
+    }
+  });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  document.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener("touchend", (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    touchEndY = event.changedTouches[0].screenY;
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    const isHorizontalSwipe = Math.abs(diffX) > 80 && Math.abs(diffX) > Math.abs(diffY) * 1.5;
+
+    if (!isHorizontalSwipe) return;
+
+    if (diffX < 0) {
+      goToAdjacentPage(1);
+    } else {
+      goToAdjacentPage(-1);
+    }
+  }, { passive: true });
+</script>
 </body>
 </html>
