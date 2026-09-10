@@ -88,16 +88,16 @@
 
   <header>
     <div class="container headerRow">
-      <a href="index.html" class="brand">
+      <a href="/" class="brand">
         <span class="brandMark">P.</span>
         <span>Pradyot Jain</span>
       </a>
       <nav class="topNav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="skills.html">Skills</a>
-        <a class="active" href="contact.html" aria-current="page">Contact</a>
+        <a href="/">Home</a>
+        <a href="/resume">Resume</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/skills">Skills</a>
+        <a class="active" href="/contact" aria-current="page">Contact</a>
       </nav>
       <div class="navTools">
         <button type="button" class="themeToggle" id="themeToggle" aria-label="Toggle theme">
@@ -158,7 +158,7 @@
           </p>
 
           <p class="contactSecondary">
-            <a href="tel:+610421779699">+61 421 779 699 (Australia)</a>
+            <a href="tel:+61421779699">+61 421 779 699 (Australia)</a>
           </p>
         </div>
       </div>
@@ -311,25 +311,23 @@
     }
   </script>
   <script>
-  const PAGE_ORDER = [
-    "index.html",
-    "resume.html",
-    "portfolio.html",
-    "skills.html",
-    "contact.html"
-  ];
+  const PAGE_ORDER = ["index", "resume", "portfolio", "skills", "contact"];
+  const PAGE_PATHS = {
+    index: "/", resume: "/resume", portfolio: "/portfolio",
+    skills: "/skills", contact: "/contact"
+  };
 
   const PAGE_LABELS = {
-    "index.html": "Home",
-    "resume.html": "Resume",
-    "portfolio.html": "Portfolio",
-    "skills.html": "Skills",
-    "contact.html": "Contact"
+    "index": "Home",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "skills": "Skills",
+    "contact": "Contact"
   };
 
   function getCurrentPage() {
-    const page = window.location.pathname.split("/").pop();
-    return page || "index.html";
+    const seg = window.location.pathname.split("/").pop().replace(/\.html$/, "");
+    return seg || "index";
   }
 
   function goToPage(targetPage) {
@@ -339,7 +337,7 @@
     document.body.classList.add("pageFadeOut");
 
     window.setTimeout(() => {
-      window.location.href = targetPage;
+      window.location.href = PAGE_PATHS[targetPage] || targetPage;
     }, 220);
   }
 
@@ -398,6 +396,7 @@
       );
 
     if (isTyping) return;
+    if (document.querySelector(".modal.show, .projectModal.show, [class*='odal'].show")) return;
 
     if (event.key === "ArrowRight") {
       event.preventDefault();

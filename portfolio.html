@@ -87,16 +87,16 @@
   <a href="#main" class="skipLink">Skip to content</a>
   <header>
     <div class="container headerRow">
-      <a href="index.html" class="brand">
+      <a href="/" class="brand">
         <span class="brandMark">P.</span>
         <span>Pradyot Jain</span>
       </a>
       <nav class="topNav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a class="active" href="portfolio.html" aria-current="page">Portfolio</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a href="/resume">Resume</a>
+        <a class="active" href="/portfolio" aria-current="page">Portfolio</a>
+        <a href="/skills">Skills</a>
+        <a href="/contact">Contact</a>
       </nav>
       <div class="navTools">
         <button type="button" class="themeToggle" id="themeToggle" aria-label="Toggle theme">
@@ -142,11 +142,11 @@
       <div class="kpi kpiChart">
         <span class="kpiLabel">By domain</span>
         <ul class="miniBars">
-          <li><span class="mbLabel">Retail</span><span class="mbTrack"><span class="mbFill" style="width:100%"></span></span><span class="mbVal">3</span></li>
-          <li><span class="mbLabel">Finance</span><span class="mbTrack"><span class="mbFill" style="width:67%"></span></span><span class="mbVal">2</span></li>
-          <li><span class="mbLabel">Energy</span><span class="mbTrack"><span class="mbFill" style="width:33%"></span></span><span class="mbVal">1</span></li>
-          <li><span class="mbLabel">Automotive</span><span class="mbTrack"><span class="mbFill" style="width:67%"></span></span><span class="mbVal">2</span></li>
-          <li><span class="mbLabel">Other</span><span class="mbTrack"><span class="mbFill" style="width:133%;max-width:100%"></span></span><span class="mbVal">4</span></li>
+          <li><span class="mbLabel">Retail</span><span class="mbTrack"><span class="mbFill" style="width:75%"></span></span><span class="mbVal">3</span></li>
+          <li><span class="mbLabel">Finance</span><span class="mbTrack"><span class="mbFill" style="width:50%"></span></span><span class="mbVal">2</span></li>
+          <li><span class="mbLabel">Energy</span><span class="mbTrack"><span class="mbFill" style="width:25%"></span></span><span class="mbVal">1</span></li>
+          <li><span class="mbLabel">Automotive</span><span class="mbTrack"><span class="mbFill" style="width:50%"></span></span><span class="mbVal">2</span></li>
+          <li><span class="mbLabel">Other</span><span class="mbTrack"><span class="mbFill" style="width:100%"></span></span><span class="mbVal">4</span></li>
         </ul>
       </div>
     </section>
@@ -325,7 +325,7 @@
           </div>
         </article>
       </button>
-      <button class="cardBtn" type="button" data-open="5" data-more="true" data-tags="python" hidden>
+      <button class="cardBtn" type="button" data-open="5" data-more="true" data-tags="r" hidden>
         <article class="card">
           <div class="cardStat cardStatTools">
             <span class="csCap">R · statistical analysis</span>
@@ -883,25 +883,23 @@
     setFilter("all");
   </script>
   <script>
-  const PAGE_ORDER = [
-    "index.html",
-    "resume.html",
-    "portfolio.html",
-    "skills.html",
-    "contact.html"
-  ];
+  const PAGE_ORDER = ["index", "resume", "portfolio", "skills", "contact"];
+  const PAGE_PATHS = {
+    index: "/", resume: "/resume", portfolio: "/portfolio",
+    skills: "/skills", contact: "/contact"
+  };
 
   const PAGE_LABELS = {
-    "index.html": "Home",
-    "resume.html": "Resume",
-    "portfolio.html": "Portfolio",
-    "skills.html": "Skills",
-    "contact.html": "Contact"
+    "index": "Home",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "skills": "Skills",
+    "contact": "Contact"
   };
 
   function getCurrentPage() {
-    const page = window.location.pathname.split("/").pop();
-    return page || "index.html";
+    const seg = window.location.pathname.split("/").pop().replace(/\.html$/, "");
+    return seg || "index";
   }
 
   function goToPage(targetPage) {
@@ -911,7 +909,7 @@
     document.body.classList.add("pageFadeOut");
 
     window.setTimeout(() => {
-      window.location.href = targetPage;
+      window.location.href = PAGE_PATHS[targetPage] || targetPage;
     }, 340);
   }
 
@@ -970,6 +968,7 @@
       );
 
     if (isTyping) return;
+    if (document.querySelector(".modal.show, .projectModal.show, [class*='odal'].show")) return;
 
     if (event.key === "ArrowRight") {
       event.preventDefault();

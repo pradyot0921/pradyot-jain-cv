@@ -88,16 +88,16 @@
 
   <header>
     <div class="container headerRow">
-      <a href="index.html" class="brand">
+      <a href="/" class="brand">
         <span class="brandMark">P.</span>
         <span>Pradyot Jain</span>
       </a>
       <nav class="topNav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a class="active" href="resume.html" aria-current="page">Resume</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
+        <a href="/">Home</a>
+        <a class="active" href="/resume" aria-current="page">Resume</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/skills">Skills</a>
+        <a href="/contact">Contact</a>
       </nav>
       <div class="navTools">
         <button type="button" class="themeToggle" id="themeToggle" aria-label="Toggle theme">
@@ -279,7 +279,7 @@
           skills: ["Operations Management", "Team Leadership", "Process Compliance", "Service Quality Control", "Problem Solving", "Operational Reporting", "Decision-Making", "Inventory Tracking & Waste Reduction", "Root-Cause Analysis", "Stakeholder & Team Communication"]
         },
         {
-          title: "Appolo Computers Pvt. Ltd. — Trainee, Business Analytics",
+          title: "Apollo Computers Pvt. Ltd. — Trainee, Business Analytics",
           meta: "May 2024 – Jun 2024 · India · On-site",
           logo: "assets/logos/apollo.png",
           certificates: [{ label: "Certificate", href: "assets/certificates/apollo-certificate.pdf" }],
@@ -471,25 +471,23 @@
 
   </script>
   <script>
-  const PAGE_ORDER = [
-    "index.html",
-    "resume.html",
-    "portfolio.html",
-    "skills.html",
-    "contact.html"
-  ];
+  const PAGE_ORDER = ["index", "resume", "portfolio", "skills", "contact"];
+  const PAGE_PATHS = {
+    index: "/", resume: "/resume", portfolio: "/portfolio",
+    skills: "/skills", contact: "/contact"
+  };
 
   const PAGE_LABELS = {
-    "index.html": "Home",
-    "resume.html": "Resume",
-    "portfolio.html": "Portfolio",
-    "skills.html": "Skills",
-    "contact.html": "Contact"
+    "index": "Home",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "skills": "Skills",
+    "contact": "Contact"
   };
 
   function getCurrentPage() {
-    const page = window.location.pathname.split("/").pop();
-    return page || "index.html";
+    const seg = window.location.pathname.split("/").pop().replace(/\.html$/, "");
+    return seg || "index";
   }
 
   function goToPage(targetPage) {
@@ -499,7 +497,7 @@
     document.body.classList.add("pageFadeOut");
 
     window.setTimeout(() => {
-      window.location.href = targetPage;
+      window.location.href = PAGE_PATHS[targetPage] || targetPage;
     }, 220);
   }
 
@@ -558,6 +556,7 @@
       );
 
     if (isTyping) return;
+    if (document.querySelector(".modal.show, .projectModal.show, [class*='odal'].show")) return;
 
     if (event.key === "ArrowRight") {
       event.preventDefault();

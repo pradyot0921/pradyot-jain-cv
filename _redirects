@@ -1,6 +1,12 @@
-# Canonicalise: .html URLs permanently redirect to the clean path.
-/index.html      /            301!
-/resume.html     /resume      301!
-/portfolio.html  /portfolio   301!
-/skills.html     /skills      301!
-/contact.html    /contact     301!
+# Serve the clean paths (internal links already use these).
+/resume          /resume.html      200
+/portfolio       /portfolio.html   200
+/skills          /skills.html      200
+/contact         /contact.html     200
+
+# Canonicalise: anyone arriving on a .html URL is sent to the clean one.
+/index.html      /                 301!
+/resume.html     /resume           301!
+/portfolio.html  /portfolio        301!
+/skills.html     /skills           301!
+/contact.html    /contact          301!
