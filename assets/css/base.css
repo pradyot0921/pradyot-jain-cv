@@ -44,7 +44,7 @@
 
 html, body{ min-height: 100%; }
 
-body.pageReady{ opacity: 1; }
+body.pageReady{ opacity: 1; transition: opacity 0.12s ease; }
 
 body.pageFadeOut{ opacity: 0; }
 

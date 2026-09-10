@@ -83,8 +83,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/assets/css/base.css?v=7" />
-  <link rel="stylesheet" href="/assets/css/home.css?v=7" />
+  <link rel="stylesheet" href="/assets/css/base.css?v=8" />
+  <link rel="stylesheet" href="/assets/css/home.css?v=8" />
 </head>
 
 <body>
@@ -348,13 +348,7 @@
 
   function goToPage(targetPage) {
     if (!targetPage || targetPage === getCurrentPage()) return;
-
-    document.body.classList.remove("pageReady");
-    document.body.classList.add("pageFadeOut");
-
-    window.setTimeout(() => {
-      window.location.href = PAGE_PATHS[targetPage] || targetPage;
-    }, 220);
+    window.location.href = PAGE_PATHS[targetPage] || targetPage;
   }
 
   function goToAdjacentPage(direction) {
@@ -372,32 +366,6 @@
   window.addEventListener("pageshow", () => {
     document.body.classList.remove("pageFadeOut");
     document.body.classList.add("pageReady");
-  });
-
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
-
-    if (!link) return;
-
-    const href = link.getAttribute("href");
-
-    if (
-      !href ||
-      href.startsWith("#") ||
-      href.startsWith("mailto:") ||
-      href.startsWith("tel:") ||
-      link.target === "_blank" ||
-      link.hasAttribute("download")
-    ) {
-      return;
-    }
-
-    const url = new URL(link.href, window.location.href);
-
-    if (url.origin !== window.location.origin) return;
-
-    event.preventDefault();
-    goToPage(url.pathname.split("/").pop() || "index.html");
   });
 
   document.addEventListener("keydown", (event) => {
