@@ -274,7 +274,8 @@ footer{
         gap: 40px;
         padding: 24px 0;
       }
-      .heroRight{ order: -1; width: 100%; margin: 0; }
+      .heroRight{ order: 2; width: 100%; margin: 0; }
+      .heroLeft{ order: 1; }
       .quickLinks{ grid-template-columns: 1fr; }
       .footerGrid{ grid-template-columns: 1fr 1fr; }
       .copyright{ text-align: left; }
@@ -337,4 +338,12 @@ footer{
 @media (max-width: 520px){
   .statStrip{ grid-template-columns: 1fr; gap: 20px; }
   .statLabel{ max-width: none; }
+}
+
+
+@media (max-width: 720px){
+  .hero{ padding-top: 12px; }
+  .heroShot{ max-width: none; }
+  .heroShot img{ aspect-ratio: auto; }
+  .heroShot figcaption{ font-size: 12px; padding: 9px 12px; }
 }
