@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Personal documents are for humans who visit, not for bulk indexing.
+Disallow: /assets/certificates/
+Disallow: /assets/resumes/
+
+Sitemap: https://pradyot-jain-cv.netlify.app/sitemap.xml
