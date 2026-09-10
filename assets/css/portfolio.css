@@ -206,10 +206,7 @@ main{
 .viewMoreWrap{
       display: flex;
       justify-content: center;
-      padding: 28px 0 8px;
-      position: sticky;
-      bottom: 22px;
-      z-index: 40;
+      padding: 34px 0 10px;
       pointer-events: none;
     }
 
@@ -439,4 +436,76 @@ footer{
 .modalShot figcaption{
   font-size: 12.5px; color: var(--ink-faint); padding: 9px 12px;
   border-top: 1px solid var(--line);
+}
+
+/* ---------- Portfolio KPI strip ---------- */
+.kpiRow{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(0, 1.5fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 28px 0 30px;
+}
+.kpi{
+  background: var(--surface);
+  padding: 18px 20px;
+  display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  min-width: 0;
+}
+.kpiNum{
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 30px; font-weight: 400; line-height: 1; letter-spacing: -0.8px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.kpiLabel{
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.kpiChart{ gap: 10px; }
+.miniBars{ list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.miniBars li{
+  display: grid; grid-template-columns: 66px 1fr 18px;
+  align-items: center; gap: 8px;
+}
+.mbLabel{ font-size: 11px; color: var(--ink-muted); white-space: nowrap; }
+.mbTrack{ height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
+.mbFill{ display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.mbVal{
+  font-size: 11px; color: var(--ink-faint); text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px){
+  .kpiRow{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpiChart{ grid-column: 1 / -1; }
+}
+@media (max-width: 480px){
+  .kpiRow{ grid-template-columns: 1fr 1fr; }
+  .kpiNum{ font-size: 26px; }
+}
+
+/* ---------- Metric covers for projects without a screenshot ---------- */
+.cardStat{
+  margin: 0 0 16px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--bg-soft);
+  aspect-ratio: 16 / 10;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 8px; padding: 0 24px; text-align: left;
+}
+.csNum{
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 400; line-height: 1; letter-spacing: -1.5px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.csCap{
+  font-size: 12.5px; line-height: 1.45; color: var(--ink-muted); max-width: 26ch;
+}
+.cardStatTools .csCap{
+  font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-faint);
 }

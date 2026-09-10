@@ -122,6 +122,34 @@
       <p>A curated collection of business analytics projects covering Power BI dashboards, Excel automation, predictive modelling, data visualisation, operational analysis, and decision-focused reporting.</p>
     </section>
 
+    <section class="kpiRow" aria-label="Portfolio at a glance">
+      <div class="kpi">
+        <span class="kpiNum">12</span>
+        <span class="kpiLabel">Projects</span>
+      </div>
+      <div class="kpi">
+        <span class="kpiNum">5</span>
+        <span class="kpiLabel">Power BI &amp; Excel builds</span>
+      </div>
+      <div class="kpi">
+        <span class="kpiNum">7</span>
+        <span class="kpiLabel">Domains</span>
+      </div>
+      <div class="kpi">
+        <span class="kpiNum">1.99M</span>
+        <span class="kpiLabel">Largest dataset, rows</span>
+      </div>
+      <div class="kpi kpiChart">
+        <span class="kpiLabel">By domain</span>
+        <ul class="miniBars">
+          <li><span class="mbLabel">Retail</span><span class="mbTrack"><span class="mbFill" style="width:100%"></span></span><span class="mbVal">3</span></li>
+          <li><span class="mbLabel">Finance</span><span class="mbTrack"><span class="mbFill" style="width:67%"></span></span><span class="mbVal">2</span></li>
+          <li><span class="mbLabel">Energy</span><span class="mbTrack"><span class="mbFill" style="width:33%"></span></span><span class="mbVal">1</span></li>
+          <li><span class="mbLabel">Automotive</span><span class="mbTrack"><span class="mbFill" style="width:67%"></span></span><span class="mbVal">2</span></li>
+          <li><span class="mbLabel">Other</span><span class="mbTrack"><span class="mbFill" style="width:133%;max-width:100%"></span></span><span class="mbVal">4</span></li>
+        </ul>
+      </div>
+    </section>
     <section class="filterRow" aria-label="Filter projects">
       <span class="filterLabel">Filter</span>
       <button type="button" class="filterPill isActive" data-filter="all" aria-label="Show all projects">All</button>
@@ -133,33 +161,73 @@
     </section>
 
     <section class="cards" id="cards" aria-label="Projects">
-      <button class="cardBtn" type="button" data-open="0" data-tags="python">
+      <button class="cardBtn" type="button" data-open="8" data-tags="powerbi excel">
         <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/sa-electricity-thumb.webp" alt="Market overview page: revenue, generation mix and capture prices"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
           <p class="cardSub">01 / Project</p>
-          <h3 class="cardTitle">Loan Approval Risk Assessment and Modeling using Logistic Regression and K-Nearest Neighbors</h3>
-          <p class="cardDesc">Analysed historical loan data and compared Logistic Regression with KNN to assess approval patterns and credit risk drivers.</p>
+          <h3 class="cardTitle">South Australian Electricity Market Power BI Dashboard</h3>
+          <p class="cardDesc">Built an interactive multi-page dashboard analysing revenue, capture price, dispatch timing, and emissions across SA's electricity market.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="1" data-tags="python predictiveanalytics">
+      <button class="cardBtn" type="button" data-open="10" data-tags="powerbi excel">
         <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/ecommerce-thumb.webp" alt="E-commerce dashboard overview page"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
           <p class="cardSub">02 / Project</p>
-          <h3 class="cardTitle">Diabetes Risk Prediction and Feature Analysis Using Machine Learning</h3>
-          <p class="cardDesc">Predicted diabetes risk using regression, KNN, and neural networks — and used probabilistic methods to interpret feature relationships.</p>
+          <h3 class="cardTitle">E-Commerce Sales Performance & Profitability Power BI Dashboard</h3>
+          <p class="cardDesc">Built a multi-page dashboard analysing revenue, profitability, returns, and customer behaviour across categories and regions.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
+      <button class="cardBtn" type="button" data-open="11" data-tags="powerbi">
+        <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/cv-dashboard-thumb.webp" alt="One-page Power BI CV dashboard"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
+          <p class="cardSub">03 / Project</p>
+          <h3 class="cardTitle">Personal Analytics CV Dashboard in Power BI</h3>
+          <p class="cardDesc">Modelled my own CV as a relational dataset and built it into a one-page Power BI report with DAX measures and slicer-driven filtering.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
+        </article>
+      </button>
+      <button class="cardBtn" type="button" data-open="9" data-tags="excel">
+        <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/fastfood-thumb.webp" alt="Order planner sheet flagging items as URGENT, ORDER or OK"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
+          <p class="cardSub">04 / Project</p>
+          <h3 class="cardTitle">Excel Inventory Order Planner for Fast-Food Operations</h3>
+          <p class="cardDesc">Designed a structured Excel workbook for retail inventory ordering, with demand profiling, delivery coverage, and automated status logic.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
+        </article>
+      </button>
       <button class="cardBtn" type="button" data-open="2" data-tags="python predictiveanalytics">
         <article class="card">
-          <p class="cardSub">03 / Project</p>
+          <div class="cardStat">
+            <span class="csNum">1.99M</span>
+            <span class="csCap">rows across two fiscal years</span>
+          </div>
+          <p class="cardSub">05 / Project</p>
           <h3 class="cardTitle">Data-Driven Analysis and Predictive Modeling for Sales, Profitability, and Customer Retention</h3>
           <p class="cardDesc">Worked with large transactional data to forecast sales, identify profit drivers, and assess customer churn for LuminaTech Lighting.</p>
           <div class="cardFoot">
@@ -168,57 +236,42 @@
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="3" data-tags="python" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="0" data-tags="python">
         <article class="card">
-          <p class="cardSub">04 / Project</p>
-          <h3 class="cardTitle">Customer Shopping Behavior Analysis Insights from Transactional Data</h3>
-          <p class="cardDesc">Explored customer demographics, payment methods, and product category preferences to understand spending patterns across shopping malls.</p>
-          <div class="cardFoot">
-            <span class="open">Read more <span aria-hidden="true">→</span></span>
-            <span class="external">GitHub ↗</span>
+          <div class="cardStat">
+            <span class="csNum">93.1%</span>
+            <span class="csCap">test accuracy, logistic regression</span>
           </div>
-        </article>
-      </button>
-
-      <button class="cardBtn" type="button" data-open="4" data-tags="python predictiveanalytics" data-more="true" hidden>
-        <article class="card">
-          <p class="cardSub">05 / Project</p>
-          <h3 class="cardTitle">Critical Analysis of Vehicle Price Prediction Models</h3>
-          <p class="cardDesc">Reviewed and corrected a vehicle price prediction pipeline — fixing preprocessing, encoding, and tuning across Linear, Decision Tree, and MLP models.</p>
-          <div class="cardFoot">
-            <span class="open">Read more <span aria-hidden="true">→</span></span>
-            <span class="external">GitHub ↗</span>
-          </div>
-        </article>
-      </button>
-
-      <button class="cardBtn" type="button" data-open="5" data-tags="python" data-more="true" hidden>
-        <article class="card">
           <p class="cardSub">06 / Project</p>
-          <h3 class="cardTitle">Analyzing Koala Physical Traits and Environmental Adaptations</h3>
-          <p class="cardDesc">Used statistical testing and OLS regression on physical measurements to study habitat-driven adaptations and biological patterns.</p>
+          <h3 class="cardTitle">Loan Approval Risk Assessment and Modeling using Logistic Regression and K-Nearest Neighbors</h3>
+          <p class="cardDesc">Analysed historical loan data and compared Logistic Regression with KNN to assess approval patterns and credit risk drivers.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="6" data-tags="r powerbi" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="1" data-more="true" data-tags="python predictiveanalytics" hidden>
         <article class="card">
+          <div class="cardStat">
+            <span class="csNum">0.92</span>
+            <span class="csCap">AUC, Gaussian Naive Bayes</span>
+          </div>
           <p class="cardSub">07 / Project</p>
-          <h3 class="cardTitle">Global Terrorism Data Analysis: 1997–2017</h3>
-          <p class="cardDesc">Analysed two decades of global terrorism event data with interactive Power BI and R dashboards to surface patterns and severity trends.</p>
+          <h3 class="cardTitle">Diabetes Risk Prediction and Feature Analysis Using Machine Learning</h3>
+          <p class="cardDesc">Predicted diabetes risk using regression, KNN, and neural networks — and used probabilistic methods to interpret feature relationships.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="7" data-tags="python predictiveanalytics" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="7" data-more="true" data-tags="python predictiveanalytics" hidden>
         <article class="card">
+          <div class="cardStat">
+            <span class="csNum">4,122</span>
+            <span class="csCap">validation RMSE, blended ensemble</span>
+          </div>
           <p class="cardSub">08 / Project</p>
           <h3 class="cardTitle">Car Price Prediction — Gradient Boosting Ensemble Approach</h3>
           <p class="cardDesc">Built a weighted ensemble of XGBoost, LightGBM, and HistGradientBoosting to predict used car prices with strong generalisation.</p>
@@ -228,64 +281,58 @@
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="8" data-tags="powerbi excel" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="6" data-more="true" data-tags="r powerbi" hidden>
         <article class="card">
-          <div class="cardThumb">
-            <img src="/assets/projects/sa-electricity-thumb.webp" alt="Market overview page: revenue, generation mix and capture prices"
-                 width="640" height="400" loading="lazy" decoding="async">
+          <div class="cardStat">
+            <span class="csNum">103.9K</span>
+            <span class="csCap">incidents, 1997 to 2017</span>
           </div>
           <p class="cardSub">09 / Project</p>
-          <h3 class="cardTitle">South Australian Electricity Market Power BI Dashboard</h3>
-          <p class="cardDesc">Built an interactive multi-page dashboard analysing revenue, capture price, dispatch timing, and emissions across SA's electricity market.</p>
+          <h3 class="cardTitle">Global Terrorism Data Analysis: 1997–2017</h3>
+          <p class="cardDesc">Analysed two decades of global terrorism event data with interactive Power BI and R dashboards to surface patterns and severity trends.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="9" data-tags="excel" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="3" data-more="true" data-tags="python" hidden>
         <article class="card">
-          <div class="cardThumb">
-            <img src="/assets/projects/fastfood-thumb.webp" alt="Order planner sheet flagging items as URGENT, ORDER or OK"
-                 width="640" height="400" loading="lazy" decoding="async">
+          <div class="cardStat">
+            <span class="csNum">99,461</span>
+            <span class="csCap">transactions across 11 malls</span>
           </div>
           <p class="cardSub">10 / Project</p>
-          <h3 class="cardTitle">Excel Inventory Order Planner for Fast-Food Operations</h3>
-          <p class="cardDesc">Designed a structured Excel workbook for retail inventory ordering, with demand profiling, delivery coverage, and automated status logic.</p>
+          <h3 class="cardTitle">Customer Shopping Behavior Analysis Insights from Transactional Data</h3>
+          <p class="cardDesc">Explored customer demographics, payment methods, and product category preferences to understand spending patterns across shopping malls.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="10" data-tags="powerbi excel" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="4" data-more="true" data-tags="python predictiveanalytics" hidden>
         <article class="card">
-          <div class="cardThumb">
-            <img src="/assets/projects/ecommerce-thumb.webp" alt="E-commerce dashboard overview page"
-                 width="640" height="400" loading="lazy" decoding="async">
+          <div class="cardStat cardStatTools">
+            <span class="csCap">Python · scikit-learn · model audit</span>
           </div>
           <p class="cardSub">11 / Project</p>
-          <h3 class="cardTitle">E-Commerce Sales Performance & Profitability Power BI Dashboard</h3>
-          <p class="cardDesc">Built a multi-page dashboard analysing revenue, profitability, returns, and customer behaviour across categories and regions.</p>
+          <h3 class="cardTitle">Critical Analysis of Vehicle Price Prediction Models</h3>
+          <p class="cardDesc">Reviewed and corrected a vehicle price prediction pipeline — fixing preprocessing, encoding, and tuning across Linear, Decision Tree, and MLP models.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
           </div>
         </article>
       </button>
-
-      <button class="cardBtn" type="button" data-open="11" data-tags="powerbi" data-more="true" hidden>
+      <button class="cardBtn" type="button" data-open="5" data-more="true" data-tags="python" hidden>
         <article class="card">
-          <div class="cardThumb">
-            <img src="/assets/projects/cv-dashboard-thumb.webp" alt="One-page Power BI CV dashboard"
-                 width="640" height="400" loading="lazy" decoding="async">
+          <div class="cardStat cardStatTools">
+            <span class="csCap">R · statistical analysis</span>
           </div>
           <p class="cardSub">12 / Project</p>
-          <h3 class="cardTitle">Personal Analytics CV Dashboard in Power BI</h3>
-          <p class="cardDesc">Modelled my own CV as a relational dataset and built it into a one-page Power BI report with DAX measures and slicer-driven filtering.</p>
+          <h3 class="cardTitle">Analyzing Koala Physical Traits and Environmental Adaptations</h3>
+          <p class="cardDesc">Used statistical testing and OLS regression on physical measurements to study habitat-driven adaptations and biological patterns.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
@@ -394,7 +441,7 @@
     const viewMoreBtn = document.getElementById("viewMoreBtn");
     const allCards = Array.from(document.querySelectorAll(".cardBtn"));
     const filterButtons = Array.from(document.querySelectorAll(".filterPill"));
-    const INITIAL_VISIBLE = 3;
+    const INITIAL_VISIBLE = 6;
 
     let isExpanded = false;
     let currentFilter = "all";
@@ -745,7 +792,9 @@
       lastFocusedEl = document.activeElement;
 
       pmTitle.textContent = p.title || "";
-      pmMeta.textContent = `Project ${index + 1}`;
+      const allCards = Array.from(document.querySelectorAll(".cardBtn"));
+      const displayPos = allCards.findIndex(b => Number(b.dataset.open) === index);
+      pmMeta.textContent = `Project ${displayPos >= 0 ? displayPos + 1 : index + 1}`;
       pmOpen.href = p.openHref || "#";
 
       clearChildren(pmBody);
