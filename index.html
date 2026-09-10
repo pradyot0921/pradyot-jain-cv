@@ -24,16 +24,16 @@
   <meta property="og:description" content="Explore Pradyot Jain's analytics portfolio featuring Power BI dashboards, Python, SQL, predictive modelling, and business-focused case studies." />
   <meta name="twitter:description" content="Explore Pradyot Jain's analytics portfolio featuring Power BI dashboards, Python, SQL, predictive modelling, and business-focused case studies." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/pradyot.jpg" />
-  <meta property="og:image:width" content="880" />
-  <meta property="og:image:height" content="1100" />
-  <meta property="og:image:alt" content="Portrait of Pradyot Jain" />
+  <meta property="og:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Power BI dashboard of the South Australian electricity market" />
   <meta property="og:url" content="https://pradyot-jain-cv.netlify.app/" />
   <meta property="og:site_name" content="Pradyot Jain" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pradyot Jain — Business Analytics" />
-  <meta name="twitter:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/pradyot.jpg" />
+  <meta name="twitter:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/og-card.jpg" />
   <script>
     // Theme: read saved preference before paint to prevent flash
     (function () {
@@ -132,21 +132,25 @@
   <main class="container" id="main">
     <section class="hero">
       <div class="heroLeft">
-        <div class="eyebrow">Business Analytics · India</div>
+        <div class="eyebrowRow">
+          <picture>
+            <source srcset="/assets/profile/pradyot.webp" type="image/webp">
+            <img class="avatar" src="/assets/profile/pradyot.jpg" alt="Pradyot Jain"
+                 width="80" height="80" decoding="async">
+          </picture>
+          <span class="eyebrow">Pradyot Jain · Business Analytics · India</span>
+        </div>
 
         <h1 class="headline">
-          Translating data into <em>decisions</em> that move the business.
+          Credit risk, energy markets, <em>retail</em>. I work with the data behind them.
         </h1>
 
         <div class="heroBody">
           <p>
-            I am a Master of Business Analytics candidate at Macquarie University, working at the intersection of data analysis, predictive modelling, and stakeholder decision-making. My focus is turning analytical work into practical business outputs that align with real objectives and support evidence-based decisions.
+            Business analyst, finishing a Master of Business Analytics at Macquarie University. Python, SQL and Power BI, with a background in credit appraisal and retail banking.
           </p>
           <p>
-            My experience spans credit and health risk analysis, pricing and forecasting, customer behaviour, and large-scale data exploration. I work in Power BI, Python, and SQL, and care about accuracy, interpretability, and clear communication to both technical and non-technical audiences.
-          </p>
-          <p>
-          I build dashboards, models, and analytical reports that translate complex datasets into clear insights for operational, financial, and strategic decisions.
+            The work ranges from cleaning two million rows of transactional sales data to building a Power BI model of two years of half-hourly South Australian electricity market dispatch. What connects it is the same question: what does this data actually tell someone who has to make a decision?
           </p>
         </div>
 
@@ -160,21 +164,42 @@
       </div>
 
       <div class="heroRight">
-        <div class="portrait">
-          <picture>
-            <source srcset="/assets/profile/pradyot.webp" type="image/webp">
-            <img
-              src="/assets/profile/pradyot.jpg"
-              alt="Pradyot Jain"
-              width="880"
-              height="1100"
-              fetchpriority="high"
-              decoding="async"
-              onerror="this.closest('picture').style.display='none'; this.closest('picture').nextElementSibling.style.display='flex';"
-            >
-          </picture>
-          <div class="initials" aria-hidden="true" style="display:none;">PJ</div>
-        </div>
+        <figure class="heroShot">
+          <a href="portfolio.html" aria-label="View the South Australian electricity market dashboard">
+            <picture>
+              <source srcset="/assets/projects/sa-electricity.webp" type="image/webp">
+              <img
+                src="/assets/projects/sa-electricity.jpg"
+                alt="Power BI dashboard showing South Australian electricity market revenue, generation mix and technology capture prices"
+                width="1328"
+                height="1198"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </picture>
+          </a>
+          <figcaption>South Australian electricity market, July 2022 to June 2024. Built in Power BI.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <section class="statStrip" aria-label="Selected figures from my work">
+      <div class="stat">
+        <span class="statNum">1.99M</span>
+        <span class="statLabel">transaction rows cleaned and analysed across two fiscal years</span>
+      </div>
+      <div class="stat">
+        <span class="statNum">93.1%</span>
+        <span class="statLabel">test accuracy on the loan approval classifier, 85.5% F1</span>
+      </div>
+      <div class="stat">
+        <span class="statNum">A$411M</span>
+        <span class="statLabel">wholesale electricity market revenue modelled in Power BI</span>
+      </div>
+      <div class="stat">
+        <span class="statNum">12</span>
+        <span class="statLabel">projects in Python, R, Power BI and Excel</span>
       </div>
     </section>
 

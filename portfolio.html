@@ -23,16 +23,16 @@
   <meta property="og:description" content="Business analytics projects covering Power BI dashboards, Excel automation, Python, SQL, predictive modelling, and data-driven case studies." />
   <meta name="twitter:description" content="Business analytics projects covering Power BI dashboards, Excel automation, Python, SQL, predictive modelling, and data-driven case studies." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/pradyot.jpg" />
-  <meta property="og:image:width" content="880" />
-  <meta property="og:image:height" content="1100" />
-  <meta property="og:image:alt" content="Portrait of Pradyot Jain" />
+  <meta property="og:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Power BI dashboard of the South Australian electricity market" />
   <meta property="og:url" content="https://pradyot-jain-cv.netlify.app/portfolio" />
   <meta property="og:site_name" content="Pradyot Jain" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pradyot Jain — Portfolio" />
-  <meta name="twitter:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/pradyot.jpg" />
+  <meta name="twitter:image" content="https://pradyot-jain-cv.netlify.app/assets/profile/og-card.jpg" />
   <script>
     (function () {
       try {
@@ -231,6 +231,10 @@
 
       <button class="cardBtn" type="button" data-open="8" data-tags="powerbi excel" data-more="true" hidden>
         <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/sa-electricity-thumb.webp" alt="Market overview page: revenue, generation mix and capture prices"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
           <p class="cardSub">09 / Project</p>
           <h3 class="cardTitle">South Australian Electricity Market Power BI Dashboard</h3>
           <p class="cardDesc">Built an interactive multi-page dashboard analysing revenue, capture price, dispatch timing, and emissions across SA's electricity market.</p>
@@ -243,6 +247,10 @@
 
       <button class="cardBtn" type="button" data-open="9" data-tags="excel" data-more="true" hidden>
         <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/fastfood-thumb.webp" alt="Order planner sheet flagging items as URGENT, ORDER or OK"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
           <p class="cardSub">10 / Project</p>
           <h3 class="cardTitle">Excel Inventory Order Planner for Fast-Food Operations</h3>
           <p class="cardDesc">Designed a structured Excel workbook for retail inventory ordering, with demand profiling, delivery coverage, and automated status logic.</p>
@@ -255,9 +263,29 @@
 
       <button class="cardBtn" type="button" data-open="10" data-tags="powerbi excel" data-more="true" hidden>
         <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/ecommerce-thumb.webp" alt="E-commerce dashboard overview page"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
           <p class="cardSub">11 / Project</p>
           <h3 class="cardTitle">E-Commerce Sales Performance & Profitability Power BI Dashboard</h3>
           <p class="cardDesc">Built a multi-page dashboard analysing revenue, profitability, returns, and customer behaviour across categories and regions.</p>
+          <div class="cardFoot">
+            <span class="open">Read more <span aria-hidden="true">→</span></span>
+            <span class="external">GitHub ↗</span>
+          </div>
+        </article>
+      </button>
+
+      <button class="cardBtn" type="button" data-open="11" data-tags="powerbi" data-more="true" hidden>
+        <article class="card">
+          <div class="cardThumb">
+            <img src="/assets/projects/cv-dashboard-thumb.webp" alt="One-page Power BI CV dashboard"
+                 width="640" height="400" loading="lazy" decoding="async">
+          </div>
+          <p class="cardSub">12 / Project</p>
+          <h3 class="cardTitle">Personal Analytics CV Dashboard in Power BI</h3>
+          <p class="cardDesc">Modelled my own CV as a relational dataset and built it into a one-page Power BI report with DAX measures and slicer-driven filtering.</p>
           <div class="cardFoot">
             <span class="open">Read more <span aria-hidden="true">→</span></span>
             <span class="external">GitHub ↗</span>
@@ -490,9 +518,9 @@
           "Developed and compared Logistic Regression and K-Nearest Neighbors (KNN) models to assess predictive reliability.",
           "Applied feature selection techniques to reduce model complexity and highlight key credit risk factors.",
           "Key Results:",
-          "Logistic Regression delivered more stable and generalisable performance compared to KNN.",
-          "KNN showed higher sensitivity to parameter selection, indicating increased overfitting risk.",
-          "Feature selection improved interpretability while maintaining overall model performance."
+          "Logistic Regression reached 93.14% test accuracy and an 85.49% F1 score, against 92.79% and 84.28% on training data, so there was no meaningful overfitting.",
+          "The best KNN configuration (k=11, Manhattan distance) reached 89.67% test accuracy and a 75.92% F1 score, roughly 3.5 points behind Logistic Regression. At k=1 it hit 100% training accuracy and collapsed on test data, a textbook overfit.",
+          "Recursive Feature Elimination cut the feature set to 26 while holding accuracy at 93.14%, with F1 peaking at 0.8565. Age, annual income, credit score, loan amount and bankruptcy history carried most of the signal."
         ],
         skills: ["Python", "Data Analysis", "Data Preprocessing", "Logistic Regression", "K-Nearest Neighbors (KNN)", "Feature Selection", "Model Evaluation", "Credit Risk Analysis"]
       },
@@ -507,7 +535,7 @@
           "Used Gaussian Naive Bayes, Categorical Naive Bayes, and Bayesian Network Analysis to identify key risk factor relationships.",
           "Key Results",
           "Neural Networks achieved the highest predictive performance by capturing non-linear relationships.",
-          "Gaussian Naive Bayes performed strongly on continuous medical features, providing reliable probabilistic insights.",
+          "Gaussian Naive Bayes scored an AUC of 0.9214 on the continuous medical features, making it the strongest probabilistic model despite its simplicity.",
           "Categorical Naive Bayes showed limitations due to class imbalance in categorical variables.",
           "Bayesian Network Analysis revealed important dependencies between age, smoking history, blood glucose, and HbA1c levels."
         ],
@@ -523,10 +551,10 @@
           "Conducted statistical testing to compare profitability across regions and analyse price–volume relationships.",
           "Built a Random Forest model to predict 2014 sales and performed customer churn analysis using time-based definitions.",
           "Key Results",
-          "Identified consistently high-performing products and districts driving revenue and profitability.",
-          "Found strong seasonal sales patterns with mid-year peaks, supporting inventory and resource planning.",
-          "Confirmed statistically significant profit differences between high- and low-performing districts.",
-          "Random Forest model delivered strong predictive performance for sales forecasting, while churn analysis highlighted the need to refine churn definitions."
+          "Worked across 1,037,205 rows for 2012 and 951,177 for 2013, 41 columns each, and identified the products and districts carrying revenue in both years.",
+          "Sales peaked in May and June in both years and dropped sharply each December. A Random Forest regressor beat Decision Tree, Linear Regression and KNN on MAE, MSE and R² for the 2014 forecast. The 60-day churn threshold returned zero churned customers, which showed the definition was wrong rather than the data.",
+          "A two-sample t-test on the combined years returned t = 75.27 with p < 0.001, confirming the profit gap between the top and bottom five districts was not noise.",
+          "OLS regression on the revenue drivers explained 94.1% of variance across both years (R² of 0.945 for 2012 and 0.938 for 2013). Year-on-year customer retention was 86.38%."
         ],
         skills: ["Python", "Data Cleaning", "EDA", "Statistical Testing", "Sales & Profitability Analysis", "Random Forest Modeling", "Customer Retention Analysis", "Predictive Analytics", "Business Insight Generation"]
       },
@@ -543,7 +571,7 @@
           "Identified key customer segments based on age and gender spending patterns.",
           "Observed clear differences in product category preferences across demographics.",
           "Highlighted variations in payment method usage across customer groups and malls.",
-          "Revealed shopping malls with higher transaction volumes and revenue contribution."
+          "Covered 99,461 transactions across 11 shopping malls, and ranked them by transaction volume and revenue contribution."
         ],
         skills: ["Data Cleaning", "Exploratory Data Analysis", "Python", "Data Visualisation", "Customer Behaviour Analysis", "Descriptive Statistics", "Insight Reporting"]
       },
@@ -592,9 +620,9 @@
           "Built interactive visualisations using Power BI and R to explore trends, severity, and success rates.",
           "Compared attack frequency, casualties, and group activity to identify high-risk regions and periods.",
           "Key Results",
-          "Terrorism activity peaked in 2001, 2007, and 2014, followed by a decline after 2014.",
+          "Across 103,890 incidents and 277,000 fatalities from 1997 to 2017, activity peaked in 2001, 2007 and 2014, with the 2014 spike alone accounting for over 41,000 deaths.",
           "South Asia and the Middle East & North Africa accounted for the majority of incidents and fatalities.",
-          "Bombings and explosions were the most common and deadliest attack methods.",
+          "Bombings and explosions made up 51.41% of all incidents and armed assaults a further 25.15%. The overall attack success rate averaged 89.93%, falling to 85.0% by 2017.",
           "Civilian targets suffered the highest casualties, highlighting significant humanitarian impact."
         ],
         skills: ["Data Cleaning", "Exploratory Data Analysis", "Data Visualisation", "Power BI", "R Programming", "Time-Series Analysis", "Geospatial Analysis", "Insight Communication"]
@@ -610,7 +638,7 @@
           "Built a weighted ensemble model by blending predictions based on inverse RMSE performance.",
           "Key Results",
           "Individual gradient boosting models achieved strong performance with validation R² around 0.93–0.94.",
-          "The final ensemble model achieved the lowest RMSE (~4,121), outperforming all standalone models.",
+          "The blended ensemble reached a validation RMSE of 4,121.75, beating every standalone model, and held R² near 0.94 across splits.",
           "Ensembling reduced prediction variance and improved overall model generalisation.",
           "The final model demonstrated reliable performance across validation splits."
         ],
@@ -618,6 +646,7 @@
       },
       {
         title: "South Australian Electricity Market Power BI Dashboard",
+        image: { slug: "sa-electricity", alt: "Market overview page: revenue, generation mix and capture prices" },
         openHref: "https://github.com/pradyot0921/Portfolio/tree/main/south-australian-electricity-market-powerbi-dashboard",
         details: [
           "What I Did",
@@ -627,16 +656,17 @@
           "Designed four executive-style dashboard pages covering market overview, technology risk, dispatch timing, emissions and strategic insights.",
           "Used consistent technology colour coding, slicers, KPI cards, reference lines and visual containers to improve dashboard readability and storytelling.",
           "Key Results",
-          "Natural gas generated the highest total wholesale revenue across the analysis period despite lower utilisation than wind and solar.",
-          "Diesel and battery storage achieved premium dispatch-weighted capture prices because their dispatch was concentrated during higher-price periods.",
-          "Solar experienced the highest negative price exposure, reflecting midday generation concentration and price cannibalisation risk.",
+          "Across two years of half-hourly data, July 2022 to June 2024, the market generated A$411.57M in wholesale revenue on 2.38M MWh. Natural gas took A$286.84M of that at 42.86% of generation volume.",
+          "Diesel captured A$900.33/MWh against a market volume-weighted average of A$128.79/MWh, a 7x premium, because it only ran during scarcity. Battery storage captured A$397.95/MWh on the same logic.",
+          "Solar captured just A$42.48/MWh, a third of the market average, and was the technology most exposed to the 48,230 negative price intervals recorded in the period. That is price cannibalisation from midday generation clustering.",
           "Wind and solar contributed significant generation volume but earned lower capture prices compared with dispatchable technologies.",
-          "Natural gas produced the largest estimated total emissions due to high dispatch volume and emissions intensity."
+          "Natural gas produced 610,940 of the 660,910 tCO₂-e estimated for the period, at an intensity of 0.60 tCO₂-e/MWh against 0.01 for wind."
         ],
         skills: ["Power BI", "DAX", "Excel", "Data Modelling", "Dashboard Design", "Energy Market Analytics", "Revenue Analysis", "Capture Price Analysis", "Negative Price Exposure", "Emissions Analysis", "Business Insight Communication"]
       },
       {
         title: "Excel Inventory Order Planner for Fast-Food Operations",
+        image: { slug: "fastfood", alt: "Order planner sheet flagging items as URGENT, ORDER or OK" },
         openHref: "https://github.com/pradyot0921/Portfolio/tree/main/fast-food-inventory-order-planner",
         details: [
           "What I Did",
@@ -656,23 +686,42 @@
       },
       {
         title: "E-Commerce Sales Performance & Profitability Power BI Dashboard",
+        image: { slug: "ecommerce", alt: "Overview page: revenue, profit, regional split and payment mix" },
         openHref: "https://github.com/pradyot0921/Portfolio/tree/main/power-bi-ecommerce-performance-dashboard",
         details: [
           "What I Did",
           "Built a multi-page interactive Power BI dashboard analysing e-commerce sales, profitability, customer behaviour, delivery performance, and operational insights.",
+          "The dataset is synthetic, so the figures below demonstrate method rather than describe a real business.",
           "Cleaned and transformed transactional data using Power Query and created analytical measures using DAX.",
           "Designed executive-style dashboards using KPI cards, slicers, bookmarks, drill-through navigation, custom tooltips, and interactive filtering.",
           "Created analytical visuals to evaluate revenue trends, category profitability, return behaviour, regional contribution, customer segmentation, discount effectiveness, delivery efficiency, and payment method contribution.",
           "Developed a dedicated insights and recommendations page linking business findings directly to supporting visuals using bookmark navigation.",
           "Key Results",
-          "Identified Electronics as the highest revenue-generating category but with weaker profitability efficiency compared to other categories.",
-          "Found Grocery operating at a loss despite generating sales revenue.",
-          "Observed that slower delivery times are associated with higher return rates.",
-          "Identified South and North regions as the largest revenue contributors.",
-          "Detected higher return rates in Fashion and Electronics categories.",
-          "Found customers aged 55+ contributing the highest revenue across age segments."
+          "Across $5.9M revenue, $970K profit and 35,000 orders from 7,903 distinct customers, the overall margin was 16.54% and the return rate 5.52%.",
+          "Electronics drove $3.32M of revenue, more than triple the next category, but sat at the bottom of the discount-versus-margin scatter. Grocery ran at a $9.19K net loss on $0.08M of revenue, which a revenue-only dashboard would have hidden entirely.",
+          "Return rates rose from 5.24% on fast deliveries to 5.64% on slow ones, against an average delivery time of 4.81 days. The relationship is associative, not causal, but it points at logistics as an operational lever.",
+          "South ($1.30M) and North ($1.26M) led the five regions, with Central trailing at $0.94M. Margins stayed within a narrow 16.26% to 16.80% band across all five, so the gap is volume rather than pricing.",
+          "Fashion returned at 8.28% and Electronics at 7.30%, against 1.31% for Grocery, a more than sixfold spread across categories.",
+          "Customers aged 55+ contributed $1.62M, double the $0.82M from the 18-24 band, and were the top segment in every product category."
         ],
         skills: ["Power BI", "DAX", "Power Query", "Data Modelling", "Dashboard Design", "Business Analytics", "Data Visualisation", "KPI Reporting", "Interactive Reporting", "Customer Analytics", "Profitability Analysis", "Executive Dashboarding"]
+      },
+      {
+        title: "Personal Analytics CV Dashboard in Power BI",
+        image: { slug: "cv-dashboard", alt: "One-page Power BI CV: KPI cards, skills breakdown, project table and career timeline" },
+        openHref: "https://github.com/pradyot0921/Portfolio/tree/main/powerbi-cv-dashboard",
+        details: [
+          "What I Did",
+          "Modelled my own CV as a relational dataset across separate skills, projects, experience, education and certification tables, rather than a single flat sheet.",
+          "Wrote DAX measures for the summary KPIs so the counts update from the underlying tables instead of being typed in by hand.",
+          "Designed it as a single page with slicers on skill category, proficiency, tool and domain, so it stays readable both interactively and when exported to PDF.",
+          "Key Results",
+          "The dashboard surfaces 36 skills, 21 of them at advanced level, across 9 tools and 6 certifications totalling 152 hours of coursework.",
+          "Skills are grouped into six categories, with analytics and modelling and BI and visualisation the two largest by count.",
+          "A career timeline plots four roles across credit analysis, retail banking analytics, business analytics and operations.",
+          "Building it forced the same modelling decisions as any Power BI report: what belongs in a fact table, what is a dimension, and which numbers should be measures rather than columns."
+        ],
+        skills: ["Power BI", "DAX", "Data Modelling", "Dashboard Design", "Report Layout"]
       }
     ];
 
@@ -700,6 +749,26 @@
       pmOpen.href = p.openHref || "#";
 
       clearChildren(pmBody);
+      if (p.image && p.image.slug){
+        const fig = document.createElement("figure");
+        fig.className = "modalShot";
+        const pic = document.createElement("picture");
+        const src = document.createElement("source");
+        src.srcset = "/assets/projects/" + p.image.slug + ".webp";
+        src.type = "image/webp";
+        const img = document.createElement("img");
+        img.src = "/assets/projects/" + p.image.slug + ".jpg";
+        img.alt = p.image.alt || p.title || "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        pic.appendChild(src); pic.appendChild(img); fig.appendChild(pic);
+        if (p.image.alt){
+          const cap = document.createElement("figcaption");
+          cap.textContent = p.image.alt;
+          fig.appendChild(cap);
+        }
+        pmBody.appendChild(fig);
+      }
       const details = Array.isArray(p.details) ? p.details : [];
       if (details.length){
         let ul = null;
